@@ -1,0 +1,72 @@
+---
+import { fade } from 'astro:transitions'
+import Icon from '$components/Icon.astro'
+
+interface Props {
+	linkPrev?: { name: string; path: string }
+	linkNext?: { name: string; path: string }
+	linkPrevMobile?: { name: string; path: string }
+	linkNextMobile?: { name: string; path: string }
+	variation?: number
+}
+
+const { linkPrev, linkNext, linkPrevMobile, linkNextMobile, variation } = Astro.props
+---
+
+<nav
+	transition:name="navigation"
+	transition:animate={fade({ duration: 1000 })}
+	class:list={['fixed inset-y-0 right-0 z-10 flex w-24 flex-col border-l pt-24 max-lg:hidden', variation === 1 ? 'border-white' : 'border-black']}
+>
+	{
+		linkPrev && (
+			<div class:list={['flex basis-full items-center justify-center', (variation === 1 || variation === 4) && 'lg:text-white']}>
+				<a class="flex items-center gap-2" href={linkPrev.path} data-direction="back">
+					<span class="size-8 rounded-full border border-current p-2">
+						<Icon class="w-4" name="arrow-left" />
+					</span>
+					<span class="writing-mode-vertical text-sm uppercase">{linkPrev.name}</span>
+				</a>
+			</div>
+		)
+	}
+	{
+		linkNext && (
+			<div class="flex basis-full items-center justify-center text-lime-500 max-lg:ml-auto">
+				<a class="flex items-center gap-2" href={linkNext.path}>
+					<span class="writing-mode-vertical text-sm uppercase">{linkNext.name}</span>
+					<span class="size-8 rounded-full border border-current p-2">
+						<Icon class="w-4" name="arrow-right" />
+					</span>
+				</a>
+			</div>
+		)
+	}
+</nav>
+
+<nav class="flex h-20 border-y border-black px-6 lg:hidden">
+	{
+		linkPrevMobile && (
+			<div class="flex items-center justify-center">
+				<a class="flex items-center gap-2" href={linkPrevMobile.path} data-direction="back">
+					<span class="size-8 rounded-full border border-current p-2">
+						<Icon class="w-4" name="arrow-left" />
+					</span>
+					<span class="text-sm uppercase">{linkPrevMobile.name}</span>
+				</a>
+			</div>
+		)
+	}
+	{
+		linkNextMobile && (
+			<div class="ml-auto flex items-center justify-center text-lime-500">
+				<a class="flex items-center gap-2" href={linkNextMobile.path}>
+					<span class="text-sm uppercase">{linkNextMobile.name}</span>
+					<span class="size-8 rounded-full border border-current p-2">
+						<Icon class="w-4" name="arrow-right" />
+					</span>
+				</a>
+			</div>
+		)
+	}
+</nav>

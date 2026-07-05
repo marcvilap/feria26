@@ -1,0 +1,11 @@
+---
+interface Props {
+	class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<h1 class:list={['reveal relative overflow-clip font-condensed text-5xl font-bold uppercase md:text-6xl xl:text-7xl', className]}>
+	<span class="block reveal:translate-y-full revealed:delay-[.8s]"><slot /></span>
+</h1>

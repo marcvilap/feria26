@@ -1,0 +1,54 @@
+---
+import { Image, getImage } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import ad12 from '$assets/images/ads/ad-12.png'
+import ad13 from '$assets/images/ads/ad-13.png'
+import ad30 from '$assets/images/ads/ad-30.jpg'
+import posters from '$utils/data-posters'
+import ad12video from '$assets/videos/ads/holamotor.mp4'
+import ad13video from '$assets/videos/ads/sophie.mp4'
+
+const title = 'Carteles de Feria'
+const variation = 2
+const linkPrev = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const linkNext = { name: 'Cómete la Feria', path: '/comete-la-feria' }
+const linkPrevMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const linkNextMobile = { name: 'Cómete la Feria', path: '/comete-la-feria' }
+
+const ads = [
+	{ image: ad12, url: '#', video: ad12video },
+	{ image: ad13, url: '#', video: ad13video },
+	{ image: ad30, url: 'https://alhaurindelatorre.es' },
+]
+const adsMobile = [
+	{ image: ad13, url: '#', video: ad13video },
+	{ image: ad30, url: 'https://alhaurindelatorre.es' },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+	<div class="h-24"></div>
+	<Split {variation} {ads}>
+		<Title class="-translate-y-24 text-white">{title}</Title>
+		<div class="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 xl:grid-cols-4 2xl:gap-12">
+			{
+				posters.map(async ({ image, name }) => (
+					<a class="open-in-modal group" target="_blank" href={(await getImage({ src: image, format: 'webp' })).src}>
+						<div class="overflow-clip rounded bg-black">
+							<Image
+								class="aspect-[2/3] w-full object-cover transition group-hover:scale-110 group-hover:opacity-50"
+								src={image}
+								width="220"
+								densities={[2]}
+								alt=""
+							/>
+						</div>
+						<h3 class="mt-3 text-center">{name}</h3>
+					</a>
+				))
+			}
+		</div>
+	</Split>
+</Layout>

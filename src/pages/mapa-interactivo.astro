@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Map from '$components/Map.astro'
+import ad27 from '$assets/images/ads/ad-27.jpg'
+import map02 from '$assets/images/map-02.webp'
+import ad25 from '$assets/images/ads/ad-25.jpg'
+import ad26 from '$assets/images/ads/ad-26.jpg'
+import ad25video from '$assets/videos/ads/activa.mp4'
+import ad26video from '$assets/videos/ads/ags.mp4'
+
+const title = 'Mapa de la feria'
+const variation = 3
+const linkPrev = { name: 'Cómete la Feria', path: '/publicidad-2' }
+const linkNext = { name: '150 Años la Malagueta', path: '/150-anos-la-malagueta' }
+const linkPrevMobile = { name: 'Cómete la Feria', path: '/comete-la-feria' }
+const linkNextMobile = { name: '150 Años la Malagueta', path: '/150-anos-la-malagueta' }
+const ads = [{ image: ad27, url: 'https://www.concesionarios.seat/overview-dw.dealer.automoviles-rueda.html' }]
+const adsMobile = [
+	{ image: ad25, url: '#', video: ad25video },
+	{ image: ad26, url: 'https://alhaurindelatorre.es', video: ad26video },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+	<span class="bg-map absolute inset-0 -z-20 bg-blue-100"></span>
+	<Split {variation} {ads} reverse>
+		<Fragment slot="aside">
+			<Title class="-mt-12 mb-6 max-w-64 text-white max-lg:hidden">{title}</Title>
+		</Fragment>
+		<Title class="mb-12 text-blue-600 lg:hidden">{title}</Title>
+		<div class="grid items-start gap-12 sm:flex">
+			<div class="basis-1/3">
+				<Image class="w-full" src={map02} width={301} densities={[2]} alt="" />
+			</div>
+			<div class="basis-2/3 max-sm:-ml-40 max-sm:-mr-32 max-sm:-rotate-[4deg] lg:-mt-24">
+				<Map />
+			</div>
+		</div>
+	</Split>
+</Layout>

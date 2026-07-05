@@ -1,0 +1,24 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Link from '$components/Link.astro'
+import video from '$assets/videos/home.mp4'
+
+const title = 'Feria de Málaga'
+const variation = 1
+const linkNext = { name: 'Saludos', path: '/saludos' }
+const linkNextMobile = { name: 'Saludos', path: '/saludos' }
+---
+
+<Layout {title} {variation} {linkNext} {linkNextMobile}>
+	<section class="reveal relative -mt-20 bg-yellow-950 text-white lg:-mt-24">
+		<video class="absolute left-0 top-0 size-full object-cover opacity-50" src={video} autoplay loop muted playsinline></video>
+		<div class="container relative flex min-h-svh flex-col items-center gap-6 pb-6 pt-32 lg:pb-12">
+			<h1 class="mt-auto font-serif text-8xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.4s] lg:text-[10rem] lg:leading-none">
+				Feria de <em class="block">Málaga</em>
+			</h1>
+			<h2 class="mb-6 text-5xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.5s]">2024</h2>
+			<Link class="reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.6s]" href="/saludos">Entrar</Link>
+			<p class="mt-auto text-sm lg:self-start">Imágenes cedidas por el Ayuntamiento de Málaga</p>
+		</div>
+	</section>
+</Layout>

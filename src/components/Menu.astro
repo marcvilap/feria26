@@ -1,0 +1,39 @@
+---
+import Icon from '$components/Icon.astro'
+---
+
+<span class="toggle-menu invisible fixed inset-0 z-30 bg-black opacity-0 transition-all duration-500 group-[-open-menu]:visible group-[-open-menu]:opacity-75">
+</span>
+
+<nav
+	transition:name="menu"
+	class="fixed right-0 top-0 z-40 grid h-dvh w-full max-w-md translate-x-full bg-blue-600 font-condensed transition-transform duration-500 group-[-open-menu]:translate-x-0 2xl:max-w-3xl"
+>
+	<span class="absolute left-12 top-6 text-[9rem] font-bold uppercase text-blue-800 2xl:left-24 2xl:top-0 2xl:text-[17rem]">Menú</span>
+
+	<menu class="relative flex flex-col items-start gap-4 overflow-y-auto p-12 text-3xl text-white 2xl:gap-6 2xl:p-24 2xl:text-4xl">
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/">Home</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/saludos">Saludos</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/feria-y-sociedad">Feria y sociedad</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/feria-en-cope">Feria en Cope</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/biznaga-de-plata">Biznaga de Plata</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/carteles-de-feria">Carteles de Feria</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/comete-la-feria">Cómete la Feria</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/mapa-interactivo">Mapa Interactivo</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/150-anos-la-malagueta">150 Años la Malagueta</a></li>
+		<li class="font-bold uppercase"><a class="flex hover:translate-x-4 hover:text-black" href="/feria-taurina">Feria Taurina</a></li>
+		<li>
+			<a class="flex items-center gap-4 hover:translate-x-4 hover:text-black" target="_blank" href="https://www.cope.es/directos/cope-mas-malaga">
+				<span class="flex size-16 items-center justify-center rounded-full border-2 border-current">
+					<Icon class="w-6" name="play" />
+				</span>
+				<span class="underline decoration-2">Escucha COPE Málaga</span>
+			</a>
+		</li>
+	</menu>
+
+	<button class="toggle-menu fixed right-0 top-0 flex size-24 items-center justify-center transition-colors hover:text-white">
+		<span class="absolute w-9 rotate-45 border-t-2 border-current"></span>
+		<span class="absolute w-9 -rotate-45 border-t-2 border-current"></span>
+	</button>
+</nav>

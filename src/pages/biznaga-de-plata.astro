@@ -1,0 +1,46 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Link from '$components/Link.astro'
+import ad09 from '$assets/images/ads/ad-09.gif'
+import ad10 from '$assets/images/ads/ad-10.jpg'
+import ad09video from '$assets/videos/ads/fenie.mp4'
+
+const title = 'Biznaga de Plata'
+const variation = 3
+const linkPrev = { name: 'Feria en Cope', path: '/publicidad-1' }
+const linkNext = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
+const linkPrevMobile = { name: 'Feria en Cope', path: '/feria-en-cope' }
+const linkNextMobile = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
+const ads = [{ image: ad10, url: 'https://www.peparevuelo.com' }]
+const adsMobile = [
+	{ image: ad09, url: '#', video: ad09video },
+	{ image: ad10, url: 'https://www.peparevuelo.com' },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+	<Split {variation} {ads} reverse>
+		<div class="mx-auto 2xl:max-w-2xl">
+			<Title class="text-center text-blue-600">{title}</Title>
+			<div class="prose my-12">
+				<p>
+					Desde 1995, en COPE Málaga hemos querido dar un reconocimiento especial a las personas y entidades que, con su esfuerzo y dedicación, hacen que
+					nuestras fiestas sean cada vez mejores. Desde entonces, hemos otorgado 27 Biznagas de Plata, un premio que celebra la excelencia y el esfuerzo en
+					hacer de la Feria de Málaga un evento inolvidable.
+				</p>
+				<p>
+					La elección de los premiados, hasta ahora la hemos dejado en manos de los periodistas de COPE Málaga, que cada año ponían voz y sonido durante la
+					transmisión de la programación especial de la feria. Pero este año queremos que tú seas quien decida la persona o entidad que debe recibir este premio
+					en 2024.
+				</p>
+			</div>
+			<div class="bg-blue-100 p-6 text-center xl:p-12">
+				<h2 class="text-2xl">Te presentamos a los tres candidatos a la Biznaga de Plata 2024</h2>
+				<p class="my-6 text-lg font-bold text-neutral-500">Vota por tu favorito</p>
+				<Link class="text-blue-600" href="/votaciones">Ver opciones</Link>
+			</div>
+		</div>
+	</Split>
+</Layout>

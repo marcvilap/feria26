@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Icon from '$components/Icon.astro'
+import ad02 from '$assets/images/ads/ad-02.jpg'
+import ad03 from '$assets/images/ads/ad-03.png'
+import ad04 from '$assets/images/ads/ad-04.png'
+import feria from '$utils/data-feria'
+
+const title = 'Feria y Sociedad'
+const variation = 2
+const linkPrev = { name: 'Saludos', path: '/saludos' }
+const linkNext = { name: 'Feria en Cope', path: '/feria-en-cope' }
+const linkPrevMobile = { name: 'Saludos', path: '/saludos' }
+const linkNextMobile = { name: 'Feria en Cope', path: '/feria-en-cope' }
+const ads = [
+	{ image: ad02, url: 'https://www.tesesa.com' },
+	{ image: ad03, url: 'https://www.grupohla.com/hlahospitalelangel' },
+]
+const adsMobile = [
+	{ image: ad03, url: 'https://www.grupohla.com/hlahospitalelangel' },
+	{ image: ad04, url: 'https://coin.es' },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+	<div class="lg:h-40"></div>
+	<Split {variation} {ads}>
+		<div class="relative lg:mb-8 lg:-translate-y-40">
+			<Title class="text-white max-sm:-mr-3">Una feria, muchas maneras de vivirla</Title>
+			<ol
+				class="text-lg text-blue-600 max-lg:mt-24 max-lg:pb-12 lg:absolute lg:-top-8 lg:left-120 lg:whitespace-nowrap lg:text-white xl:left-160 2xl:top-8 2xl:grid 2xl:grid-flow-col 2xl:grid-rows-3 2xl:gap-x-8"
+			>
+				<li>1. La feria para ti es...</li>
+				<li>2. ¿Qué mejorarías?</li>
+				<li>3. ¿Feria de día o feria de noche?</li>
+				<li>4. ¿Centro o Cortijo de Torres?</li>
+				<li>5. Un plato de feria...</li>
+				<li>6. Un recuerdo de feria...</li>
+			</ol>
+		</div>
+
+		<div class="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-6 xl:grid-cols-3">
+			{
+				feria.map(({ video, image, name, description }) => (
+					<a class="open-in-modal group" target="_blank" href={video}>
+						<div class="relative flex items-center justify-center overflow-clip rounded bg-black">
+							<Image class="w-full opacity-75 transition group-hover:scale-110 group-hover:opacity-50" src={image} width="296" densities={[2]} alt="" />
+							<span class="absolute flex size-12 items-center justify-center rounded-full border-2 border-current text-white 2xl:size-16">
+								<Icon class="w-6" name="play" />
+							</span>
+						</div>
+						<h3 class="mt-3 text-xl xl:text-2xl">{name}</h3>
+						<div class="text-sm text-neutral-500">{description}</div>
+					</a>
+				))
+			}
+		</div>
+	</Split>
+</Layout>

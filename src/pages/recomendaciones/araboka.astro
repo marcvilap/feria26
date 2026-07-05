@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Link from '$components/Link.astro'
+import ad17 from '$assets/images/ads/ad-17.jpg'
+import ad18 from '$assets/images/ads/ad-18.png'
+import image from '$assets/images/recommendations/recommendation-01.webp'
+import video from '$assets/videos/recommendations/recommendation-01.mp4'
+import ad18video from '$assets/videos/ads/skin.mp4'
+
+const title = 'Araboka'
+const variation = 4
+const linkPrev = { name: 'Volver', path: '/recomendaciones' }
+const linkPrevMobile = { name: 'Volver', path: '/recomendaciones' }
+const ads = [
+	{ image: ad17, url: '#' },
+	{ image: ad18, url: 'https://www.3345soundrestaurant.com/', video: ad18video },
+]
+const adsMobile = [
+	{ image: ad17, url: 'https://www.3345soundrestaurant.com' },
+	{ image: ad18, url: 'https://www.peparevuelo.com', video: ad18video },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
+	<Split {variation} {ads}>
+		<div class="max-w-4xl">
+			<p class="mb-12 text-2xl text-blue-600">Cómete la feria</p>
+			<p class="mb-6 text-center text-2xl uppercase">{title}</p>
+			<Title class="text-center text-blue-600">Boquerones victorianos de Málaga rellenos</Title>
+			<p class="my-6 text-center text-lg font-bold">Jorge Rodríguez Manosalvas, jefe de cocina de Araboka Plaza</p>
+			<Image class="rounded" src={image} width={896} densities={[2]} alt="" />
+			<div class="prose mx-auto my-12 max-w-2xl">
+				<p>
+					Araboka Restaurante es uno de los grandes referentes de la gastronomía y del buen vino en Málaga. Con dos restaurantes, Araboka Plaza y Araboka
+					Centro, siempre cumple las expectativas con una cocina de producto en la ensalza la calidad de la materia prima, dándole el protagonismo al producto
+					malagueño y andaluz. Cocina de herencia, mediterránea y de platos de temporada.
+				</p>
+				<p>
+					<strong>Jorge Rodríguez Manosalvas, jefe de cocina de Araboka Plaza,</strong> nos mete en su cocina para, paso a paso, explicarnos en el siguiente vídeo
+					cómo elabora su recomendación: Boquerones victorianos de Málaga rellenos.
+				</p>
+			</div>
+			<video class="w-full rounded" src={video} controls></video>
+			<div class="mt-12 text-center">
+				<Link class="text-blue-600" href="/recomendaciones">Ver más recomendaciones</Link>
+			</div>
+		</div>
+	</Split>
+</Layout>

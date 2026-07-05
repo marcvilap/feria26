@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Link from '$components/Link.astro'
+import ad19 from '$assets/images/ads/ad-19.png'
+import ad20 from '$assets/images/ads/ad-20.jpg'
+import image from '$assets/images/recommendations/recommendation-02.webp'
+import video from '$assets/videos/recommendations/recommendation-02.mp4'
+import ad19video from '$assets/videos/ads/estepona.mp4'
+
+const title = 'Asador Iñaki'
+const variation = 4
+const linkPrev = { name: 'Volver', path: '/recomendaciones' }
+const linkPrevMobile = { name: 'Volver', path: '/recomendaciones' }
+const ads = [
+	{ image: ad19, url: '#', video: ad19video },
+	{ image: ad20, url: 'https://www.miramarcc.com' },
+]
+const adsMobile = [
+	{ image: ad19, url: '#', video: ad19video },
+	{ image: ad20, url: 'https://www.miramarcc.com' },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
+	<Split {variation} {ads}>
+		<div class="max-w-4xl">
+			<p class="mb-12 text-2xl text-blue-600">Cómete la feria</p>
+			<p class="mb-6 text-center text-2xl uppercase">{title}</p>
+			<Title class="text-center text-blue-600">Pulpo a la brasa</Title>
+			<p class="my-6 text-center text-lg font-bold">Paula Santaella, segunda de cocina de Asador Iñaki</p>
+			<Image class="rounded" src={image} densities={[2]} alt="" />
+			<div class="prose mx-auto my-12 max-w-2xl">
+				<p>
+					Asador Iñaki no solo es uno de los asadores de referencia en la provincia de Málaga, sino que también fueron incluidos entre los diez mejores asadores
+					de España. Desde el tipo de leña hasta la temperatura, todo en la cocina está controlado y cuidado al detalle. Con carnes de alta calidad procedentes
+					de las mejores explotaciones ganaderas y con productos frescos, en Asador Iñaki también podemos encontrar buen pescado y marisco. Su entrante más
+					famoso y demandado es el pulpo a la brasa.
+				</p>
+				<p>
+					Para conocer cómo preparan este delicioso pulpo a la brasa, Paula Santaella, segunda de cocina de Asador Iñaki, nos lo explica en el siguiente vídeo:
+				</p>
+			</div>
+			<video class="w-full rounded" src={video} controls></video>
+			<div class="mt-12 text-center">
+				<Link class="text-blue-600" href="/recomendaciones">Ver más recomendaciones</Link>
+			</div>
+		</div>
+	</Split>
+</Layout>

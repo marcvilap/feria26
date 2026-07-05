@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: 'Sofia Sans';
+		font-style: normal;
+		font-weight: 1 1000;
+		font-display: swap;
+		src: url(./assets/fonts/sofia-sans-1-1000.woff2) format('woff2');
+	}
+	@font-face {
+		font-family: 'Sofia Sans Condensed';
+		font-style: normal;
+		font-weight: 1 1000;
+		font-display: swap;
+		src: url(./assets/fonts/sofia-sans-condensed-1-1000.woff2) format('woff2');
+	}
+	@font-face {
+		font-family: 'Awesome Serif';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url(./assets/fonts/awesome-serif-400.woff2) format('woff2');
+	}
+	@font-face {
+		font-family: 'Awesome Serif';
+		font-style: italic;
+		font-weight: 400;
+		font-display: swap;
+		src: url(./assets/fonts/awesome-serif-italic-400.woff2) format('woff2');
+	}
+	html {
+		-webkit-tap-highlight-color: transparent;
+		@apply relative min-h-screen touch-manipulation overflow-x-clip antialiased max-[400px]:text-[4vw];
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply text-balance;
+	}
+	p {
+		@apply text-pretty;
+	}
+	a {
+		@apply decoration-1 underline-offset-4 transition;
+	}
+}
+
+@layer components {
+	.container {
+		@apply lg:max-w-[120rem] lg:pr-[7.5rem] xl:pr-36 2xl:pr-48;
+	}
+	.button {
+		@apply inline-flex h-12 items-center justify-center gap-3 rounded-full px-8 text-center text-sm font-medium uppercase leading-none tracking-wider transition-transform will-change-transform hover:scale-90;
+	}
+	.prose {
+		@apply text-lg;
+		a {
+			@apply text-blue-600 underline decoration-1 underline-offset-4 transition-colors hover:text-blue-800;
+		}
+		strong {
+			@apply font-medium;
+		}
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			@apply mb-6 mt-12 font-medium;
+		}
+		h1 {
+			@apply text-6xl;
+		}
+		h2 {
+			@apply text-5xl;
+		}
+		h3 {
+			@apply text-4xl;
+		}
+		h4 {
+			@apply text-3xl;
+		}
+		h5 {
+			@apply text-2xl;
+		}
+		h6 {
+			@apply text-xl;
+		}
+		p,
+		ul,
+		ol {
+			@apply mb-6;
+		}
+		ol {
+			@apply list-decimal pl-6;
+		}
+		ul {
+			@apply list-disc pl-6;
+		}
+		li {
+			@apply mt-3;
+		}
+		hr,
+		img,
+		pre,
+		table,
+		figure,
+		iframe,
+		blockquote {
+			@apply my-12 block w-full;
+		}
+		img {
+			@apply rounded-3xl;
+		}
+		table {
+			th,
+			td {
+				@apply border-y p-2 text-left;
+			}
+		}
+		iframe {
+			@apply aspect-video;
+		}
+		blockquote {
+			@apply border-l-4 pl-6 text-xl font-medium italic lg:text-2xl;
+		}
+		> :first-child {
+			@apply mt-0;
+		}
+		> :last-child {
+			@apply mb-0;
+		}
+	}
+	.revealed [class*='reveal:'] {
+		transition-duration: 1s;
+		transition-property: opacity, transform;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: opacity, transform;
+	}
+}
+
+@layer utilities {
+	.writing-mode-vertical {
+		writing-mode: vertical-lr;
+	}
+	.bg-map {
+		background-image: url(./assets/icons/map.svg);
+	}
+}
+
+dialog {
+	max-width: calc(100vw - 1.5rem);
+	max-height: calc(100vh - 1.5rem);
+	opacity: 0;
+	transform: scale(0.75);
+	transition-property: opacity, transform, display, overlay;
+	transition-duration: 0.3s;
+	transition-behavior: allow-discrete;
+	&::backdrop {
+		background-color: #0000;
+		transition: background-color 0.3s;
+	}
+	&[open] {
+		opacity: 1;
+		transform: scale(1);
+		&::backdrop {
+			background-color: #000b;
+		}
+		@starting-style {
+			opacity: 0;
+			transform: scale(0.75);
+			&::backdrop {
+				background-color: #0000;
+			}
+		}
+	}
+	video,
+	img {
+		max-height: calc(100vh - 3rem);
+	}
+}

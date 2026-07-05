@@ -1,0 +1,298 @@
+---
+import '../main.css'
+import { Image } from 'astro:assets'
+import { ViewTransitions, slide } from 'astro:transitions'
+import Header from '$components/Header.astro'
+import Footer from '$components/Footer.astro'
+import Navigation from '$components/Navigation.astro'
+import Menu from '$components/Menu.astro'
+
+interface Ad {
+	image: ImageMetadata
+	url: string
+	video?: string
+}
+
+interface Props {
+	title: string
+	variation?: number
+	linkPrev?: { name: string; path: string }
+	linkNext?: { name: string; path: string }
+	linkPrevMobile?: { name: string; path: string }
+	linkNextMobile?: { name: string; path: string }
+	adsMobile?: Ad[]
+}
+
+const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, adsMobile } = Astro.props
+---
+
+<!doctype html>
+<html lang="es-ES" transition:animate="none">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>{title} - Cope Málaga</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<script type="text/javascript">
+			;(function () {
+				function r(e) {
+					if (!window.frames[e]) {
+						if (document.body && document.body.firstChild) {
+							var t = document.body
+							var n = document.createElement('iframe')
+							n.style.display = 'none'
+							n.name = e
+							n.title = e
+							t.insertBefore(n, t.firstChild)
+						} else {
+							setTimeout(function () {
+								r(e)
+							}, 5)
+						}
+					}
+				}
+				function e(n, a, o, s, c) {
+					function e(e, t, n, r) {
+						if (typeof n !== 'function') {
+							return
+						}
+						if (!window[a]) {
+							window[a] = []
+						}
+						var i = false
+						if (c) {
+							i = c(e, r, n)
+						}
+						if (!i) {
+							window[a].push({ command: e, version: t, callback: n, parameter: r })
+						}
+					}
+					e.stub = true
+					e.stubVersion = 2
+					function t(r) {
+						if (!window[n] || window[n].stub !== true) {
+							return
+						}
+						if (!r.data) {
+							return
+						}
+						var i = typeof r.data === 'string'
+						var e
+						try {
+							e = i ? JSON.parse(r.data) : r.data
+						} catch (t) {
+							return
+						}
+						if (e[o]) {
+							var a = e[o]
+							window[n](
+								a.command,
+								a.version,
+								function (e, t) {
+									var n = {}
+									n[s] = { returnValue: e, success: t, callId: a.callId }
+									if (r.source) {
+										r.source.postMessage(i ? JSON.stringify(n) : n, '*')
+									}
+								},
+								a.parameter,
+							)
+						}
+					}
+					if (typeof window[n] !== 'function') {
+						window[n] = e
+						if (window.addEventListener) {
+							window.addEventListener('message', t, false)
+						} else {
+							window.attachEvent('onmessage', t)
+						}
+					}
+				}
+				e('__uspapi', '__uspapiBuffer', '__uspapiCall', '__uspapiReturn')
+				r('__uspapiLocator')
+				e('__tcfapi', '__tcfapiBuffer', '__tcfapiCall', '__tcfapiReturn')
+				r('__tcfapiLocator')
+				;(function (e) {
+					var t = document.createElement('link')
+					t.rel = 'preconnect'
+					t.as = 'script'
+					var n = document.createElement('link')
+					n.rel = 'dns-prefetch'
+					n.as = 'script'
+					var r = document.createElement('script')
+					r.id = 'spcloader'
+					r.type = 'text/javascript'
+					r['async'] = true
+					r.charset = 'utf-8'
+					var i = 'https://sdk.privacy-center.org/' + e + '/loader.js?target=' + document.location.hostname
+					if (window.didomiConfig && window.didomiConfig.user) {
+						var a = window.didomiConfig.user
+						var o = a.country
+						var s = a.region
+						if (o) {
+							i = i + '&country=' + o
+							if (s) {
+								i = i + '&region=' + s
+							}
+						}
+					}
+					t.href = 'https://sdk.privacy-center.org/'
+					n.href = 'https://sdk.privacy-center.org/'
+					r.src = i
+					var c = document.getElementsByTagName('script')[0]
+					c.parentNode.insertBefore(t, c)
+					c.parentNode.insertBefore(n, c)
+					c.parentNode.insertBefore(r, c)
+				})('577796da-8ebd-4f2f-a45d-bfa254464f4a')
+			})()
+		</script>
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PMSTB7WJT"></script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+			gtag('config', 'G-2PMSTB7WJT')
+		</script>
+
+		<!-- Begin comScore Tag -->
+		<noscript>
+			<img
+				src="https://sb.scorecardresearch.com/p?c1=2&c2=15131279&cv=2.0&cj=1"
+				alt="comScore"
+				style="width:1px; height: 1px; position:absolute;"
+				class="cs_px"
+			/></noscript
+		>
+		<script type="text/javascript">
+			var _comscore = _comscore || []
+			var cs_ucfr = ''
+			var firstConsent = 1
+			function gccomscore(cs_ucfr) {
+				;(function () {
+					_comscore.push({ c1: '2', c2: '15131279', cs_ucfr: cs_ucfr, options: { enableFirstPartyCookie: true } })
+					var _cs_px = document.getElementsByClassName('cs_px')[0]
+					_cs_px && (_cs_px.src += '&amp;cs_ucfr=' + cs_ucfr)
+					var s = document.createElement('script'),
+						el = document.getElementsByTagName('script')[0]
+					s.async = true
+					s.src = (document.location.protocol == 'https:' ? 'https://sb' : 'http://b') + '.scorecardresearch.com/cs/15131279/beacon.js'
+					el.parentNode.insertBefore(s, el)
+				})()
+			}
+		</script>
+
+		<!-- Google Tag Manager (noscript) -->
+		<noscript
+			><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDQJ86T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript
+		>
+		<!-- End Google Tag Manager (noscript) -->
+
+		<script type="text/javascript">
+			window.didomiOnReady = window.didomiOnReady || []
+			window.didomiOnReady.push(function () {
+				if (Didomi.getUserStatusForVendor(77) != undefined) {
+					if (Didomi.getUserStatusForVendor(77)) {
+						cs_ucfr = '1'
+					} else if (Didomi.getUserStatusForVendor(77) == false) {
+						cs_ucfr = '0'
+					}
+					if (firstConsent == 1) {
+						gccomscore(cs_ucfr)
+						firstConsent = 0
+					}
+				} else {
+					window.didomiEventListeners = window.didomiEventListeners || []
+					window.didomiEventListeners.push({
+						event: 'consent.changed',
+						listener: function () {
+							if (Didomi.getUserStatusForVendor(77)) {
+								cs_ucfr = '1'
+							} else if (Didomi.getUserStatusForVendor(77) == false) {
+								cs_ucfr = '0'
+							}
+							if (firstConsent == 1) {
+								gccomscore(cs_ucfr)
+								firstConsent = 0
+							}
+						},
+					})
+				}
+			})
+			var contConsentComscore = 0
+			var intervaloConsentimientoC = setInterval(function () {
+				window.Didomi = window.Didomi || null
+				if (!window.Didomi) {
+					gccomscore()
+					clearInterval(intervaloConsentimientoC)
+				} else {
+					if (firstConsent == 1) {
+						firstConsent = 0
+						gccomscore()
+						clearInterval(intervaloConsentimientoC)
+					} else {
+						clearInterval(intervaloConsentimientoC)
+					}
+				}
+				contConsentComscore++
+			}, 2000)
+		</script>
+		<!-- End comScore Tag -->
+		<ViewTransitions />
+	</head>
+	<body>
+		<Header {variation} />
+
+		<main class="overflow-clip pt-20 lg:pt-24" transition:name="main" transition:animate={slide({ duration: 1000 })}>
+			{variation === 2 && <span class="absolute inset-x-0 top-0 -z-10 h-68 bg-blue-600 lg:h-108" />}
+			{variation === 3 && <span class="fixed inset-y-0 left-0 -z-10 w-[28%] bg-blue-600 max-lg:hidden" />}
+			{variation === 4 && <span class="fixed inset-y-0 right-0 -z-10 w-1/4 bg-blue-600 max-lg:hidden" />}
+			<slot />
+		</main>
+
+		<Navigation {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {variation} />
+
+		<Footer {variation} />
+
+		<Menu />
+
+		{
+			adsMobile?.length && (
+				<div
+					transition:name="ads"
+					transition:animate={slide({ duration: 1000 })}
+					id="ads-mobile"
+					class="fixed inset-x-0 bottom-0 z-10 bg-blue-600/80 py-6 text-white backdrop-blur lg:hidden"
+				>
+					<div class="container">
+						<p>En colaboración con</p>
+						<div class="mt-3 grid grid-cols-2 gap-3">
+							{adsMobile.map((ad, index) => (
+								<article>
+									{ad.video ? (
+										<a class="open-in-modal group" target="_blank" href={ad.video}>
+											<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
+										</a>
+									) : (
+										<a href={ad.url} target="_blank" rel="noopener noreferrer">
+											<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
+										</a>
+									)}
+								</article>
+							))}
+						</div>
+					</div>
+					<button class="close-ads absolute right-6 top-4 flex size-6 items-center justify-center text-white">
+						<span class="absolute w-6 rotate-45 border-t-2 border-current" />
+						<span class="absolute w-6 -rotate-45 border-t-2 border-current" />
+					</button>
+				</div>
+			)
+		}
+
+		<script src="../main.ts"></script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Link from '$components/Link.astro'
+import ad21 from '$assets/images/ads/ad-21.jpg'
+import ad22 from '$assets/images/ads/ad-22.gif'
+import image from '$assets/images/recommendations/recommendation-03.webp'
+import video from '$assets/videos/recommendations/recommendation-03.mp4'
+import ad21video from '$assets/videos/ads/aquavelis.mp4'
+import ad22video from '$assets/videos/ads/cormosa.mp4'
+
+const title = 'La Piká de los Compadres'
+const variation = 4
+const linkPrev = { name: 'Volver', path: '/recomendaciones' }
+const linkPrevMobile = { name: 'Volver', path: '/recomendaciones' }
+const ads = [
+	{ image: ad21, url: '#', video: ad21video },
+	{ image: ad22, url: '#', video: ad22video },
+]
+const adsMobile = [
+	{ image: ad21, url: '#', video: ad21video },
+	{ image: ad22, url: '#', video: ad22video },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
+	<Split {variation} {ads}>
+		<div class="max-w-4xl">
+			<p class="mb-12 text-2xl text-blue-600">Cómete la feria</p>
+			<p class="mb-6 text-center text-2xl uppercase">{title}</p>
+			<Title class="text-center text-blue-600">Pimientos del piquillo rellenos de marisco</Title>
+			<p class="my-6 text-center text-lg font-bold">Jorge Campos Sabastro, jefe de cocina de La Piká de los Compadres</p>
+			<Image class="rounded" src={image} densities={[2]} alt="" />
+			<div class="prose mx-auto my-12 max-w-2xl">
+				<p>
+					La Piká de los Compadres es una opción muy fresquita para comer gracias a que es una marisquería-freiduría que no decepciona y que trabaja siempre con
+					el mejor producto fresco de la costa. El pescaíto frito, el calamar o el pulpo son algunas de sus especialidades, pero sin duda alguna su plato
+					bandera y referencia es el de pimientos del piquillo rellenos de marisco.
+				</p>
+				<p>
+					Langostinos y mejillones son algunos de los mariscos de los que están rellenos estos exquisitos pimientos del piquillo. Así lo explica en el siguiente
+					vídeo Jorge Campos Sabastro, jefe de cocina de La Piká de los Compadres.
+				</p>
+			</div>
+			<video class="w-full rounded" src={video} controls></video>
+			<div class="mt-12 text-center">
+				<Link class="text-blue-600" href="/recomendaciones">Ver más recomendaciones</Link>
+			</div>
+		</div>
+	</Split>
+</Layout>

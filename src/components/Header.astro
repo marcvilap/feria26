@@ -1,0 +1,52 @@
+---
+import { fade } from 'astro:transitions'
+import Icon from '$components/Icon.astro'
+
+interface Props {
+	variation?: number
+}
+
+const { variation } = Astro.props
+---
+
+<header
+	transition:name="header"
+	transition:animate={fade({ duration: 1000 })}
+	class:list={[
+		'absolute inset-x-0 top-0 z-20 flex items-center justify-between border-b pl-6 xl:pl-12 2xl:pl-24',
+		variation === 1 ? 'border-white' : 'border-black',
+		variation === 1 && 'text-white',
+		variation === 2 && 'text-white',
+	]}
+>
+	<div class:list={['flex items-center gap-4', variation === 3 && 'lg:text-white']}>
+		<a href="/">
+			<Icon class:list={['w-28 lg:w-32', variation === 3 && 'max-lg:text-blue-600', variation === 4 && 'text-blue-600']} name="logo" />
+		</a>
+		<span class="self-stretch border-r border-current"></span>
+		<span class="grid whitespace-nowrap">
+			<span class="font-serif text-xl lg:text-3xl">Feria de <em>Málaga</em></span>
+			<a
+				href="https://www.cope.es/directos/cope-mas-malaga"
+				target="_blank"
+				class:list={[
+					'font-condensed text-sm underline decoration-1 lg:text-base',
+					variation === 3 && 'max-lg:text-blue-600',
+					variation === 4 && 'text-blue-600',
+				]}>Síguela en COPE Málaga</a
+			>
+		</span>
+	</div>
+
+	<button
+		class:list={[
+			'toggle-menu grid size-20 shrink-0 place-content-center gap-2 border-l lg:size-24',
+			variation === 1 ? 'border-white' : 'border-black',
+			variation === 4 && 'lg:text-white',
+		]}
+	>
+		<span class="w-9 border-t-2 border-current"></span>
+		<span class="w-9 border-t-2 border-current"></span>
+		<span class="w-9 border-t-2 border-current"></span>
+	</button>
+</header>

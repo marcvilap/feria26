@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+
+interface Ad {
+	image: ImageMetadata
+	url: string
+	video?: string
+}
+
+interface Props {
+	ads: Ad[]
+	variation: number
+	reverse?: boolean
+}
+
+const { ads, variation, reverse } = Astro.props
+---
+
+<div class="container py-12 lg:py-24">
+	<div class="reveal grid items-start lg:grid-cols-12">
+		<div class:list={['lg:col-span-7 lg:pb-10', reverse && 'lg:order-2']}>
+			<div class="reveal:translate-y-48 reveal:opacity-0 revealed:delay-[.6s]">
+				<slot />
+			</div>
+		</div>
+
+		<aside
+			class:list={['col-span-5 reveal:translate-y-48 reveal:opacity-0 revealed:delay-[.4s] max-lg:hidden', reverse ? 'pr-12 2xl:pr-24' : 'pl-12 2xl:pl-24']}
+		>
+			<div class="grid gap-12">
+				<slot name="aside" />
+				{
+					ads.map((ad, index) => (
+						<article class:list={[!reverse && 'text-right']} key={index}>
+							<p class:list={[((variation === 2 && index === 0) || (variation === 3 && reverse) || (variation === 4 && !reverse)) && 'lg:text-white']}>
+								En colaboración con
+							</p>
+							{ad.video ? (
+								<a class="open-in-modal group" target="_blank" href={ad.video}>
+									<Image class="mx-auto mt-3" src={ad.image} width={584} densities={[2]} alt="" />
+								</a>
+							) : (
+								<a href={ad.url} target="_blank" rel="noopener noreferrer">
+									<Image class="mx-auto mt-3" src={ad.image} width={584} densities={[2]} alt="" />
+								</a>
+							)}
+						</article>
+					))
+				}
+			</div>
+		</aside>
+	</div>
+</div>

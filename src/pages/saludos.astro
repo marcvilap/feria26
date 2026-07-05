@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Title from '$components/Title.astro'
+import Split from '$components/Split.astro'
+import Icon from '$components/Icon.astro'
+import ad01 from '$assets/images/ads/ad-01.jpg'
+import ad02 from '$assets/images/ads/ad-02.jpg'
+import greatings from '$utils/data-greatings'
+import ad01video from '$assets/videos/ads/unicaja.mp4'
+
+const title = 'Saludos'
+const variation = 4
+const linkPrev = { name: 'Inicio', path: '/' }
+const linkNext = { name: 'Feria y Sociedad', path: '/feria-y-sociedad' }
+const linkPrevMobile = { name: 'Inicio', path: '/' }
+const linkNextMobile = { name: 'Feria y Sociedad', path: '/feria-y-sociedad' }
+
+const ads = [{ image: ad01, url: '#', video: ad01video }]
+const adsMobile = [
+	{ image: ad01, url: '#', video: ad01video },
+	{ image: ad02, url: 'https://www.tesesa.com/' },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+	<Split {variation} {ads}>
+		<div class="mx-auto 2xl:max-w-2xl">
+			<Title class="mb-12 text-blue-600">{title}</Title>
+			<div>
+				{
+					greatings.map(({ image, video, name, description }) => (
+						<article class="flex items-center gap-4 border-b py-4">
+							<Image class="w-20 rounded-full" src={image} width="80" densities={[2]} alt="" />
+							<div class="text-lg">
+								<h2 class="font-bold">{name}</h2>
+								<p class="max-md:text-sm">{description}</p>
+							</div>
+							<a class="open-in-modal ml-auto flex shrink-0 flex-col items-center gap-1 text-blue-600 hover:text-orange-600" target="_blank" href={video}>
+								<span class="size-8 rounded-full border border-current p-2">
+									<Icon name="play" />
+								</span>
+								<span class="uppercase">Ver video</span>
+							</a>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</Split>
+</Layout>

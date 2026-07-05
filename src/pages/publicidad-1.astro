@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import ad08 from '$assets/images/ads/ad-08.png'
+import ad09 from '$assets/images/ads/ad-09.gif'
+
+import ad08video from '$assets/videos/ads/molina.mp4'
+import ad09video from '$assets/videos/ads/fenie.mp4'
+
+const title = 'Publicidad 1'
+const variation = 1
+const linkPrev = { name: 'Feria en Cope', path: '/feria-en-cope' }
+const linkNext = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const linkPrevMobile = { name: 'Feria en Cope', path: '/feria-en-cope' }
+const linkNextMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile}>
+	<span class="absolute inset-0 bg-blue-600"></span>
+	<div class="container relative py-24 text-white">
+		<div class="grid gap-12 md:grid-cols-2 xl:gap-24">
+			<div class="mx-auto max-w-144">
+				<p>En colaboración con</p>
+				<a class="open-in-modal group" target="_blank" href={ad08video}>
+					<Image class="mt-3 aspect-square rounded object-cover" src={ad08} width={576} densities={[2]} alt="" />
+				</a>
+			</div>
+			<div class="mx-auto max-w-144">
+				<p>En colaboración con</p>
+				<a class="open-in-modal group" target="_blank" href={ad09video}>
+					<Image class="mt-3 aspect-square rounded object-cover" src={ad09} width={576} densities={[2]} alt="" />
+				</a>
+			</div>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import Link from '$components/Link.astro'
+import ad23 from '$assets/images/ads/ad-23.png'
+import ad24 from '$assets/images/ads/ad-24.png'
+import image from '$assets/images/recommendations/recommendation-04.webp'
+import video from '$assets/videos/recommendations/recommendation-04.mp4'
+import ad24video from '$assets/videos/ads/cash.mp4'
+
+const title = 'La Tasquita de en Medio'
+const variation = 4
+const linkPrev = { name: 'Volver', path: '/recomendaciones' }
+const linkPrevMobile = { name: 'Volver', path: '/recomendaciones' }
+const ads = [
+	{ image: ad23, url: 'https://www.maskom.es/' },
+	{ image: ad24, url: '#', video: ad24video },
+]
+const adsMobile = [
+	{ image: ad23, url: 'https://www.maskom.es/' },
+	{ image: ad24, url: '#', video: ad24video },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
+	<Split {variation} {ads}>
+		<div class="max-w-4xl">
+			<p class="mb-12 text-2xl text-blue-600">Cómete la feria</p>
+			<p class="mb-6 text-center text-2xl uppercase">{title}</p>
+			<Title class="text-center text-blue-600">Tortilla antequerana</Title>
+			<p class="my-6 text-center text-lg font-bold">Ezequiel Sotelo, jefe de cocina de La Tasquita de en Medio</p>
+			<Image class="rounded" src={image} densities={[2]} alt="" />
+			<div class="prose mx-auto my-12 max-w-2xl">
+				<p>
+					Situado en en el corazón del centro de Málaga, La Tasquita de en Medio es una opción inmejorable si estás disfrutando de la feria del centro y quieres
+					comer algo auténtico en este maravilloso rincón mediteráneo. Pescaíto, arroces, muchísimos tipos de croquetas y montaditos y muchas más cosas son muy
+					recomendables, pero si algo resalta y es característico de este lugar es la variada oferta de tortillas.
+				</p>
+				<p>
+					En esta ocasión, Ezequiel Sotelo, jefe de cocina de la Tasquita de en Medio nos recomienda una tortilla muy fesquita, muy malagueña y muy feriante. Se
+					trata de la tortilla antequerana, que consta de una jugosa tortilla de patatas con cebolla, acompañada de porra antequerana y lascas de paleta de
+					jamón.
+				</p>
+			</div>
+			<video class="w-full rounded" src={video} controls></video>
+			<div class="mt-12 text-center">
+				<Link class="text-blue-600" href="/recomendaciones">Ver más recomendaciones</Link>
+			</div>
+		</div>
+	</Split>
+</Layout>

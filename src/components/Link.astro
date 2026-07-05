@@ -1,0 +1,17 @@
+---
+import Icon from '$components/Icon.astro'
+
+interface Props {
+	href: string
+	class?: string
+}
+
+const { href, class: className } = Astro.props
+---
+
+<a class:list={['group inline-flex items-center gap-2 text-lg', className]} href={href}>
+	<span><slot /></span>
+	<span class="size-8 rounded-full border border-current p-2 transition-transform group-hover:translate-x-2">
+		<Icon name="arrow-right" />
+	</span>
+</a>

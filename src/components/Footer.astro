@@ -1,0 +1,33 @@
+---
+import { fade } from 'astro:transitions'
+
+interface Props {
+	variation?: number
+}
+
+const { variation } = Astro.props
+---
+
+<footer
+	transition:name="footer"
+	transition:animate={fade({ duration: 1000 })}
+	class:list={['text-sm max-lg:py-12 lg:absolute lg:inset-x-0 lg:bottom-6', variation === 1 && 'lg:text-white']}
+>
+	<div class="container max-lg:max-w-none">
+		<p class="inline-block">© Radio Popular S.A. | Todos los derechos reservados.</p>
+		<menu class="inline-block">
+			<li class="inline before:content-['|']">
+				<a class="hover:underline" target="_blank" href="https://www.cope.es/pagina/contacta">Contacta</a>
+			</li>
+			<li class="inline before:content-['|']">
+				<a class="hover:underline" target="_blank" href="https://www.cope.es/pagina/aviso-legal">Aviso Legal</a>
+			</li>
+			<li class="inline before:content-['|']">
+				<a class="hover:underline" target="_blank" href="https://www.cope.es/pagina/politica-de-privacidad">Política de privacidad</a>
+			</li>
+			<li class="inline before:content-['|']">
+				<a class="hover:underline" target="_blank" href="https://www.cope.es/pagina/politicas-de-cookies">Política de cookies</a>
+			</li>
+		</menu>
+	</div>
+</footer>
