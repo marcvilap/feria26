@@ -4,7 +4,6 @@ import image03 from '$assets/images/feria/ibon-navarro.webp'
 import image04 from '$assets/images/feria/tomas-garcia.webp'
 import image05 from '$assets/images/feria/sergio-pellicer.webp'
 import image06 from '$assets/images/feria/anicet-lavodrama.webp'
-import image07 from '$assets/images/feria/francis-salado.webp'
 import image08 from '$assets/images/feria/patricia-navarro.webp'
 import image09 from '$assets/images/feria/garin.webp'
 import image10 from '$assets/images/feria/miguel-angel-martin.webp'
@@ -16,7 +15,6 @@ import video03 from '$assets/videos/feria/ibon.mp4'
 import video04 from '$assets/videos/feria/tomas.mp4'
 import video05 from '$assets/videos/feria/pellicer.mp4'
 import video06 from '$assets/videos/feria/anicet.mp4'
-import video07 from '$assets/videos/feria/francis.mp4'
 import video08 from '$assets/videos/feria/patricia.mp4'
 import video09 from '$assets/videos/feria/garin.mp4'
 import video10 from '$assets/videos/feria/miguel.mp4'
@@ -35,5 +33,4 @@ export default [
 	{ image: image11, video: video11, name: 'Pedro Bendala', description: 'DIRECTOR AEROPUERTO' },
 	{ image: image09, video: video09, name: 'José Carlos Garín', description: 'PRESIDENTE AGRUPACIÓN DE COFRADÍAS ' },
 	{ image: image08, video: video08, name: 'Patricia Navarro', description: 'DELEGADA PROVINCIAL JUNTA DE ANDALUCÍA' },
-	{ image: image07, video: video07, name: 'Francisco Salado', description: 'PRESIDENTE DIPUTACIÓN PROVINCIAL DE MÁLAGA' },
 ]
