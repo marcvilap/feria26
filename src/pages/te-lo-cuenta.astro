@@ -1,0 +1,48 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import VideoGrid from '$components/VideoGrid.astro'
+import ad04 from '$assets/images/ads/ad-04.png'
+import ad05 from '$assets/images/ads/ad-05.jpg'
+import ad06 from '$assets/images/ads/ad-06.jpg'
+import ad07 from '$assets/images/ads/ad-07.png'
+import ad06video from '$assets/videos/ads/torremolinos.mp4'
+import ad07video from '$assets/videos/ads/muelle.mp4'
+import teLoCuenta from '$utils/data-te-lo-cuenta'
+
+// Unifica el texto de apertura y la subpágina de vídeos en una sola sección.
+const title = 'Te lo cuenta COPE Málaga'
+const variation = 2
+const linkPrev = { name: 'Curiosidades', path: '/curiosidades' }
+const linkNext = { name: 'Test de la Feria', path: '/test-de-la-feria' }
+const linkPrevMobile = { name: 'Curiosidades', path: '/curiosidades' }
+const linkNextMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
+const ads = [
+	{ spot: 43, image: ad04, url: 'https://coin.es' },
+	{ spot: 44, image: ad06, url: '#', video: ad06video },
+]
+const adsMobile = [
+	{ spot: 45, image: ad05, url: 'https://emtsam.org' },
+	{ spot: 46, image: ad07, url: '#', video: ad07video },
+]
+const modalAd = { spot: 47, count: 5, image: ad07, url: '#', video: ad07video }
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+	<div class="lg:h-40"></div>
+	<Split {variation} {ads}>
+		<div class="relative lg:mb-8 lg:-translate-y-40">
+			<Title class="text-white max-sm:-mr-3">Te lo cuenta COPE Málaga</Title>
+		</div>
+
+		<div class="prose mb-12 max-w-2xl">
+			<p>
+				Los periodistas de COPE Málaga salen a la calle para contarte la feria desde dentro. El flamenco, los fuegos artificiales, el transporte público o los
+				rincones que hacen única la semana grande de la ciudad, explicados por quienes la narran cada agosto en antena.
+			</p>
+		</div>
+
+		<VideoGrid adSpot={modalAd.spot} items={teLoCuenta} />
+	</Split>
+</Layout>

@@ -1,24 +1,88 @@
 ---
+import { Image } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Link from '$components/Link.astro'
+import Title from '$components/Title.astro'
+import Icon from '$components/Icon.astro'
 import video from '$assets/videos/home.mp4'
+import videoPortada from '$assets/videos/portada-revista.mp4'
+import imagePortada from '$assets/images/posters-video/portada-revista.webp'
+import adHome from '$assets/images/ads/ad-11.jpg'
+import adHomeVideo from '$assets/videos/ads/larios.mp4'
 
 const title = 'Feria de Málaga'
 const variation = 1
-const linkNext = { name: 'Saludos', path: '/saludos' }
-const linkNextMobile = { name: 'Saludos', path: '/saludos' }
+const linkNext = { name: 'Revista de Feria', path: '/revista-de-feria' }
+const linkNextMobile = { name: 'Revista de Feria', path: '/revista-de-feria' }
+// La home no lleva anuncios en la página, solo el que acompaña al pop-up de portada.
+const modalAd = { spot: 1, image: adHome, url: '#', video: adHomeVideo }
 ---
 
-<Layout {title} {variation} {linkNext} {linkNextMobile}>
+<Layout {title} {variation} {linkNext} {linkNextMobile} {modalAd}>
 	<section class="reveal relative -mt-20 bg-yellow-950 text-white lg:-mt-24">
 		<video class="absolute left-0 top-0 size-full object-cover opacity-50" src={video} autoplay loop muted playsinline></video>
 		<div class="container relative flex min-h-svh flex-col items-center gap-6 pb-6 pt-32 lg:pb-12">
 			<h1 class="mt-auto font-serif text-8xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.4s] lg:text-[10rem] lg:leading-none">
 				Feria de <em class="block">Málaga</em>
 			</h1>
-			<h2 class="mb-6 text-5xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.5s]">2024</h2>
-			<Link class="reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.6s]" href="/saludos">Entrar</Link>
+			<h2 class="mb-6 text-5xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.5s]">2026</h2>
+			<Link class="reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.6s]" href="/revista-de-feria">Entrar</Link>
 			<p class="mt-auto text-sm lg:self-start">Imágenes cedidas por el Ayuntamiento de Málaga</p>
+		</div>
+	</section>
+
+	<section class="reveal container py-12 lg:py-24">
+		<div class="grid items-start gap-12 lg:grid-cols-12 xl:gap-24">
+			<div class="lg:col-span-7">
+				<div class="reveal:translate-y-48 reveal:opacity-0 revealed:delay-[.4s]">
+					<Title class="text-blue-600">60 años contando la Feria contigo</Title>
+					<div class="prose my-12">
+						<p>
+							Este año, COPE Málaga celebra 60 años acompañando a los malagueños. Y no podíamos imaginar una mejor forma de celebrarlo que invitándote a
+							recorrer la Feria de Málaga con nosotros.
+						</p>
+						<p>
+							La revista digital que tienes ante ti —sí, en tu móvil, en tu tableta o en tu ordenador— es un viaje entre el ayer y el hoy. Un recorrido por seis
+							décadas de recuerdos, historias y emociones que se entrelazan con la evolución de nuestra ciudad y de su semana grande.
+						</p>
+						<p>
+							Navega por sus páginas y descubre cómo han cambiado los carteles que han anunciado la Feria de Málaga, revive las portadas de nuestras históricas
+							revistas en papel y compáralas con esta nueva edición nacida en la era digital y de la inteligencia artificial. Encontrarás también a todos los
+							galardonados con la Biznaga de Plata de COPE Málaga, vídeos con los periodistas de la emisora, curiosidades históricas, recomendaciones para
+							disfrutar de la Feria, los testimonios de quienes la hacen posible y las respuestas al Test de la Feria, en el que conocidas personalidades
+							malagueñas nos cuentan cómo viven estos días tan especiales.
+						</p>
+						<p>
+							Porque una feria no solo se disfruta cuando se pisa el Real o se pasea por el Centro. También se vive a través de sus recuerdos, de sus
+							protagonistas y de las historias que la convierten en una celebración única.
+						</p>
+						<p>
+							Gracias por acompañarnos en este viaje. Bienvenido a la revista digital de la Feria de Málaga 2026. Bienvenido a 60 años contando la Feria
+							contigo.
+						</p>
+					</div>
+					<Link class="text-blue-600" href="/revista-de-feria">Empezar a leer</Link>
+				</div>
+			</div>
+
+			<aside class="lg:col-span-5 lg:pt-12">
+				<a class="open-in-modal group block reveal:translate-y-48 reveal:opacity-0 revealed:delay-[.6s]" target="_blank" href={videoPortada}>
+					<div class="relative flex aspect-video items-center justify-center overflow-clip rounded bg-black">
+						<Image
+							class="size-full object-cover opacity-75 transition group-hover:scale-110 group-hover:opacity-50"
+							src={imagePortada}
+							width={720}
+							densities={[2]}
+							alt=""
+						/>
+						<span class="absolute flex size-16 items-center justify-center rounded-full border-2 border-current text-white">
+							<Icon class="w-6" name="play" />
+						</span>
+					</div>
+					<h2 class="mt-3 text-xl xl:text-2xl">Vídeo de portada</h2>
+					<p class="text-sm text-neutral-500">REVISTA DE FERIA DE MÁLAGA 2026</p>
+				</a>
+			</aside>
 		</div>
 	</section>
 </Layout>

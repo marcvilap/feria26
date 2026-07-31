@@ -1,26 +1,28 @@
-import image2000 from '$assets/images/posters/2000.png'
-import image2001 from '$assets/images/posters/2001.png'
-import image2002 from '$assets/images/posters/2002.png'
-import image2003 from '$assets/images/posters/2003.png'
-import image2004 from '$assets/images/posters/2004.png'
-import image2005 from '$assets/images/posters/2005.png'
-import image2006 from '$assets/images/posters/2006.png'
-import image2007 from '$assets/images/posters/2007.png'
-import image2008 from '$assets/images/posters/2008.png'
-import image2009 from '$assets/images/posters/2009.png'
-import image2010 from '$assets/images/posters/2010.png'
-import image2011 from '$assets/images/posters/2011.png'
-import image2012 from '$assets/images/posters/2012.png'
-import image2013 from '$assets/images/posters/2013.png'
-import image2014 from '$assets/images/posters/2014.png'
-import image2015 from '$assets/images/posters/2015.png'
-import image2016 from '$assets/images/posters/2016.png'
-import image2017 from '$assets/images/posters/2017.png'
-import image2018 from '$assets/images/posters/2018.png'
-import image2019 from '$assets/images/posters/2019.png'
-import image2022 from '$assets/images/posters/2022.png'
-import image2023 from '$assets/images/posters/2023.png'
-import image2024 from '$assets/images/posters/2024.png'
+import image2000 from '$assets/images/posters/2000.webp'
+import image2001 from '$assets/images/posters/2001.webp'
+import image2002 from '$assets/images/posters/2002.webp'
+import image2003 from '$assets/images/posters/2003.webp'
+import image2004 from '$assets/images/posters/2004.webp'
+import image2005 from '$assets/images/posters/2005.webp'
+import image2006 from '$assets/images/posters/2006.webp'
+import image2007 from '$assets/images/posters/2007.webp'
+import image2008 from '$assets/images/posters/2008.webp'
+import image2009 from '$assets/images/posters/2009.webp'
+import image2010 from '$assets/images/posters/2010.webp'
+import image2011 from '$assets/images/posters/2011.webp'
+import image2012 from '$assets/images/posters/2012.webp'
+import image2013 from '$assets/images/posters/2013.webp'
+import image2014 from '$assets/images/posters/2014.webp'
+import image2015 from '$assets/images/posters/2015.webp'
+import image2016 from '$assets/images/posters/2016.webp'
+import image2017 from '$assets/images/posters/2017.webp'
+import image2018 from '$assets/images/posters/2018.webp'
+import image2019 from '$assets/images/posters/2019.webp'
+import image2022 from '$assets/images/posters/2022.webp'
+import image2023 from '$assets/images/posters/2023.webp'
+import image2024 from '$assets/images/posters/2024.webp'
+// PENDIENTE: falta el cartel de 2025, el cliente no lo ha entregado.
+import image2026 from '$assets/images/posters/2026.webp'
 
 export default [
 	{ image: image2000, name: '2000' },
@@ -46,4 +48,5 @@ export default [
 	{ image: image2022, name: '2022' },
 	{ image: image2023, name: '2023' },
 	{ image: image2024, name: '2024' },
+	{ image: image2026, name: '2026' },
 ]

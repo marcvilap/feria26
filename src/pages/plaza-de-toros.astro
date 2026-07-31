@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Title from '$components/Title.astro'
+import imgBull from '$assets/images/bull.webp'
+import videoMalagueta from '$assets/videos/toros/la-malagueta.mp4'
+import posterMalagueta from '$assets/images/posters-video/toros/la-malagueta.webp'
+import ad27 from '$assets/images/ads/ad-27.jpg'
+import ad28 from '$assets/images/ads/ad-28.gif'
+
+const title = 'Plaza de Toros'
+const variation = 1
+const linkPrev = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
+const linkNext = { name: '60 Aniversario', path: '/publicidad-3' }
+const linkPrevMobile = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
+const linkNextMobile = { name: '60 Aniversario', path: '/60-aniversario' }
+const adsMobile = [
+	{ spot: 81, image: ad27, url: 'https://www.concesionarios.seat/overview-dw.dealer.automoviles-rueda.html' },
+	{ spot: 82, image: ad28, url: 'https://metromalaga.es' },
+]
+const modalAd = { spot: 83, image: ad28, url: 'https://metromalaga.es' }
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+	<section class="reveal relative -mt-20 bg-black text-white lg:-mt-24">
+		<Image class="absolute left-0 top-0 size-full object-cover opacity-25 max-lg:blur" src={imgBull} width={1920} densities={[2]} alt="" />
+		<div class="container relative flex min-h-svh flex-col justify-center gap-y-12 pb-12 pt-36 lg:pb-24 lg:pt-48">
+			<div class="grid items-center gap-12 lg:grid-cols-2 xl:gap-24">
+				<div>
+					<Title>Plaza de Toros</Title>
+					<div class="mt-6 max-w-[34rem] reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.4s]">
+						<p class="text-lg font-bold">
+							La Feria de Málaga no se entiende sin uno de sus escenarios más emblemáticos: la Plaza de Toros de La Malagueta. Inaugurada en 1876 y diseñada por
+							el arquitecto Joaquín Rucoba, este año celebra su 150 aniversario convertida en uno de los grandes símbolos del patrimonio malagueño.
+						</p>
+						<p class="mt-6">
+							En COPE Málaga, nos hemos desplazado hasta La Malagueta para mostrar su historia junto a Borja Ortiz, director de Asuntos Taurinos de la
+							Diputación de Málaga. Un recorrido por el legado de un recinto que inicia una nueva etapa con la gestión de Tauroemoción y una programación
+							especial impulsada por la Diputación para conmemorar sus 150 años de historia.
+						</p>
+					</div>
+				</div>
+				<div class="rounded bg-white/10 p-6 backdrop-blur reveal:translate-x-24 reveal:opacity-0 revealed:delay-[.6s]">
+					<video class="aspect-video w-full rounded object-cover" src={videoMalagueta} poster={posterMalagueta.src} controls playsinline></video>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

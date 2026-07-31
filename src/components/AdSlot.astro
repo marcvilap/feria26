@@ -1,0 +1,20 @@
+---
+interface Props {
+	spot: number
+	video?: boolean
+	class?: string
+}
+
+const { spot, video, class: className } = Astro.props
+---
+
+<div
+	class:list={[
+		'flex aspect-square w-full flex-col items-center justify-center gap-1 rounded border-2 border-dashed border-current p-4 text-center opacity-50',
+		className,
+	]}
+>
+	<span class="font-condensed text-5xl font-bold leading-none" data-ad-number>{String(spot).padStart(2, '0')}</span>
+	<span class="font-condensed text-xs uppercase tracking-wider">Espacio publicitario</span>
+	<span class="text-[0.65rem] uppercase tracking-wide">{video ? 'Imagen + vídeo en popup' : 'Solo imagen'}</span>
+</div>

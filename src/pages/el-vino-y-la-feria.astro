@@ -1,0 +1,49 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import VideoGrid from '$components/VideoGrid.astro'
+import ad15 from '$assets/images/ads/ad-15.jpg'
+import ad16 from '$assets/images/ads/ad-16.jpg'
+import ad15video from '$assets/videos/ads/costa-sol.mp4'
+import videoVino from '$assets/videos/vino/vino-feria.mp4'
+import videoCasaGuardia from '$assets/videos/vino/casa-de-guardia.mp4'
+import imageVino from '$assets/images/posters-video/vino/vino-feria.webp'
+import imageCasaGuardia from '$assets/images/posters-video/vino/casa-de-guardia.webp'
+
+const title = 'El vino y la Feria'
+const variation = 3
+const linkPrev = { name: 'Carteles de Feria', path: '/publicidad-2' }
+const linkNext = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
+const linkPrevMobile = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
+const linkNextMobile = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
+const ads = [{ spot: 73, image: ad15, url: 'https://www.academiasunitec.com/' }]
+const adsMobile = [
+	{ spot: 74, image: ad15, url: 'https://www.academiasunitec.com/' },
+	{ spot: 75, image: ad16, url: 'https://www.peparevuelo.com', video: ad15video },
+]
+const modalAd = { spot: 76, count: 2, image: ad16, url: 'https://www.peparevuelo.com', video: ad15video }
+
+const videos = [
+	{ image: imageVino, video: videoVino, name: 'El vino en la Feria de Málaga' },
+	{ image: imageCasaGuardia, video: videoCasaGuardia, name: 'Antigua Casa de Guardia' },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+	<Split {variation} {ads} reverse>
+		<Title class="text-blue-600">El vino en la Feria de Málaga</Title>
+		<div class="prose my-12 max-w-2xl">
+			<p>
+				El <strong>Cartojal</strong> es el vino más emblemático de la Feria de Málaga. Elaborado por Bodegas Málaga Virgen con uva Moscatel de Alejandría, destaca
+				por su sabor dulce y fresco. Aun así, la feria ofrece mucho más: en la provincia se elaboran más de 100 vinos que también pueden degustarse durante estos
+				días.
+			</p>
+			<p>
+				Para profundizar en la cultura vitivinícola malagueña, merece la pena visitar el <strong>Museo del Vino Málaga</strong>, ubicado en el antiguo Palacio
+				de Biedmas, un edificio del siglo XVIII.
+			</p>
+		</div>
+		<VideoGrid adSpot={modalAd.spot} items={videos} columns={2} />
+	</Split>
+</Layout>

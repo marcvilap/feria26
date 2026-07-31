@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
@@ -6,40 +7,55 @@ import Link from '$components/Link.astro'
 import ad09 from '$assets/images/ads/ad-09.gif'
 import ad10 from '$assets/images/ads/ad-10.jpg'
 import ad09video from '$assets/videos/ads/fenie.mp4'
+import imgTrofeo from '$assets/images/biznaga/trofeo.webp'
+import imgFamilia from '$assets/images/biznaga/familia.webp'
+import imgSalvador from '$assets/images/biznaga/salvador-jimenez.webp'
 
 const title = 'Biznaga de Plata'
 const variation = 3
-const linkPrev = { name: 'Feria en Cope', path: '/publicidad-1' }
+const linkPrev = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNext = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
-const linkPrevMobile = { name: 'Feria en Cope', path: '/feria-en-cope' }
+const linkPrevMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNextMobile = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
-const ads = [{ image: ad10, url: 'https://www.peparevuelo.com' }]
+const ads = [{ spot: 59, image: ad10, url: 'https://www.peparevuelo.com' }]
 const adsMobile = [
-	{ image: ad09, url: '#', video: ad09video },
-	{ image: ad10, url: 'https://www.peparevuelo.com' },
+	{ spot: 60, image: ad09, url: '#', video: ad09video },
+	{ spot: 61, image: ad10, url: 'https://www.peparevuelo.com' },
 ]
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
 	<Split {variation} {ads} reverse>
 		<div class="mx-auto 2xl:max-w-2xl">
-			<Title class="text-center text-blue-600">{title}</Title>
+			<Title class="text-center text-blue-600">La Biznaga de Plata 2026</Title>
+			<Image class="my-12 w-full rounded" src={imgTrofeo} width={672} densities={[2]} alt="La Biznaga de Plata de COPE Málaga" />
 			<div class="prose my-12">
 				<p>
-					Desde 1995, en COPE Málaga hemos querido dar un reconocimiento especial a las personas y entidades que, con su esfuerzo y dedicación, hacen que
-					nuestras fiestas sean cada vez mejores. Desde entonces, hemos otorgado 27 Biznagas de Plata, un premio que celebra la excelencia y el esfuerzo en
-					hacer de la Feria de Málaga un evento inolvidable.
+					Desde 1995, en COPE Málaga reconocemos a las personas y entidades que, con su esfuerzo y dedicación, hacen que nuestra feria sea cada vez mejor,
+					entregándoles la Biznaga de Plata. Hasta ahora hemos otorgado 29 galardones, un premio que celebra la excelencia y el esfuerzo en hacer de la Feria de
+					Málaga un evento inolvidable.
 				</p>
 				<p>
-					La elección de los premiados, hasta ahora la hemos dejado en manos de los periodistas de COPE Málaga, que cada año ponían voz y sonido durante la
-					transmisión de la programación especial de la feria. Pero este año queremos que tú seas quien decida la persona o entidad que debe recibir este premio
-					en 2024.
+					Por tercer año consecutivo, la elección de los premiados la dejamos en manos de nuestros oyentes para que voten y decidan la persona o entidad que
+					debe recibir este reconocimiento en 2026.
 				</p>
 			</div>
+
+			<div class="mb-12 grid gap-6 sm:grid-cols-2">
+				<figure>
+					<Image class="w-full rounded" src={imgSalvador} width={400} densities={[2]} alt="" />
+					<figcaption class="mt-2 text-sm text-neutral-500">Salvador Jiménez recibe la Biznaga de Plata 2025 del alcalde, Francisco de la Torre.</figcaption>
+				</figure>
+				<figure>
+					<Image class="w-full rounded" src={imgFamilia} width={400} densities={[2]} alt="" />
+					<figcaption class="mt-2 text-sm text-neutral-500">Foto de familia de la entrega de la Biznaga de Plata 2025.</figcaption>
+				</figure>
+			</div>
+
 			<div class="bg-blue-100 p-6 text-center xl:p-12">
-				<h2 class="text-2xl">Te presentamos a los tres candidatos a la Biznaga de Plata 2024</h2>
+				<h2 class="text-2xl">Te presentamos a los tres candidatos a la Biznaga de Plata 2026</h2>
 				<p class="my-6 text-lg font-bold text-neutral-500">Vota por tu favorito</p>
-				<Link class="text-blue-600" href="/votaciones">Ver opciones</Link>
+				<Link class="text-blue-600" href="/biznaga-de-plata/votaciones">Ver opciones</Link>
 			</div>
 		</div>
 	</Split>

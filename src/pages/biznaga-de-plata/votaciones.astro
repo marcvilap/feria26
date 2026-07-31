@@ -1,0 +1,127 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import ad11 from '$assets/images/ads/ad-11.jpg'
+import ad12 from '$assets/images/ads/ad-12.png'
+import ad11video from '$assets/videos/ads/larios.mp4'
+import ad12video from '$assets/videos/ads/holamotor.mp4'
+import { candidates, palmares } from '$utils/data-biznaga'
+
+const title = 'Votaciones'
+const variation = 3
+const linkPrev = { name: 'Volver', path: '/biznaga-de-plata' }
+const linkPrevMobile = { name: 'Volver', path: '/biznaga-de-plata' }
+// Ruta anidada, como en la edición 2025: /biznaga-de-plata/votaciones
+
+const ads = [{ spot: 62, image: ad11, url: '#', video: ad11video }]
+const adsMobile = [
+	{ spot: 63, image: ad11, url: '#', video: ad11video },
+	{ spot: 64, image: ad12, url: 'https://www.peparevuelo.com', video: ad12video },
+]
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
+	<span class="absolute inset-0 -z-20 bg-blue-100"></span>
+	<Split {variation} {ads} reverse>
+		<div class="grid gap-12 lg:grid-cols-2 2xl:gap-24">
+			<div>
+				<Title class="text-center text-blue-600">¡Vota por tu favorito!</Title>
+				<p class="mb-12 mt-6">¿Quién crees que merece ser reconocido con la Biznaga de Plata que cada año entrega COPE Málaga?</p>
+				<form id="votingForm">
+					<div class="mb-6 grid gap-6">
+						{
+							candidates.map(({ value, name, description }, index) => (
+								<label class="flex items-center gap-3">
+									<span class="flex size-16 shrink-0 items-center justify-center rounded-full bg-blue-600 font-condensed text-3xl font-bold text-white">
+										{index + 1}
+									</span>
+									<div class="flex grow cursor-pointer items-center gap-3 rounded border border-white bg-white p-3 shadow has-[:checked]:border-lime-500">
+										<input class="size-4 cursor-pointer accent-lime-600" type="radio" name="votacion" value={value} required={index === 0} />
+										<div class="flex flex-col">
+											<span>{name}</span>
+											<span class="text-xs text-lime-600">{description}</span>
+										</div>
+									</div>
+								</label>
+							))
+						}
+					</div>
+					<div class="text-center">
+						<button type="submit" class="rounded bg-blue-600 px-12 py-2 text-lg text-white">Votar</button>
+					</div>
+				</form>
+				<div id="confirmationMessage" class="mt-4 hidden text-center"></div>
+			</div>
+			<div class="relative">
+				<div class="overflow-y-auto bg-white p-6 lg:absolute lg:size-full 2xl:p-12">
+					<h2 class="mb-3 text-2xl text-blue-600">Palmarés</h2>
+					<ul class="grid gap-3">
+						{
+							palmares.map(({ year, name }) => (
+								<li>
+									{year}: {name}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</Split>
+</Layout>
+
+<script type="module">
+	// Importar las funciones necesarias de Firebase
+	import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js'
+	import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
+
+	// Tu configuración de Firebase
+	const firebaseConfig = {
+		apiKey: 'AIzaSyDkGy0uIVWvJZI2YrOs1ff8rZDGyrywPzU',
+		authDomain: 'votacion-cope.firebaseapp.com',
+		projectId: 'votacion-cope',
+		storageBucket: 'votacion-cope.appspot.com',
+		messagingSenderId: '651375602367',
+		appId: '1:651375602367:web:20abc436bc60707cb8b40a',
+		measurementId: 'G-QE1B1D9173',
+	}
+
+	// Inicializar Firebase
+	const app = initializeApp(firebaseConfig)
+	const db = getFirestore(app)
+	// Colección propia de esta edición para no mezclar con los votos de años anteriores
+	const votosCollection = collection(db, 'votos-2026')
+
+	document.getElementById('votingForm').addEventListener('submit', async e => {
+		e.preventDefault()
+		const formData = new FormData(e.target)
+		const votacion = formData.get('votacion')
+		const confirmationMessage = document.getElementById('confirmationMessage')
+
+		// Verificar si el usuario ya ha votado
+		if (localStorage.getItem('hasVoted2026')) {
+			confirmationMessage.textContent = 'Ya has votado anteriormente.'
+			confirmationMessage.className = 'mt-4 text-center text-red-600'
+			confirmationMessage.classList.remove('hidden')
+			return
+		}
+
+		try {
+			await addDoc(votosCollection, {
+				votacion: votacion,
+				timestamp: new Date(),
+			})
+			// Guardar un indicador en LocalStorage
+			localStorage.setItem('hasVoted2026', 'true')
+			confirmationMessage.textContent = '¡Voto registrado exitosamente!'
+			confirmationMessage.className = 'mt-4 text-center text-green-600'
+			confirmationMessage.classList.remove('hidden')
+		} catch (e) {
+			console.error('Error al registrar el voto: ', e)
+			confirmationMessage.textContent = 'Hubo un error al registrar el voto.'
+			confirmationMessage.className = 'mt-4 text-center text-red-600'
+			confirmationMessage.classList.remove('hidden')
+		}
+	})
+</script>

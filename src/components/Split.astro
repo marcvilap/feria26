@@ -1,11 +1,8 @@
 ---
 import { Image } from 'astro:assets'
-
-interface Ad {
-	image: ImageMetadata
-	url: string
-	video?: string
-}
+import AdSlot from '$components/AdSlot.astro'
+import { showAds } from '$utils/config'
+import type { Ad } from '$utils/ads'
 
 interface Props {
 	ads: Ad[]
@@ -31,11 +28,13 @@ const { ads, variation, reverse } = Astro.props
 				<slot name="aside" />
 				{
 					ads.map((ad, index) => (
-						<article class:list={[!reverse && 'text-right']} key={index}>
+						<article class:list={[!reverse && 'text-right']}>
 							<p class:list={[((variation === 2 && index === 0) || (variation === 3 && reverse) || (variation === 4 && !reverse)) && 'lg:text-white']}>
-								En colaboración con
+								{showAds ? 'En colaboración con' : 'Publicidad'}
 							</p>
-							{ad.video ? (
+							{!showAds ? (
+								<AdSlot class="mt-3" spot={ad.spot} video={!!ad.video} />
+							) : ad.video ? (
 								<a class="open-in-modal group" target="_blank" href={ad.video}>
 									<Image class="mx-auto mt-3" src={ad.image} width={584} densities={[2]} alt="" />
 								</a>

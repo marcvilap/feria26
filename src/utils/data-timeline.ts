@@ -1,4 +1,3 @@
-import image1966 from '$assets/images/timeline/1966.webp'
 import image01 from '$assets/images/timeline/01.jpg'
 import image02 from '$assets/images/timeline/02.jpg'
 import image03 from '$assets/images/timeline/03.jpg'
@@ -78,8 +77,7 @@ export default [
 		image: image09,
 		year: 1976,
 		title: 'Homenaje Paquirri',
-		description:
-			"Francisco Rivera 'Paquirri' fue una de las figuras de la Feria Taurina de Málaga en 1976. La de este 2024 le rinde homenaje con motivo del 40 aniversario de su fallecimiento.",
+		description: "Francisco Rivera 'Paquirri' fue una de las figuras de la Feria Taurina de Málaga en 1976.",
 	},
 	{
 		image: image11,

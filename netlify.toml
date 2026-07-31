@@ -1,0 +1,16 @@
+# Sitio estático de Astro: Netlify solo tiene que construir y publicar dist/.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Astro genera /seccion/index.html y Netlify ya lo sirve en /seccion,
+# igual que hacía `cleanUrls` en Vercel. La 404 sale de src/pages/404.astro.
+
+# Los vídeos y las imágenes llevan hash en el nombre: se pueden cachear para siempre.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -6,12 +6,9 @@ import Header from '$components/Header.astro'
 import Footer from '$components/Footer.astro'
 import Navigation from '$components/Navigation.astro'
 import Menu from '$components/Menu.astro'
-
-interface Ad {
-	image: ImageMetadata
-	url: string
-	video?: string
-}
+import AdSlot from '$components/AdSlot.astro'
+import { showAds } from '$utils/config'
+import type { Ad } from '$utils/ads'
 
 interface Props {
 	title: string
@@ -21,9 +18,11 @@ interface Props {
 	linkPrevMobile?: { name: string; path: string }
 	linkNextMobile?: { name: string; path: string }
 	adsMobile?: Ad[]
+	/** Anuncio que acompaña a TODOS los pop-ups de vídeo o imagen de la página. */
+	modalAd?: Ad
 }
 
-const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, adsMobile } = Astro.props
+const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, adsMobile, modalAd } = Astro.props
 ---
 
 <!doctype html>
@@ -150,6 +149,7 @@ const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, ad
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PMSTB7WJT"></script>
 		<script>
+			// @ts-nocheck -- snippet oficial de Google, no tocar
 			window.dataLayer = window.dataLayer || []
 			function gtag() {
 				dataLayer.push(arguments)
@@ -268,11 +268,13 @@ const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, ad
 					class="fixed inset-x-0 bottom-0 z-10 bg-blue-600/80 py-6 text-white backdrop-blur lg:hidden"
 				>
 					<div class="container">
-						<p>En colaboración con</p>
+						<p>{showAds ? 'En colaboración con' : 'Publicidad'}</p>
 						<div class="mt-3 grid grid-cols-2 gap-3">
-							{adsMobile.map((ad, index) => (
+							{adsMobile.map(ad => (
 								<article>
-									{ad.video ? (
+									{!showAds ? (
+										<AdSlot spot={ad.spot} video={!!ad.video} />
+									) : ad.video ? (
 										<a class="open-in-modal group" target="_blank" href={ad.video}>
 											<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
 										</a>
@@ -290,6 +292,30 @@ const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, ad
 						<span class="absolute w-6 -rotate-45 border-t-2 border-current" />
 					</button>
 				</div>
+			)
+		}
+
+		{
+			/* main.ts clona esta plantilla dentro de cada pop-up de la página */
+			modalAd && (
+				<template id="modal-ad">
+					<aside class="w-full shrink-0 max-sm:order-2 sm:w-56 2xl:w-72">
+						<p class="mb-2 text-sm text-white">En colaboración</p>
+						{showAds ? (
+							modalAd.video ? (
+								<a class="open-in-modal group" target="_blank" href={modalAd.video}>
+									<Image class="w-full rounded" src={modalAd.image} width={576} densities={[2]} alt="" />
+								</a>
+							) : (
+								<a href={modalAd.url} target="_blank" rel="noopener noreferrer">
+									<Image class="w-full rounded" src={modalAd.image} width={576} densities={[2]} alt="" />
+								</a>
+							)
+						) : (
+							<AdSlot class="text-white" spot={modalAd.spot} video={!!modalAd.video} />
+						)}
+					</aside>
+				</template>
 			)
 		}
 

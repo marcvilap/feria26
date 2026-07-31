@@ -13,22 +13,23 @@ import ad13video from '$assets/videos/ads/sophie.mp4'
 const title = 'Carteles de Feria'
 const variation = 2
 const linkPrev = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
-const linkNext = { name: 'Cómete la Feria', path: '/comete-la-feria' }
+const linkNext = { name: 'El vino y la Feria', path: '/publicidad-2' }
 const linkPrevMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
-const linkNextMobile = { name: 'Cómete la Feria', path: '/comete-la-feria' }
+const linkNextMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 
 const ads = [
-	{ image: ad12, url: '#', video: ad12video },
-	{ image: ad13, url: '#', video: ad13video },
-	{ image: ad30, url: 'https://alhaurindelatorre.es' },
+	{ spot: 65, image: ad12, url: '#', video: ad12video },
+	{ spot: 66, image: ad13, url: '#', video: ad13video },
+	{ spot: 67, image: ad30, url: 'https://alhaurindelatorre.es' },
 ]
 const adsMobile = [
-	{ image: ad13, url: '#', video: ad13video },
-	{ image: ad30, url: 'https://alhaurindelatorre.es' },
+	{ spot: 68, image: ad13, url: '#', video: ad13video },
+	{ spot: 69, image: ad30, url: 'https://alhaurindelatorre.es' },
 ]
+const modalAd = { spot: 70, image: ad30, url: 'https://alhaurindelatorre.es' }
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
 	<div class="h-24"></div>
 	<Split {variation} {ads}>
 		<Title class="-translate-y-24 text-white">{title}</Title>

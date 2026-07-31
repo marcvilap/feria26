@@ -1,0 +1,57 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import VideoGrid from '$components/VideoGrid.astro'
+import ad01 from '$assets/images/ads/ad-01.jpg'
+import ad02 from '$assets/images/ads/ad-02.jpg'
+import ad03 from '$assets/images/ads/ad-03.png'
+import ad04 from '$assets/images/ads/ad-04.png'
+import ad01video from '$assets/videos/ads/unicaja.mp4'
+import revista from '$utils/data-revista'
+
+// Unifica las dos secciones de 2025: "Bienvenida" (texto de apertura y acceso a
+// las ediciones anteriores) y "Feria y sociedad" (los testimonios en vídeo).
+const title = 'Revista de Feria'
+const variation = 3
+const linkPrev = { name: 'Inicio', path: '/' }
+const linkNext = { name: 'Saludos', path: '/saludos' }
+const linkPrevMobile = { name: 'Inicio', path: '/' }
+const linkNextMobile = { name: 'Saludos', path: '/saludos' }
+const ads = [{ spot: 2, image: ad02, url: 'https://www.tesesa.com' }]
+const adsMobile = [
+	{ spot: 3, image: ad03, url: 'https://www.grupohla.com/hlahospitalelangel' },
+	{ spot: 4, image: ad04, url: 'https://coin.es' },
+]
+const modalAd = { spot: 5, count: 12, image: ad01, url: '#', video: ad01video }
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+	<Split {variation} {ads} reverse>
+		<div>
+			<div class="max-w-3xl">
+				<Title class="text-blue-600">Una feria y muchas maneras de disfrutarla</Title>
+				<div class="prose my-12">
+					<p>La Feria de Málaga es distinta a todas. Se vive en el centro de la ciudad y en el recinto ferial. Se disfruta de día y de noche.</p>
+					<p>
+						En COPE Málaga te damos la oportunidad de que la conozcas un poco más a través de secciones en las que lo audiovisual y lo interactivo son
+						protagonistas. Hemos convertido nuestra tradicional Revista de Feria en una propuesta entretenida, atractiva y participativa. Una gran caseta donde
+						cabemos todos y en la que te hablamos de curiosidades históricas, lugares emblemáticos, datos relacionados con la celebración, maneras de vivir la
+						feria, y hasta un mapa interactivo del Real de Cortijo de Torres, donde podrás encontrar la ubicación de todas las casetas y hasta el ambiente que
+						ofrecen.
+					</p>
+					<p>
+						También te damos la oportunidad de echar la vista atrás a otras ediciones de nuestra revista y repasar los carteles que han anunciado la Feria de
+						Málaga en los últimos años.
+					</p>
+					<p>Nuestra propuesta digital es como llevar siempre contigo la mayor fiesta del sur de Europa.</p>
+					<p><strong>¡Bienvenidos a la Feria de Málaga!</strong></p>
+				</div>
+			</div>
+
+			<div class="mt-16">
+				<VideoGrid adSpot={modalAd.spot} items={revista} />
+			</div>
+		</div>
+	</Split>
+</Layout>

@@ -1,0 +1,42 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import VideoGrid from '$components/VideoGrid.astro'
+import ad01 from '$assets/images/ads/ad-01.jpg'
+import ad02 from '$assets/images/ads/ad-02.jpg'
+import ad01video from '$assets/videos/ads/unicaja.mp4'
+import test from '$utils/data-test'
+
+const title = 'Test de la Feria'
+const variation = 4
+const linkPrev = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
+const linkNext = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const linkPrevMobile = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
+const linkNextMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const ads = [{ spot: 52, image: ad01, url: '#', video: ad01video }]
+const adsMobile = [
+	{ spot: 53, image: ad01, url: '#', video: ad01video },
+	{ spot: 54, image: ad02, url: 'https://www.tesesa.com/' },
+]
+const modalAd = { spot: 55, count: 4, image: ad02, url: 'https://www.tesesa.com/' }
+---
+
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+	<Split {variation} {ads}>
+		<Title class="text-blue-600">{title}</Title>
+		<div class="prose my-12 max-w-2xl">
+			<p>
+				La Feria de Málaga se vive en sus calles, en sus casetas… y también a través de quienes mejor representan el espíritu de nuestra ciudad. En esta sección
+				reunimos una divertida serie de vídeos protagonizados por rostros muy conocidos de Málaga, que se han atrevido a enfrentarse a un test muy especial
+				sobre la feria.
+			</p>
+			<p>
+				Anécdotas, curiosidades, tradiciones y alguna que otra pregunta inesperada pondrán a prueba sus conocimientos y su sentido del humor. Descubre sus
+				respuestas, sorpréndete con sus confesiones y disfruta de una forma diferente de conocer a estos personajes. Porque, cuando se habla de la Feria de
+				Málaga, siempre hay espacio para compartir una sonrisa.
+			</p>
+		</div>
+		<VideoGrid adSpot={modalAd.spot} items={test} columns={2} />
+	</Split>
+</Layout>

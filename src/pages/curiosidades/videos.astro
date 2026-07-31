@@ -1,0 +1,29 @@
+---
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import VideoGrid from '$components/VideoGrid.astro'
+import ad12 from '$assets/images/ads/ad-12.png'
+import ad09 from '$assets/images/ads/ad-09.gif'
+import ad12video from '$assets/videos/ads/holamotor.mp4'
+import ad09video from '$assets/videos/ads/fenie.mp4'
+import curiosidades from '$utils/data-curiosidades'
+
+const title = 'Curiosidades de la Feria'
+const variation = 4
+const linkPrev = { name: 'Volver', path: '/curiosidades' }
+const linkPrevMobile = { name: 'Volver', path: '/curiosidades' }
+const ads = [{ spot: 34, image: ad12, url: '#', video: ad12video }]
+const adsMobile = [
+	{ spot: 35, image: ad12, url: '#', video: ad12video },
+	{ spot: 36, image: ad09, url: '#', video: ad09video },
+]
+const modalAd = { spot: 37, count: 6, image: ad09, url: '#', video: ad09video }
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAd}>
+	<Split {variation} {ads}>
+		<h1 class="mb-3 text-2xl text-blue-600">Curiosidades de la Feria de Málaga</h1>
+		<p class="mb-12 text-neutral-500">Con el historiador Salvador Jiménez</p>
+		<VideoGrid adSpot={modalAd.spot} items={curiosidades} columns={2} />
+	</Split>
+</Layout>

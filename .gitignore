@@ -1,6 +1,14 @@
 # large assets (exceed GitHub 100MB limit, kept out of the repo)
 src/assets/pdfs/
-src/assets/videos/feria/francis.mp4
+
+# Los vídeos 2026 ya están reencodeados con `npm run videos` y ninguno llega
+# a los 100MB de GitHub, así que entran en el repo.
+
+# material original entregado por el cliente (~4,9 GB en ZIP)
+nuevo/
+
+# caché del script de compresión
+scripts/.videos-cache.json
 
 # build output
 dist/

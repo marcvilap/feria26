@@ -1,0 +1,53 @@
+---
+import { Image, getImage } from 'astro:assets'
+import Layout from '$layouts/Layout.astro'
+import Split from '$components/Split.astro'
+import Title from '$components/Title.astro'
+import ad29 from '$assets/images/ads/ad-29.jpg'
+import ad14 from '$assets/images/ads/ad-14.jpg'
+import ad29video from '$assets/videos/ads/casino.mp4'
+import aniversario from '$utils/data-aniversario'
+
+const title = '60 Aniversario COPE Málaga'
+const variation = 4
+const linkPrev = { name: 'Plaza de Toros', path: '/publicidad-3' }
+const linkPrevMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
+const ads = [{ spot: 86, image: ad29, url: '#', video: ad29video }]
+const adsMobile = [
+	{ spot: 87, image: ad29, url: '#', video: ad29video },
+	{ spot: 88, image: ad14, url: 'https://famadesa.es' },
+]
+const modalAd = { spot: 89, image: ad14, url: 'https://famadesa.es' }
+---
+
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAd}>
+	<Split {variation} {ads}>
+		<Title class="text-blue-600">60 años de radio, un aniversario para recordar</Title>
+		<div class="prose my-12 max-w-2xl">
+			<p>
+				Sesenta años no se cumplen todos los días. COPE Málaga quiso celebrar esta fecha tan especial con un acto cargado de emoción, recuerdos y agradecimiento
+				a todas las personas que han formado parte de la historia de la emisora. En esta sección te invitamos a revivir algunos de los momentos más destacados
+				de una celebración que rindió homenaje al pasado, puso en valor el presente y miró con ilusión hacia el futuro.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-6 xl:grid-cols-3">
+			{
+				aniversario.map(async ({ image, description }) => (
+					<a class="open-in-modal group" target="_blank" href={(await getImage({ src: image, format: 'webp' })).src}>
+						<div class="overflow-clip rounded bg-black">
+							<Image
+								class="aspect-[3/2] w-full object-cover transition group-hover:scale-110 group-hover:opacity-75"
+								src={image}
+								width="592"
+								densities={[2]}
+								alt={description}
+							/>
+						</div>
+						<p class="mt-3 text-sm text-neutral-500">{description}</p>
+					</a>
+				))
+			}
+		</div>
+	</Split>
+</Layout>

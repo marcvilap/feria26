@@ -149,6 +149,21 @@
 	.writing-mode-vertical {
 		writing-mode: vertical-lr;
 	}
+	/* Caseta localizada desde el buscador del mapa */
+	.caseta-found path {
+		paint-order: stroke;
+		stroke: theme(colors.orange.600);
+		stroke-width: 8;
+		animation: caseta-found 0.55s ease-in-out 7 alternate;
+	}
+	@keyframes caseta-found {
+		from {
+			stroke-opacity: 1;
+		}
+		to {
+			stroke-opacity: 0;
+		}
+	}
 	.bg-map {
 		background-image: url(./assets/icons/map.svg);
 	}
@@ -157,6 +172,10 @@
 dialog {
 	max-width: calc(100vw - 1.5rem);
 	max-height: calc(100vh - 1.5rem);
+	/* sin marco: el pop-up muestra el anuncio y el vídeo sobre el backdrop */
+	background: transparent;
+	border: 0;
+	padding: 0;
 	opacity: 0;
 	transform: scale(0.75);
 	transition-property: opacity, transform, display, overlay;
@@ -182,6 +201,8 @@ dialog {
 	}
 	video,
 	img {
-		max-height: calc(100vh - 3rem);
+		max-width: 100%;
+		max-height: calc(100vh - 6rem);
+		border-radius: 0.25rem;
 	}
 }
