@@ -14,10 +14,9 @@ import ad26video from '$assets/videos/ads/ags.mp4'
 
 const title = 'Mapa de la feria'
 const variation = 3
-const linkPrev = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
-const linkNext = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
-const linkPrevMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
-const linkNextMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
+// Última sección del recorrido: no lleva enlace "siguiente".
+const linkPrev = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
+const linkPrevMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
 const ads = [{ spot: 78, image: ad27, url: 'https://www.concesionarios.seat/overview-dw.dealer.automoviles-rueda.html' }]
 const adsMobile = [
 	{ spot: 79, image: ad25, url: '#', video: ad25video },
@@ -25,7 +24,7 @@ const adsMobile = [
 ]
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
 	<span class="bg-map absolute inset-0 -z-20 bg-blue-100"></span>
 	<Split {variation} {ads} reverse>
 		<Fragment slot="aside">

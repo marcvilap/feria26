@@ -26,7 +26,13 @@ const adsMobile = [
 	{ spot: 45, image: ad05, url: 'https://emtsam.org' },
 	{ spot: 46, image: ad07, url: '#', video: ad07video },
 ]
-const modalAd = { spot: 47, count: 5, image: ad07, url: '#', video: ad07video }
+// La sección pasa de 5 a 8 vídeos y solo tenía reservados los pop-ups 47-51. Con la
+// numeración congelada, las cinco piezas de 2026 conservan su hueco; las tres de 2025
+// ocupan los dos últimos números que quedaron libres al eliminar los intersticiales
+// (84 y 85) y, agotados esos, el primero nuevo: el 90.
+// Cuando lleguen las dos piezas que faltan de 2026 van detrás de la quinta, con los
+// huecos 94 y 95: la lista quedaría [47..51, 94, 95, 84, 85, 90].
+const modalAd = { spot: 47, spots: [47, 48, 49, 50, 51, 84, 85, 90], image: ad07, url: '#', video: ad07video }
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
@@ -43,6 +49,6 @@ const modalAd = { spot: 47, count: 5, image: ad07, url: '#', video: ad07video }
 			</p>
 		</div>
 
-		<VideoGrid adSpot={modalAd.spot} items={teLoCuenta} />
+		<VideoGrid adSpot={modalAd.spots} items={teLoCuenta} />
 	</Split>
 </Layout>

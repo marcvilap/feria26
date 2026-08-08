@@ -12,21 +12,25 @@ import adHomeVideo from '$assets/videos/ads/larios.mp4'
 
 const title = 'Feria de Málaga'
 const variation = 1
-const linkNext = { name: 'Revista de Feria', path: '/revista-de-feria' }
-const linkNextMobile = { name: 'Revista de Feria', path: '/revista-de-feria' }
+const linkNext = { name: 'Saludos', path: '/saludos' }
+const linkNextMobile = { name: 'Saludos', path: '/saludos' }
 // La home no lleva anuncios en la página, solo el que acompaña al pop-up de portada.
 const modalAd = { spot: 1, image: adHome, url: '#', video: adHomeVideo }
 ---
 
 <Layout {title} {variation} {linkNext} {linkNextMobile} {modalAd}>
-	<section class="reveal relative -mt-20 bg-yellow-950 text-white lg:-mt-24">
-		<video class="absolute left-0 top-0 size-full object-cover opacity-50" src={video} autoplay loop muted playsinline></video>
+	<section class="reveal relative -mt-20 bg-black text-white lg:-mt-24">
+		{
+			/* El metraje de 2026 es bastante más oscuro que el de 2025, así que se sube la
+		opacidad para recuperar el brillo que tenía la portada del año pasado. */
+		}
+		<video class="absolute left-0 top-0 size-full object-cover opacity-75" src={video} autoplay loop muted playsinline></video>
 		<div class="container relative flex min-h-svh flex-col items-center gap-6 pb-6 pt-32 lg:pb-12">
 			<h1 class="mt-auto font-serif text-8xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.4s] lg:text-[10rem] lg:leading-none">
 				Feria de <em class="block">Málaga</em>
 			</h1>
 			<h2 class="mb-6 text-5xl reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.5s]">2026</h2>
-			<Link class="reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.6s]" href="/revista-de-feria">Entrar</Link>
+			<Link class="reveal:translate-y-24 reveal:opacity-0 revealed:delay-[.6s]" href="/saludos">Entrar</Link>
 			<p class="mt-auto text-sm lg:self-start">Imágenes cedidas por el Ayuntamiento de Málaga</p>
 		</div>
 	</section>
@@ -61,7 +65,7 @@ const modalAd = { spot: 1, image: adHome, url: '#', video: adHomeVideo }
 							contigo.
 						</p>
 					</div>
-					<Link class="text-blue-600" href="/revista-de-feria">Empezar a leer</Link>
+					<Link class="text-blue-600" href="/saludos">Empezar a leer</Link>
 				</div>
 			</div>
 

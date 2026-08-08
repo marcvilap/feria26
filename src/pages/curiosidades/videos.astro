@@ -17,13 +17,17 @@ const adsMobile = [
 	{ spot: 35, image: ad12, url: '#', video: ad12video },
 	{ spot: 36, image: ad09, url: '#', video: ad09video },
 ]
-const modalAd = { spot: 37, count: 6, image: ad09, url: '#', video: ad09video }
+// Los diez vídeos necesitan diez pop-ups y la sección solo tenía reservados 37-42.
+// Con la numeración congelada, los seis vídeos que ya estaban conservan su hueco y los
+// cuatro que se añaden ocupan números que quedaron libres al eliminar las páginas
+// intersticiales (29, 30, 71 y 72). El orden de la lista sigue al de la parrilla.
+const modalAd = { spot: 37, spots: [29, 30, 71, 37, 38, 39, 40, 41, 42, 72], image: ad09, url: '#', video: ad09video }
 ---
 
 <Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAd}>
 	<Split {variation} {ads}>
 		<h1 class="mb-3 text-2xl text-blue-600">Curiosidades de la Feria de Málaga</h1>
 		<p class="mb-12 text-neutral-500">Con el historiador Salvador Jiménez</p>
-		<VideoGrid adSpot={modalAd.spot} items={curiosidades} columns={2} />
+		<VideoGrid adSpot={modalAd.spots} items={curiosidades} columns={2} />
 	</Split>
 </Layout>

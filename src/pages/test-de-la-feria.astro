@@ -11,15 +11,25 @@ import test from '$utils/data-test'
 const title = 'Test de la Feria'
 const variation = 4
 const linkPrev = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
-const linkNext = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const linkNext = { name: '60 Aniversario', path: '/60-aniversario' }
 const linkPrevMobile = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
-const linkNextMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
+const linkNextMobile = { name: '60 Aniversario', path: '/60-aniversario' }
 const ads = [{ spot: 52, image: ad01, url: '#', video: ad01video }]
 const adsMobile = [
 	{ spot: 53, image: ad01, url: '#', video: ad01video },
 	{ spot: 54, image: ad02, url: 'https://www.tesesa.com/' },
 ]
-const modalAd = { spot: 55, count: 4, image: ad02, url: 'https://www.tesesa.com/' }
+// La sección pasa de 4 a 19 vídeos y solo tenía reservados los pop-ups 55-58. Con la
+// numeración congelada, los cuatro que ya estaban conservan su hueco y los quince que
+// se añaden estrenan número: ya no quedaban libres de los intersticiales, así que van
+// del 91 en adelante (ver PUBLICIDAD.md). El orden sigue al de la parrilla.
+// prettier-ignore
+const modalAd = {
+	spot: 55,
+	spots: [55, 56, 57, 58, 91, 92, 93, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
+	image: ad02,
+	url: 'https://www.tesesa.com/',
+}
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
@@ -37,6 +47,6 @@ const modalAd = { spot: 55, count: 4, image: ad02, url: 'https://www.tesesa.com/
 				Málaga, siempre hay espacio para compartir una sonrisa.
 			</p>
 		</div>
-		<VideoGrid adSpot={modalAd.spot} items={test} columns={2} />
+		<VideoGrid adSpot={modalAd.spots} items={test} columns={2} />
 	</Split>
 </Layout>

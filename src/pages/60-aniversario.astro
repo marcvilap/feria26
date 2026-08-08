@@ -10,8 +10,10 @@ import aniversario from '$utils/data-aniversario'
 
 const title = '60 Aniversario COPE Málaga'
 const variation = 4
-const linkPrev = { name: 'Plaza de Toros', path: '/publicidad-3' }
-const linkPrevMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
+const linkPrev = { name: 'Test de la Feria', path: '/test-de-la-feria' }
+const linkNext = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
+const linkPrevMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
+const linkNextMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 const ads = [{ spot: 86, image: ad29, url: '#', video: ad29video }]
 const adsMobile = [
 	{ spot: 87, image: ad29, url: '#', video: ad29video },
@@ -20,7 +22,7 @@ const adsMobile = [
 const modalAd = { spot: 89, image: ad14, url: 'https://famadesa.es' }
 ---
 
-<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
 	<Split {variation} {ads}>
 		<Title class="text-blue-600">60 años de radio, un aniversario para recordar</Title>
 		<div class="prose my-12 max-w-2xl">
