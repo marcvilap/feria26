@@ -1,4 +1,11 @@
 // Biznaga de Plata 2026: candidatos a votación y palmarés histórico.
+// Los candidatos salen de `BIZNAGA DE PLATA 2026.docx` (entrega del 8 de agosto). Ojo:
+// el correo con las correcciones llama al pregonero «Juan Francisco Fúnez», pero tanto
+// ese documento como el rótulo de su vídeo en el Test dicen «Juanfran Funes», que es lo
+// que se usa aquí y en data-test.ts.
+//
+// El palmarés conserva el detalle de cada galardón (el motivo, el cargo), que el
+// documento del cliente resume: son los mismos 29 premios en el mismo orden.
 export const candidates = [
 	{
 		value: '1',
@@ -12,10 +19,9 @@ export const candidates = [
 		description: 'Coordinador de la Feria Mágica que desde 1995 se monta en la feria del centro con actividades para los más pequeños.',
 	},
 	{
-		// PENDIENTE: el cliente confirmará el nombre del pregonero de 2026 cuando se anuncie.
 		value: '3',
-		name: 'PREGONERO DE LA FERIA DE MÁLAGA 2026',
-		description: 'Pendiente de designación.',
+		name: 'JUANFRAN FUNES',
+		description: 'Entrenador del Málaga C.F. y pregonero de la Feria de Málaga 2026.',
 	},
 ]
 
