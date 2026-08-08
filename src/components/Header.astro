@@ -1,6 +1,7 @@
 ---
 import { fade } from 'astro:transitions'
-import Icon from '$components/Icon.astro'
+import { Image } from 'astro:assets'
+import logo from '$assets/images/logo-60-aniversario.png'
 
 interface Props {
 	variation?: number
@@ -21,7 +22,19 @@ const { variation } = Astro.props
 >
 	<div class:list={['flex items-center gap-4', variation === 3 && 'lg:text-white']}>
 		<a href="/">
-			<Icon class:list={['w-28 lg:w-32', variation === 3 && 'max-lg:text-blue-600', variation === 4 && 'text-blue-600']} name="logo" />
+			{
+				/* El logo es un PNG azul plano: sobre los fondos oscuros se pinta en blanco con
+			un filtro, porque no puede recolorearse con `currentColor` como el SVG anterior.
+			PENDIENTE: sustituir por el SVG cuando el cliente lo facilite. */
+			}
+			<Image
+				class:list={['w-28 xs:w-36 lg:w-52', (variation === 1 || variation === 2) && 'brightness-0 invert', variation === 3 && 'lg:brightness-0 lg:invert']}
+				src={logo}
+				width={208}
+				densities={[2]}
+				loading="eager"
+				alt="60 años de COPE Málaga"
+			/>
 		</a>
 		<span class="self-stretch border-r border-current"></span>
 		<span class="grid whitespace-nowrap">
@@ -33,7 +46,7 @@ const { variation } = Astro.props
 					'font-condensed text-sm underline decoration-1 lg:text-base',
 					variation === 3 && 'max-lg:text-blue-600',
 					variation === 4 && 'text-blue-600',
-				]}>Síguela en COPE Málaga</a
+				]}>Síguela en directo</a
 			>
 		</span>
 	</div>
