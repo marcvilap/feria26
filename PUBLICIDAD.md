@@ -1,8 +1,26 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-89 espacios repartidos por la revista. Mientras `showAds` esté a `false` en
+105 espacios repartidos por la revista. Mientras `showAds` esté a `false` en
 `src/utils/config.ts`, cada hueco se pinta en pantalla con su número, así que
 basta con abrir la web para localizar cualquiera de ellos.
+
+> **Los números están congelados.** Al reordenar las secciones a petición del
+> cliente, cada hueco conserva el número que ya tenía para no mover nada de lo
+> que el comercial haya podido dar por cerrado. Eso significa que **la
+> numeración ya no es correlativa al recorrer la web**: se navega 01 → 23…28 →
+> 31…42 → 43…51 → 52…58 → 86…89 → 73…77 → 02…22 → 59…64 → 65…70 → 81…83 →
+> 78…80. El listado de abajo sigue ordenado por número, que es como se busca un
+> hueco; la columna «Sección» dice en qué parte de la web cae.
+>
+> Los seis huecos de formato «Página completa» (29, 30, 71, 72, 84 y 85) dejaron de
+> existir al eliminar, a petición del cliente, las tres páginas intersticiales que
+> solo contenían publicidad. Cuatro de esos números —**29, 30, 71 y 72**— se han
+> reutilizado como pop-ups de Curiosidades › Vídeos, que pasó de 6 a 10 piezas, y los
+> otros dos —**84 y 85**— como pop-ups de Te lo cuenta COPE Málaga, que pasó de 5 a 8.
+> Agotados los reciclados, los huecos nuevos siguen a partir del **90**.
+>
+> **94 y 95 están reservados** para las dos piezas de Te lo cuenta COPE Málaga que el
+> cliente aún no ha entregado. Por eso el listado salta del 93 al 96.
 
 ## Formatos
 
@@ -15,7 +33,6 @@ basta con abrir la web para localizar cualquiera de ellos.
 
 - **Lateral** — columna derecha en pantallas grandes; no se ve en móvil.
 - **Móvil** — barra fija inferior, de dos en dos; solo en móvil y tableta.
-- **Página completa** — página intersticial dedicada, entre dos secciones.
 
 ## Listado
 
@@ -49,8 +66,8 @@ basta con abrir la web para localizar cualquiera de ellos.
 | 26 | Saludos | Pop-up (uno por vídeo) | Solo imagen |
 | 27 | Saludos | Pop-up (uno por vídeo) | Solo imagen |
 | 28 | Saludos | Pop-up (uno por vídeo) | Solo imagen |
-| 29 | Publicidad 1 | Página completa | Imagen + vídeo |
-| 30 | Publicidad 1 | Página completa | Imagen + vídeo |
+| 29 | Curiosidades › Vídeos | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 30 | Curiosidades › Vídeos | Pop-up (uno por vídeo) | Imagen + vídeo |
 | 31 | Curiosidades | Lateral | Solo imagen |
 | 32 | Curiosidades | Móvil | Imagen + vídeo |
 | 33 | Curiosidades | Móvil | Solo imagen |
@@ -91,8 +108,8 @@ basta con abrir la web para localizar cualquiera de ellos.
 | 68 | Carteles de Feria | Móvil | Imagen + vídeo |
 | 69 | Carteles de Feria | Móvil | Solo imagen |
 | 70 | Carteles de Feria | Pop-up | Solo imagen |
-| 71 | Publicidad 2 | Página completa | Imagen + vídeo |
-| 72 | Publicidad 2 | Página completa | Imagen + vídeo |
+| 71 | Curiosidades › Vídeos | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 72 | Curiosidades › Vídeos | Pop-up (uno por vídeo) | Imagen + vídeo |
 | 73 | El vino y la Feria | Lateral | Solo imagen |
 | 74 | El vino y la Feria | Móvil | Solo imagen |
 | 75 | El vino y la Feria | Móvil | Imagen + vídeo |
@@ -104,17 +121,33 @@ basta con abrir la web para localizar cualquiera de ellos.
 | 81 | Plaza de Toros | Móvil | Solo imagen |
 | 82 | Plaza de Toros | Móvil | Solo imagen |
 | 83 | Plaza de Toros | Pop-up | Solo imagen |
-| 84 | Publicidad 3 | Página completa | Solo imagen |
-| 85 | Publicidad 3 | Página completa | Imagen + vídeo |
+| 84 | Te lo cuenta COPE Málaga | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 85 | Te lo cuenta COPE Málaga | Pop-up (uno por vídeo) | Imagen + vídeo |
 | 86 | 60 Aniversario | Lateral | Imagen + vídeo |
 | 87 | 60 Aniversario | Móvil | Imagen + vídeo |
 | 88 | 60 Aniversario | Móvil | Solo imagen |
 | 89 | 60 Aniversario | Pop-up | Solo imagen |
+| 90 | Te lo cuenta COPE Málaga | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 91 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 92 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 93 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 96 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 97 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 98 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 99 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 100 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 101 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 102 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 103 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 104 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 105 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 106 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
+| 107 | Test de la Feria | Pop-up (uno por vídeo) | Imagen + vídeo |
 
 ## Resumen
 
-- 89 huecos: 18 laterales, 28 en móvil, 6 a página completa y 37 dentro de pop-ups.
-- 58 admiten vídeo en popup; 31 son solo imagen.
+- 105 huecos: 18 laterales, 28 en móvil y 59 dentro de pop-ups.
+- 75 admiten vídeo en popup; 30 son solo imagen.
 - La home solo lleva el hueco de su pop-up de portada.
 
 ## Notas
