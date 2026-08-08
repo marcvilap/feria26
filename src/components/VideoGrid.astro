@@ -13,11 +13,18 @@ interface Props {
 	items: Item[]
 	columns?: 2 | 3
 	class?: string
-	/** Número del primer hueco publicitario de pop-up; cada vídeo consume el siguiente. */
-	adSpot?: number
+	/**
+	 * Huecos publicitarios de pop-up de la página. Con un número, cada vídeo consume
+	 * el siguiente correlativo. Con una lista, cada vídeo toma el hueco de su misma
+	 * posición: se usa cuando la numeración está congelada y los huecos de una sección
+	 * ya no son correlativos (ver PUBLICIDAD.md).
+	 */
+	adSpot?: number | number[]
 }
 
 const { items, columns = 3, class: className, adSpot } = Astro.props
+
+const spotFor = (index: number) => (Array.isArray(adSpot) ? adSpot[index] : adSpot ? adSpot + index : undefined)
 
 const initials = (name: string) =>
 	name
@@ -31,7 +38,7 @@ const initials = (name: string) =>
 <div class:list={['grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-6', columns === 3 ? 'xl:grid-cols-3' : 'xl:gap-x-12', className]}>
 	{
 		items.map(({ video, image, name, description }, index) => (
-			<a class="open-in-modal group" target="_blank" href={video} data-ad-spot={adSpot ? adSpot + index : undefined}>
+			<a class="open-in-modal group" target="_blank" href={video} data-ad-spot={spotFor(index)}>
 				<div class="relative flex aspect-video items-center justify-center overflow-clip rounded bg-black">
 					{image ? (
 						<Image

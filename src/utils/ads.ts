@@ -21,4 +21,10 @@ export interface Ad {
 	 * cada pop-up. Cada vídeo abre su propio hueco, numerado `spot`, `spot + 1`…
 	 */
 	count?: number
+	/**
+	 * Solo para `modalAd`: huecos de pop-up uno a uno, en el orden de la parrilla.
+	 * Alternativa a `count` para las secciones cuya numeración dejó de ser correlativa
+	 * al congelarla (ver PUBLICIDAD.md). Se pasa a `<VideoGrid adSpot={...} />`.
+	 */
+	spots?: number[]
 }
