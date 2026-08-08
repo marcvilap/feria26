@@ -34,14 +34,18 @@ const allScripts = () => {
 
 			if (elem instanceof HTMLAnchorElement) {
 				const { href } = elem
-				if (href.match(/\.?(mp4|webm|mov)$/)) {
+				// El tipo se decide por la extensión, pero sin la query: en `astro dev`
+				// Vite le cuelga un `?t=…` a los ficheros que ve modificados y entonces
+				// la URL ya no termina en `.mp4`, así que el modal se abría vacío.
+				const path = href.split(/[?#]/)[0]
+				if (/\.(mp4|webm|mov)$/i.test(path)) {
 					const video = document.createElement('video')
 					video.src = href
 					video.controls = true
 					video.autoplay = true
 					media.append(video)
 				}
-				if (href.match(/\.?(jpg|jpeg|png|webp|avif|gif)$/)) {
+				if (/\.(jpe?g|png|webp|avif|gif)$/i.test(path)) {
 					const image = document.createElement('img')
 					image.src = href
 					media.append(image)
@@ -109,11 +113,7 @@ const allScripts = () => {
 			name: elem.dataset.txt1?.trim() ?? '',
 		}))
 
-		const normalize = (text: string) =>
-			text
-				.toLowerCase()
-				.normalize('NFD')
-				.replace(/[̀-ͯ]/g, '')
+		const normalize = (text: string) => text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
 
 		const reveal = (caseta: (typeof casetas)[number]) => {
 			searchDialog.close()
