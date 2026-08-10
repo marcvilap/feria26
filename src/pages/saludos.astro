@@ -4,10 +4,8 @@ import Layout from '$layouts/Layout.astro'
 import Title from '$components/Title.astro'
 import Split from '$components/Split.astro'
 import Icon from '$components/Icon.astro'
-import ad01 from '$assets/images/ads/ad-01.jpg'
-import ad02 from '$assets/images/ads/ad-02.jpg'
 import greatings from '$utils/data-greatings'
-import ad01video from '$assets/videos/ads/unicaja.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Saludos'
 const variation = 4
@@ -16,15 +14,17 @@ const linkNext = { name: 'Curiosidades', path: '/curiosidades' }
 const linkPrevMobile = { name: 'Inicio', path: '/' }
 const linkNextMobile = { name: 'Curiosidades', path: '/curiosidades' }
 
-const ads = [{ spot: 23, image: ad01, url: '#', video: ad01video }]
-const adsMobile = [
-	{ spot: 24, image: ad01, url: '#', video: ad01video },
-	{ spot: 25, image: ad02, url: 'https://www.tesesa.com/' },
-]
-const modalAd = { spot: 26, count: 3, image: ad02, url: 'https://www.tesesa.com/' }
+const ads = [ad(23)]
+const adsMobile = adsFor(24, 25)
+// Un hueco por saludo, en el mismo orden que la lista.
+// Un hueco por saludo, en el mismo orden que la lista. El 108 es el primero de los
+// números nuevos: los 26-28 estaban vendidos antes de que llegara María Barranco y no
+// se mueven. El 109 queda reservado para cuando entregue su vídeo el pregonero.
+const modalSpots = [26, 27, 28, 108, 109]
+const modalAds = adsFor(...modalSpots)
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAds}>
 	<Split {variation} {ads}>
 		<div class="mx-auto 2xl:max-w-2xl">
 			<Title class="mb-12 text-blue-600">{title}</Title>
@@ -37,17 +37,26 @@ const modalAd = { spot: 26, count: 3, image: ad02, url: 'https://www.tesesa.com/
 								<h2 class="font-bold">{name}</h2>
 								<p class="max-md:text-sm">{description}</p>
 							</div>
-							<a
-								class="open-in-modal ml-auto flex shrink-0 flex-col items-center gap-1 text-blue-600 hover:text-orange-600"
-								target="_blank"
-								href={video}
-								data-ad-spot={modalAd.spot + index}
-							>
-								<span class="size-8 rounded-full border border-current p-2">
-									<Icon name="play" />
-								</span>
-								<span class="uppercase">Ver video</span>
-							</a>
+							{video ? (
+								<a
+									class="open-in-modal ml-auto flex shrink-0 flex-col items-center gap-1 text-blue-600 hover:text-orange-600"
+									target="_blank"
+									href={video}
+									data-ad-spot={modalSpots[index]}
+								>
+									<span class="size-8 rounded-full border border-current p-2">
+										<Icon name="play" />
+									</span>
+									<span class="uppercase">Ver video</span>
+								</a>
+							) : (
+								/* Ficha publicada sin su pieza: se marca aquí mismo para que el hueco se
+								vea al abrir la web, sin tener que consultar ningún listado. */
+								<p class="ml-auto flex shrink-0 flex-col items-center rounded border-2 border-dashed border-orange-600 px-3 py-2 text-center font-condensed uppercase leading-tight text-orange-600">
+									<span class="text-sm font-bold tracking-wider">Vídeo pendiente</span>
+									<span class="text-xs tracking-wide">de entrega</span>
+								</p>
+							)}
 						</article>
 					))
 				}
