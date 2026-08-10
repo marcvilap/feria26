@@ -26,6 +26,9 @@ export default {
 				lime: {
 					500: '#6CCC1D',
 				},
+				// Fucsia de Cartojal, patrocinador del Mapa Interactivo. El valor sale de la
+				// edición de 2025, que es el diseño que el cliente pidió mantener.
+				cartojal: '#E71F77',
 			},
 		},
 	},

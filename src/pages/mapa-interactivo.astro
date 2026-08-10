@@ -4,33 +4,36 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import Map from '$components/Map.astro'
+import Icon from '$components/Icon.astro'
 import CasetaSearch from '$components/CasetaSearch.astro'
-import ad27 from '$assets/images/ads/ad-27.jpg'
 import map02 from '$assets/images/map-02.webp'
-import ad25 from '$assets/images/ads/ad-25.jpg'
-import ad26 from '$assets/images/ads/ad-26.jpg'
-import ad25video from '$assets/videos/ads/activa.mp4'
-import ad26video from '$assets/videos/ads/ags.mp4'
+import cenefa from '$assets/images/cartojal-fondo.svg'
+import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Mapa de la feria'
 const variation = 3
 // Última sección del recorrido: no lleva enlace "siguiente".
 const linkPrev = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
 const linkPrevMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
-const ads = [{ spot: 78, image: ad27, url: 'https://www.concesionarios.seat/overview-dw.dealer.automoviles-rueda.html' }]
-const adsMobile = [
-	{ spot: 79, image: ad25, url: '#', video: ad25video },
-	{ spot: 80, image: ad26, url: 'https://alhaurindelatorre.es', video: ad26video },
-]
+const ads = [ad(78)]
+const adsMobile = adsFor(79, 80)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>
-	<span class="bg-map absolute inset-0 -z-20 bg-blue-100"></span>
+	{
+		/* La sección la patrocina Cartojal y va con su fondo, como en 2025: el fucsia de la
+		marca y encima su cenefa, una sola vez y muy suave, no una trama repetida.
+		Ver PUBLICIDAD.md, «Mapa Interactivo». */
+	}
+	<span class="absolute inset-0 -z-20 bg-cartojal"></span>
+	{/* El 28% es el ancho del panel azul fijo del Layout: la cenefa arranca justo donde acaba. */}
+	<img class="absolute inset-x-0 top-24 -z-10 w-full opacity-25 lg:left-[28%] lg:w-[72%]" src={cenefa.src} alt="" />
 	<Split {variation} {ads} reverse>
 		<Fragment slot="aside">
 			<Title class="-mt-12 mb-6 max-w-64 text-white max-lg:hidden">{title}</Title>
 		</Fragment>
-		<Title class="mb-6 text-blue-600 lg:hidden">{title}</Title>
+		<Title class="mb-6 text-white lg:hidden">{title}</Title>
+		<Icon class="mb-6 w-64 text-white lg:w-80" name="cartojal" />
 		<div class="mb-12"><CasetaSearch /></div>
 		<div class="grid items-start gap-12 sm:flex">
 			<div class="basis-1/3">
