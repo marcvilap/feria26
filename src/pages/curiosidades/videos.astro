@@ -2,32 +2,27 @@
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import VideoGrid from '$components/VideoGrid.astro'
-import ad12 from '$assets/images/ads/ad-12.png'
-import ad09 from '$assets/images/ads/ad-09.gif'
-import ad12video from '$assets/videos/ads/holamotor.mp4'
-import ad09video from '$assets/videos/ads/fenie.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 import curiosidades from '$utils/data-curiosidades'
 
 const title = 'Curiosidades de la Feria'
 const variation = 4
 const linkPrev = { name: 'Volver', path: '/curiosidades' }
 const linkPrevMobile = { name: 'Volver', path: '/curiosidades' }
-const ads = [{ spot: 34, image: ad12, url: '#', video: ad12video }]
-const adsMobile = [
-	{ spot: 35, image: ad12, url: '#', video: ad12video },
-	{ spot: 36, image: ad09, url: '#', video: ad09video },
-]
+const ads = [ad(34)]
+const adsMobile = adsFor(35, 36)
 // Los diez vídeos necesitan diez pop-ups y la sección solo tenía reservados 37-42.
 // Con la numeración congelada, los seis vídeos que ya estaban conservan su hueco y los
 // cuatro que se añaden ocupan números que quedaron libres al eliminar las páginas
 // intersticiales (29, 30, 71 y 72). El orden de la lista sigue al de la parrilla.
-const modalAd = { spot: 37, spots: [29, 30, 71, 37, 38, 39, 40, 41, 42, 72], image: ad09, url: '#', video: ad09video }
+const modalSpots = [29, 30, 71, 37, 38, 39, 40, 41, 42, 72]
+const modalAds = adsFor(...modalSpots)
 ---
 
-<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAds}>
 	<Split {variation} {ads}>
 		<h1 class="mb-3 text-2xl text-blue-600">Curiosidades de la Feria de Málaga</h1>
 		<p class="mb-12 text-neutral-500">Con el historiador Salvador Jiménez</p>
-		<VideoGrid adSpot={modalAd.spots} items={curiosidades} columns={2} />
+		<VideoGrid adSpot={modalSpots} items={curiosidades} columns={2} />
 	</Split>
 </Layout>

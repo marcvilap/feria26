@@ -7,71 +7,90 @@ const allScripts = () => {
 	})
 
 	// MODAL
+	// `withAd` a false abre el pop-up sin publicidad al lado: se usa cuando lo que se
+	// abre ES el vídeo del anunciante, para no volver a colgarle su propio anuncio.
+	const openModal = (elem: HTMLElement, withAd = true) => {
+		const modal = document.createElement('dialog')
+		const close = document.createElement('button')
+		close.innerHTML =
+			'<svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'
+		close.className = 'absolute outline-none right-4 top-4 z-10 size-8 rounded-full bg-black/25 p-2 backdrop-blur transition-colors hover:bg-blue-600'
+		modal.append(close)
+
+		const media = document.createElement('div')
+		media.className = 'flex flex-col items-center gap-4 sm:flex-row sm:items-end'
+
+		// Cada pop-up es un hueco distinto y puede llevar un anunciante distinto: el
+		// número lo trae el elemento pulsado y con él se busca su <template> (ver
+		// Layout.astro). Las secciones con un solo pop-up declaran el genérico.
+		const spot = elem.dataset.adSpot
+		const adTemplate = withAd
+			? (document.querySelector<HTMLTemplateElement>(`template#modal-ad-${spot}`) ?? document.querySelector<HTMLTemplateElement>('template#modal-ad'))
+			: null
+		if (adTemplate) {
+			const ad = adTemplate.content.cloneNode(true) as DocumentFragment
+			const label = ad.querySelector('[data-ad-number]')
+			if (spot && label) label.textContent = spot.padStart(2, '0')
+			// Los anunciantes con vídeo lo abren en otro pop-up por encima de este. Hay que
+			// enganchar el listener aquí porque el clon no existía cuando se recorrió el DOM.
+			ad.querySelectorAll<HTMLElement>('.open-in-modal').forEach(link =>
+				link.addEventListener('click', event => {
+					event.preventDefault()
+					// Si no, se oye el vídeo de debajo mientras suena el del anuncio.
+					modal.querySelectorAll('video').forEach(video => video.pause())
+					openModal(link, false)
+				}),
+			)
+			media.append(ad)
+		}
+		modal.append(media)
+
+		if (elem instanceof HTMLAnchorElement) {
+			const { href } = elem
+			// El tipo se decide por la extensión, pero sin la query: en `astro dev`
+			// Vite le cuelga un `?t=…` a los ficheros que ve modificados y entonces
+			// la URL ya no termina en `.mp4`, así que el modal se abría vacío.
+			const path = href.split(/[?#]/)[0]
+			if (/\.(mp4|webm|mov)$/i.test(path)) {
+				const video = document.createElement('video')
+				video.src = href
+				video.controls = true
+				video.autoplay = true
+				media.append(video)
+			}
+			if (/\.(jpe?g|png|webp|avif|gif)$/i.test(path)) {
+				const image = document.createElement('img')
+				image.src = href
+				media.append(image)
+			}
+		}
+		if (elem.dataset.txt1 && elem.dataset.txt2 && elem.dataset.txt4) {
+			const txt1 = document.createElement('h2')
+			const txt2 = document.createElement('p')
+
+			const txt4 = document.createElement('p')
+			txt1.innerHTML = elem.dataset.txt1
+			txt2.innerHTML = elem.dataset.txt2
+
+			txt4.innerHTML = elem.dataset.txt4
+			txt1.className = 'max-w-xs bg-[#CDD4ED] pl-6 pr-24 pt-6 text-xl font-bold'
+			txt2.className = 'max-w-xs bg-[#CDD4ED] pb-6 pl-6 pr-24 font-bold text-[#5D6995]'
+
+			// El <dialog> es transparente, así que la descripción lleva su propio fondo
+			txt4.className = 'max-w-xs rounded-b bg-white px-6 pb-6 pt-3'
+			modal.append(txt1, txt2, txt4)
+		}
+		document.body.appendChild(modal)
+		modal.showModal()
+		close.onclick = () => modal.close()
+		modal.onclick = ({ target }) => target === modal && modal.close()
+		modal.onclose = () => setTimeout(() => modal.remove(), 500)
+	}
+
 	document.querySelectorAll<HTMLElement>('.open-in-modal').forEach(elem => {
 		elem.addEventListener('click', event => {
 			event.preventDefault()
-			const modal = document.createElement('dialog')
-			const close = document.createElement('button')
-			close.innerHTML =
-				'<svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'
-			close.className = 'absolute outline-none right-4 top-4 z-10 size-8 rounded-full bg-black/25 p-2 backdrop-blur transition-colors hover:bg-blue-600'
-			modal.append(close)
-
-			// El anuncio que acompaña al pop-up se declara una vez por página en
-			// <template id="modal-ad"> (ver Layout.astro) y se clona en cada modal.
-			const adTemplate = document.querySelector<HTMLTemplateElement>('template#modal-ad')
-			const media = document.createElement('div')
-			media.className = 'flex flex-col items-center gap-4 sm:flex-row sm:items-end'
-			if (adTemplate) {
-				const ad = adTemplate.content.cloneNode(true) as DocumentFragment
-				// Cada pop-up es un hueco distinto: el número lo trae el elemento pulsado.
-				const spot = elem.dataset.adSpot
-				const label = ad.querySelector('[data-ad-number]')
-				if (spot && label) label.textContent = spot.padStart(2, '0')
-				media.append(ad)
-			}
-			modal.append(media)
-
-			if (elem instanceof HTMLAnchorElement) {
-				const { href } = elem
-				// El tipo se decide por la extensión, pero sin la query: en `astro dev`
-				// Vite le cuelga un `?t=…` a los ficheros que ve modificados y entonces
-				// la URL ya no termina en `.mp4`, así que el modal se abría vacío.
-				const path = href.split(/[?#]/)[0]
-				if (/\.(mp4|webm|mov)$/i.test(path)) {
-					const video = document.createElement('video')
-					video.src = href
-					video.controls = true
-					video.autoplay = true
-					media.append(video)
-				}
-				if (/\.(jpe?g|png|webp|avif|gif)$/i.test(path)) {
-					const image = document.createElement('img')
-					image.src = href
-					media.append(image)
-				}
-			}
-			if (elem.dataset.txt1 && elem.dataset.txt2 && elem.dataset.txt4) {
-				const txt1 = document.createElement('h2')
-				const txt2 = document.createElement('p')
-
-				const txt4 = document.createElement('p')
-				txt1.innerHTML = elem.dataset.txt1
-				txt2.innerHTML = elem.dataset.txt2
-
-				txt4.innerHTML = elem.dataset.txt4
-				txt1.className = 'max-w-xs bg-[#CDD4ED] pl-6 pr-24 pt-6 text-xl font-bold'
-				txt2.className = 'max-w-xs bg-[#CDD4ED] pb-6 pl-6 pr-24 font-bold text-[#5D6995]'
-
-				// El <dialog> es transparente, así que la descripción lleva su propio fondo
-				txt4.className = 'max-w-xs rounded-b bg-white px-6 pb-6 pt-3'
-				modal.append(txt1, txt2, txt4)
-			}
-			document.body.appendChild(modal)
-			modal.showModal()
-			close.onclick = () => modal.close()
-			modal.onclick = ({ target }) => target === modal && modal.close()
-			modal.onclose = () => setTimeout(() => modal.remove(), 500)
+			openModal(elem)
 		})
 	})
 

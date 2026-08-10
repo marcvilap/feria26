@@ -7,15 +7,14 @@ import Icon from '$components/Icon.astro'
 import video from '$assets/videos/home.mp4'
 import videoPortada from '$assets/videos/portada-revista.mp4'
 import imagePortada from '$assets/images/posters-video/portada-revista.webp'
-import adHome from '$assets/images/ads/ad-11.jpg'
-import adHomeVideo from '$assets/videos/ads/larios.mp4'
+import { ad } from '$utils/data-ads'
 
 const title = 'Feria de Málaga'
 const variation = 1
 const linkNext = { name: 'Saludos', path: '/saludos' }
 const linkNextMobile = { name: 'Saludos', path: '/saludos' }
 // La home no lleva anuncios en la página, solo el que acompaña al pop-up de portada.
-const modalAd = { spot: 1, image: adHome, url: '#', video: adHomeVideo }
+const modalAd = ad(1)
 ---
 
 <Layout {title} {variation} {linkNext} {linkNextMobile} {modalAd}>

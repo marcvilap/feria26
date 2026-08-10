@@ -4,9 +4,7 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import Link from '$components/Link.astro'
-import ad09 from '$assets/images/ads/ad-09.gif'
-import ad10 from '$assets/images/ads/ad-10.jpg'
-import ad09video from '$assets/videos/ads/fenie.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 import imgTrofeo from '$assets/images/biznaga/trofeo.webp'
 import imgFamilia from '$assets/images/biznaga/familia.webp'
 import imgSalvador from '$assets/images/biznaga/salvador-jimenez.webp'
@@ -17,11 +15,8 @@ const linkPrev = { name: 'Revista de Feria', path: '/revista-de-feria' }
 const linkNext = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
 const linkPrevMobile = { name: 'Revista de Feria', path: '/revista-de-feria' }
 const linkNextMobile = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
-const ads = [{ spot: 59, image: ad10, url: 'https://www.peparevuelo.com' }]
-const adsMobile = [
-	{ spot: 60, image: ad09, url: '#', video: ad09video },
-	{ spot: 61, image: ad10, url: 'https://www.peparevuelo.com' },
-]
+const ads = [ad(59)]
+const adsMobile = adsFor(60, 61)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>

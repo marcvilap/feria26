@@ -3,9 +3,7 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import VideoGrid from '$components/VideoGrid.astro'
-import ad15 from '$assets/images/ads/ad-15.jpg'
-import ad16 from '$assets/images/ads/ad-16.jpg'
-import ad15video from '$assets/videos/ads/costa-sol.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 import videoVino from '$assets/videos/vino/vino-feria.mp4'
 import videoCasaGuardia from '$assets/videos/vino/casa-de-guardia.mp4'
 import imageVino from '$assets/images/posters-video/vino/vino-feria.webp'
@@ -17,12 +15,11 @@ const linkPrev = { name: '60 Aniversario', path: '/60-aniversario' }
 const linkNext = { name: 'Revista de Feria', path: '/revista-de-feria' }
 const linkPrevMobile = { name: '60 Aniversario', path: '/60-aniversario' }
 const linkNextMobile = { name: 'Revista de Feria', path: '/revista-de-feria' }
-const ads = [{ spot: 73, image: ad15, url: 'https://www.academiasunitec.com/' }]
-const adsMobile = [
-	{ spot: 74, image: ad15, url: 'https://www.academiasunitec.com/' },
-	{ spot: 75, image: ad16, url: 'https://www.peparevuelo.com', video: ad15video },
-]
-const modalAd = { spot: 76, count: 2, image: ad16, url: 'https://www.peparevuelo.com', video: ad15video }
+const ads = [ad(73)]
+const adsMobile = adsFor(74, 75)
+// Un hueco por vídeo de la parrilla, en el mismo orden.
+const modalSpots = [76, 77]
+const modalAds = adsFor(...modalSpots)
 
 const videos = [
 	{ image: imageVino, video: videoVino, name: 'El vino en la Feria de Málaga' },
@@ -30,7 +27,7 @@ const videos = [
 ]
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAds}>
 	<Split {variation} {ads} reverse>
 		<Title class="text-blue-600">El vino en la Feria de Málaga</Title>
 		<div class="prose my-12 max-w-2xl">
@@ -44,6 +41,6 @@ const videos = [
 				de Biedmas, un edificio del siglo XVIII.
 			</p>
 		</div>
-		<VideoGrid adSpot={modalAd.spot} items={videos} columns={2} />
+		<VideoGrid adSpot={modalSpots} items={videos} columns={2} />
 	</Split>
 </Layout>

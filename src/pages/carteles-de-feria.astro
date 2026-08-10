@@ -3,12 +3,8 @@ import { Image, getImage } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
-import ad12 from '$assets/images/ads/ad-12.png'
-import ad13 from '$assets/images/ads/ad-13.png'
-import ad30 from '$assets/images/ads/ad-30.jpg'
 import posters from '$utils/data-posters'
-import ad12video from '$assets/videos/ads/holamotor.mp4'
-import ad13video from '$assets/videos/ads/sophie.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Carteles de Feria'
 const variation = 2
@@ -17,16 +13,9 @@ const linkNext = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
 const linkPrevMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
 const linkNextMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
 
-const ads = [
-	{ spot: 65, image: ad12, url: '#', video: ad12video },
-	{ spot: 66, image: ad13, url: '#', video: ad13video },
-	{ spot: 67, image: ad30, url: 'https://alhaurindelatorre.es' },
-]
-const adsMobile = [
-	{ spot: 68, image: ad13, url: '#', video: ad13video },
-	{ spot: 69, image: ad30, url: 'https://alhaurindelatorre.es' },
-]
-const modalAd = { spot: 70, image: ad30, url: 'https://alhaurindelatorre.es' }
+const ads = adsFor(65, 66, 67)
+const adsMobile = adsFor(68, 69)
+const modalAd = ad(70)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>

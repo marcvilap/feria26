@@ -3,9 +3,7 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import Link from '$components/Link.astro'
-import ad10 from '$assets/images/ads/ad-10.jpg'
-import ad09 from '$assets/images/ads/ad-09.gif'
-import ad09video from '$assets/videos/ads/fenie.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Curiosidades'
 const variation = 3
@@ -13,11 +11,8 @@ const linkPrev = { name: 'Saludos', path: '/saludos' }
 const linkNext = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
 const linkPrevMobile = { name: 'Saludos', path: '/saludos' }
 const linkNextMobile = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
-const ads = [{ spot: 31, image: ad10, url: 'https://www.peparevuelo.com' }]
-const adsMobile = [
-	{ spot: 32, image: ad09, url: '#', video: ad09video },
-	{ spot: 33, image: ad10, url: 'https://www.peparevuelo.com' },
-]
+const ads = [ad(31)]
+const adsMobile = adsFor(32, 33)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>

@@ -5,8 +5,7 @@ import Title from '$components/Title.astro'
 import imgBull from '$assets/images/bull.webp'
 import videoMalagueta from '$assets/videos/toros/la-malagueta.mp4'
 import posterMalagueta from '$assets/images/posters-video/toros/la-malagueta.webp'
-import ad27 from '$assets/images/ads/ad-27.jpg'
-import ad28 from '$assets/images/ads/ad-28.gif'
+import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Plaza de Toros'
 const variation = 1
@@ -14,11 +13,8 @@ const linkPrev = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
 const linkNext = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
 const linkPrevMobile = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
 const linkNextMobile = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
-const adsMobile = [
-	{ spot: 81, image: ad27, url: 'https://www.concesionarios.seat/overview-dw.dealer.automoviles-rueda.html' },
-	{ spot: 82, image: ad28, url: 'https://metromalaga.es' },
-]
-const modalAd = { spot: 83, image: ad28, url: 'https://metromalaga.es' }
+const adsMobile = adsFor(81, 82)
+const modalAd = ad(83)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>

@@ -7,7 +7,8 @@ import Footer from '$components/Footer.astro'
 import Navigation from '$components/Navigation.astro'
 import Menu from '$components/Menu.astro'
 import AdSlot from '$components/AdSlot.astro'
-import { showAds } from '$utils/config'
+import AdNumber from '$components/AdNumber.astro'
+import { showAds, showAdNumbers } from '$utils/config'
 import type { Ad } from '$utils/ads'
 
 interface Props {
@@ -18,11 +19,22 @@ interface Props {
 	linkPrevMobile?: { name: string; path: string }
 	linkNextMobile?: { name: string; path: string }
 	adsMobile?: Ad[]
-	/** Anuncio que acompaña a TODOS los pop-ups de vídeo o imagen de la página. */
+	/** Anuncio que acompaña a TODOS los pop-ups de la página. Para las secciones con un solo pop-up. */
 	modalAd?: Ad
+	/**
+	 * Un anunciante distinto por pop-up, para las parrillas de vídeo donde cada pieza se
+	 * vende por separado. El hueco se busca por el `data-ad-spot` del elemento pulsado,
+	 * así que el orden de la lista debe ser el mismo que el de la parrilla.
+	 */
+	modalAds?: Ad[]
 }
 
-const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, adsMobile, modalAd } = Astro.props
+const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, adsMobile, modalAd, modalAds } = Astro.props
+
+// `modalAd` es el genérico de la página y `modalAds` los de cada pop-up: se pintan las
+// dos cosas porque main.ts busca primero el hueco concreto y cae en el genérico si no
+// lo encuentra (por ejemplo en los pop-ups que no salen de una parrilla de vídeos).
+const modalTemplates = [...(modalAds ?? []).map(ad => ({ id: `modal-ad-${ad.spot}`, ad })), ...(modalAd ? [{ id: 'modal-ad', ad: modalAd }] : [])]
 ---
 
 <!doctype html>
@@ -268,20 +280,25 @@ const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, ad
 					class="fixed inset-x-0 bottom-0 z-10 bg-blue-600/80 py-6 text-white backdrop-blur lg:hidden"
 				>
 					<div class="container">
-						<p>{showAds ? 'En colaboración con' : 'Publicidad'}</p>
+						<p>{showAds && adsMobile.some(ad => ad.image) ? 'En colaboración con' : 'Publicidad'}</p>
 						<div class="mt-3 grid grid-cols-2 gap-3">
 							{adsMobile.map(ad => (
-								<article>
-									{!showAds ? (
+								<article class="relative">
+									{!showAds || !ad.image ? (
 										<AdSlot spot={ad.spot} video={!!ad.video} />
-									) : ad.video ? (
-										<a class="open-in-modal group" target="_blank" href={ad.video}>
-											<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
-										</a>
 									) : (
-										<a href={ad.url} target="_blank" rel="noopener noreferrer">
-											<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
-										</a>
+										<>
+											{showAdNumbers && <AdNumber {ad} />}
+											{ad.video ? (
+												<a class="open-in-modal group" target="_blank" href={ad.video}>
+													<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
+												</a>
+											) : (
+												<a href={ad.url} target="_blank" rel="noopener noreferrer">
+													<Image class="mx-auto aspect-square rounded object-cover" src={ad.image} width={185} densities={[2]} alt="" />
+												</a>
+											)}
+										</>
 									)}
 								</article>
 							))}
@@ -296,27 +313,30 @@ const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, ad
 		}
 
 		{
-			/* main.ts clona esta plantilla dentro de cada pop-up de la página */
-			modalAd && (
-				<template id="modal-ad">
+			/* main.ts clona la plantilla del hueco pulsado dentro de cada pop-up */
+			modalTemplates.map(({ id, ad }) => (
+				<template id={id}>
 					<aside class="w-full shrink-0 max-sm:order-2 sm:w-56 2xl:w-72">
-						<p class="mb-2 text-sm text-white">En colaboración</p>
-						{showAds ? (
-							modalAd.video ? (
-								<a class="open-in-modal group" target="_blank" href={modalAd.video}>
-									<Image class="w-full rounded" src={modalAd.image} width={576} densities={[2]} alt="" />
-								</a>
-							) : (
-								<a href={modalAd.url} target="_blank" rel="noopener noreferrer">
-									<Image class="w-full rounded" src={modalAd.image} width={576} densities={[2]} alt="" />
-								</a>
-							)
+						<p class="mb-2 text-sm text-white">{showAds && ad.image ? 'En colaboración' : 'Publicidad'}</p>
+						{!showAds || !ad.image ? (
+							<AdSlot class="text-white" spot={ad.spot} video={!!ad.video} />
 						) : (
-							<AdSlot class="text-white" spot={modalAd.spot} video={!!modalAd.video} />
+							<div class="relative">
+								{showAdNumbers && <AdNumber {ad} />}
+								{ad.video ? (
+									<a class="open-in-modal group" target="_blank" href={ad.video}>
+										<Image class="w-full rounded" src={ad.image} width={576} densities={[2]} alt="" />
+									</a>
+								) : (
+									<a href={ad.url} target="_blank" rel="noopener noreferrer">
+										<Image class="w-full rounded" src={ad.image} width={576} densities={[2]} alt="" />
+									</a>
+								)}
+							</div>
 						)}
 					</aside>
 				</template>
-			)
+			))
 		}
 
 		<script src="../main.ts"></script>

@@ -1,12 +1,22 @@
 /**
  * Publicidad de la edición 2026.
  *
- * Mientras esté a `false`, todos los huecos publicitarios se pintan como
- * "espacio disponible" en lugar de mostrar las creatividades de 2024, que
- * siguen en `src/assets/images/ads/` a la espera de ser sustituidas.
+ * A `false` TODOS los huecos se pintan como "espacio disponible" con su número,
+ * que es como se le enseña la maqueta al comercial para que reparta anunciantes.
  *
- * Cuando lleguen los anuncios de este año: sustituir los ficheros de
- * `src/assets/images/ads/` y `src/assets/videos/ads/`, revisar las URLs de
- * destino en cada página y poner esto a `true`.
+ * A `true` cada hueco decide por su cuenta: los que tienen anunciante en
+ * `$utils/data-ads` muestran su creatividad y **los que siguen sin vender se
+ * siguen pintando como espacio disponible**. Por eso se puede publicar sin
+ * esperar a llenar los 107.
  */
-export const showAds = false
+export const showAds = true
+
+/**
+ * Chapa de revisión con el número de hueco y el nombre del anunciante encima de cada
+ * creatividad ya montada. Sirve para cotejar contra el Excel del comercial que cada
+ * anuncio ha caído donde tocaba, sin ir abriendo el código.
+ *
+ * **Es temporal: hay que ponerlo a `false` antes de publicar.** No afecta a los huecos
+ * sin vender, que llevan su número de serie (ver `AdSlot`).
+ */
+export const showAdNumbers = true

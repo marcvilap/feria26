@@ -10,6 +10,9 @@ nuevo/
 # caché del script de compresión
 scripts/.videos-cache.json
 
+# caché de los scripts de Python
+scripts/__pycache__/
+
 # build output
 dist/
 .vercel/
@@ -35,3 +38,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# ajustes personales de Claude Code (los de equipo irían en .claude/settings.json)
+.claude/settings.local.json

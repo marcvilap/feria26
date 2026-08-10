@@ -3,9 +3,7 @@ import { Image, getImage } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
-import ad29 from '$assets/images/ads/ad-29.jpg'
-import ad14 from '$assets/images/ads/ad-14.jpg'
-import ad29video from '$assets/videos/ads/casino.mp4'
+import { ad, adsFor } from '$utils/data-ads'
 import aniversario from '$utils/data-aniversario'
 
 const title = '60 Aniversario COPE Málaga'
@@ -14,12 +12,9 @@ const linkPrev = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNext = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 const linkPrevMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNextMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
-const ads = [{ spot: 86, image: ad29, url: '#', video: ad29video }]
-const adsMobile = [
-	{ spot: 87, image: ad29, url: '#', video: ad29video },
-	{ spot: 88, image: ad14, url: 'https://famadesa.es' },
-]
-const modalAd = { spot: 89, image: ad14, url: 'https://famadesa.es' }
+const ads = [ad(86)]
+const adsMobile = adsFor(87, 88)
+const modalAd = ad(89)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>

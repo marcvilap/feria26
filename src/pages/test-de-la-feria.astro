@@ -3,10 +3,8 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import VideoGrid from '$components/VideoGrid.astro'
-import ad01 from '$assets/images/ads/ad-01.jpg'
-import ad02 from '$assets/images/ads/ad-02.jpg'
-import ad01video from '$assets/videos/ads/unicaja.mp4'
 import test from '$utils/data-test'
+import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Test de la Feria'
 const variation = 4
@@ -14,25 +12,18 @@ const linkPrev = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
 const linkNext = { name: '60 Aniversario', path: '/60-aniversario' }
 const linkPrevMobile = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
 const linkNextMobile = { name: '60 Aniversario', path: '/60-aniversario' }
-const ads = [{ spot: 52, image: ad01, url: '#', video: ad01video }]
-const adsMobile = [
-	{ spot: 53, image: ad01, url: '#', video: ad01video },
-	{ spot: 54, image: ad02, url: 'https://www.tesesa.com/' },
-]
+const ads = [ad(52)]
+const adsMobile = adsFor(53, 54)
 // La sección pasa de 4 a 19 vídeos y solo tenía reservados los pop-ups 55-58. Con la
 // numeración congelada, los cuatro que ya estaban conservan su hueco y los quince que
 // se añaden estrenan número: ya no quedaban libres de los intersticiales, así que van
 // del 91 en adelante (ver PUBLICIDAD.md). El orden sigue al de la parrilla.
 // prettier-ignore
-const modalAd = {
-	spot: 55,
-	spots: [55, 56, 57, 58, 91, 92, 93, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
-	image: ad02,
-	url: 'https://www.tesesa.com/',
-}
+const modalSpots = [55, 56, 57, 58, 91, 92, 93, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107]
+const modalAds = adsFor(...modalSpots)
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAds}>
 	<Split {variation} {ads}>
 		<Title class="text-blue-600">{title}</Title>
 		<div class="prose my-12 max-w-2xl">
@@ -47,6 +38,6 @@ const modalAd = {
 				Málaga, siempre hay espacio para compartir una sonrisa.
 			</p>
 		</div>
-		<VideoGrid adSpot={modalAd.spots} items={test} columns={2} />
+		<VideoGrid adSpot={modalSpots} items={test} columns={2} />
 	</Split>
 </Layout>
