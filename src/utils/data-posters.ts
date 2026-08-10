@@ -21,7 +21,7 @@ import image2019 from '$assets/images/posters/2019.webp'
 import image2022 from '$assets/images/posters/2022.webp'
 import image2023 from '$assets/images/posters/2023.webp'
 import image2024 from '$assets/images/posters/2024.webp'
-// PENDIENTE: falta el cartel de 2025, el cliente no lo ha entregado.
+import image2025 from '$assets/images/posters/2025.webp'
 import image2026 from '$assets/images/posters/2026.webp'
 
 export default [
@@ -48,5 +48,6 @@ export default [
 	{ image: image2022, name: '2022' },
 	{ image: image2023, name: '2023' },
 	{ image: image2024, name: '2024' },
+	{ image: image2025, name: '2025' },
 	{ image: image2026, name: '2026' },
 ]
