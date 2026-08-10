@@ -3,13 +3,8 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import VideoGrid from '$components/VideoGrid.astro'
-import ad04 from '$assets/images/ads/ad-04.png'
-import ad05 from '$assets/images/ads/ad-05.jpg'
-import ad06 from '$assets/images/ads/ad-06.jpg'
-import ad07 from '$assets/images/ads/ad-07.png'
-import ad06video from '$assets/videos/ads/torremolinos.mp4'
-import ad07video from '$assets/videos/ads/muelle.mp4'
 import teLoCuenta from '$utils/data-te-lo-cuenta'
+import { adsFor } from '$utils/data-ads'
 
 // Unifica el texto de apertura y la subpágina de vídeos en una sola sección.
 const title = 'Te lo cuenta COPE Málaga'
@@ -18,24 +13,19 @@ const linkPrev = { name: 'Curiosidades', path: '/curiosidades' }
 const linkNext = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkPrevMobile = { name: 'Curiosidades', path: '/curiosidades' }
 const linkNextMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
-const ads = [
-	{ spot: 43, image: ad04, url: 'https://coin.es' },
-	{ spot: 44, image: ad06, url: '#', video: ad06video },
-]
-const adsMobile = [
-	{ spot: 45, image: ad05, url: 'https://emtsam.org' },
-	{ spot: 46, image: ad07, url: '#', video: ad07video },
-]
-// La sección pasa de 5 a 8 vídeos y solo tenía reservados los pop-ups 47-51. Con la
-// numeración congelada, las cinco piezas de 2026 conservan su hueco; las tres de 2025
-// ocupan los dos últimos números que quedaron libres al eliminar los intersticiales
-// (84 y 85) y, agotados esos, el primero nuevo: el 90.
-// Cuando lleguen las dos piezas que faltan de 2026 van detrás de la quinta, con los
-// huecos 94 y 95: la lista quedaría [47..51, 94, 95, 84, 85, 90].
-const modalAd = { spot: 47, spots: [47, 48, 49, 50, 51, 84, 85, 90], image: ad07, url: '#', video: ad07video }
+const ads = adsFor(43, 44)
+const adsMobile = adsFor(45, 46)
+// Un hueco por pieza, en el mismo orden que la parrilla. La sección solo tenía
+// reservados los pop-ups 47-51 y ya va por once piezas, así que la numeración sale a
+// trompicones: las cinco de 2026 conservan su hueco; las tres nuevas de agosto estrenan
+// los reservados 94 y 95 y, agotados esos, el 110; y las tres recuperadas de 2025 se
+// quedan con 84, 85 y 90, que es lo importante porque están vendidos y moverlos les
+// cambiaría el vídeo al anunciante.
+const modalSpots = [47, 48, 49, 50, 51, 94, 95, 110, 84, 85, 90]
+const modalAds = adsFor(...modalSpots)
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAds}>
 	<div class="lg:h-40"></div>
 	<Split {variation} {ads}>
 		<div class="relative lg:mb-8 lg:-translate-y-40">
@@ -49,6 +39,6 @@ const modalAd = { spot: 47, spots: [47, 48, 49, 50, 51, 84, 85, 90], image: ad07
 			</p>
 		</div>
 
-		<VideoGrid adSpot={modalAd.spots} items={teLoCuenta} />
+		<VideoGrid adSpot={modalSpots} items={teLoCuenta} />
 	</Split>
 </Layout>
