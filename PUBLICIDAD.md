@@ -1,9 +1,9 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-110 espacios repartidos por la revista. **38 están vendidos y montados**; los otros
-72 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+110 espacios repartidos por la revista. **39 están vendidos y montados**; los otros
+71 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
-`showAds` a `false` en `src/utils/config.ts` se pintan así los 105 de golpe, que es
+`showAds` a `false` en `src/utils/config.ts` se pintan así los 110 de golpe, que es
 como se le enseña la maqueta al comercial.
 
 El reparto de anunciantes vive en `src/utils/data-ads.ts` (una línea por hueco) y sale
@@ -36,13 +36,19 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 
 - **El hueco 62 está asignado dos veces**, a Larios Centro y a Syrluz. Se ha montado
   Larios Centro y Syrluz espera destino.
-- **Seis anunciantes tienen creatividad pero no número.** En la columna «NUMERO MHOU»
+- **Cuatro anunciantes tienen creatividad pero no número.** En la columna «NUMERO MHOU»
   del Excel llevan una nota en vez de una cifra: Citroën Sama («video funes»), EMT
-  («VIDEO ENRIQUE»), Muelle Uno («video maria barranco»), Tiendas Juan Lucas («VIDEO
-  MONICA»), Diputación de Málaga («Plaza toros») y Olin (interrogantes). De esos
-  cuatro vídeos solo existe hoy el de Juanfran Funes, que es el **58** del Test y ya
-  está vendido a Narbona Solís. Sus ficheros ya están en `src/assets/images/ads/2026/`:
-  para montarlos solo hay que añadir la línea en `data-ads.ts`.
+  («VIDEO ENRIQUE»), Diputación de Málaga («Plaza toros») y Olin (interrogantes). Sus
+  ficheros ya están en `src/assets/images/ads/2026/`: para montarlos solo hay que añadir
+  la línea en `data-ads.ts`.
+
+  Los otros dos de ese grupo ya están colocados, porque llegó el vídeo al que iban
+  pegados: **Muelle Uno** en el 108, con el saludo de María Barranco, y **Tiendas Juan
+  Lucas** en el 94, con el reportaje de Mónica García. Citroën Sama y EMT entrarán igual
+  en cuanto lleguen los vídeos de Funes y de Enrique Ortiz. Ojo con el de Funes: hoy ya
+  existe una pieza suya, la del Test, pero ese hueco es el **58** y está vendido a
+  Narbona Solís, así que se refieren a un vídeo nuevo.
+
 - **Tres anunciantes no han entregado nada**: Ayto. de Benalmádena, Ayto. de Benahavís y
   Tejeros.
 - **Cartojal no ocupa un hueco numerado.** Lo que el Excel llamaba «MAPA FERIA» es el
@@ -159,7 +165,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   91 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. de Rincón de la Victoria |
 |   92 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
 |   93 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   94 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
+|   94 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | Tiendas Juan Lucas             |
 |   95 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
 |   96 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
 |   97 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
@@ -183,7 +189,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 110 huecos: 18 laterales, 28 en móvil y 64 dentro de pop-ups.
 - 80 admiten vídeo en popup; 30 son solo imagen.
-- **38 vendidos** (8 de ellos con vídeo) y 72 libres.
+- **39 vendidos** (8 de ellos con vídeo) y 71 libres.
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
 ## Notas

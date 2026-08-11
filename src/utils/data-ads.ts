@@ -9,15 +9,15 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 38 de 107 ocupados.
+// todos. Hoy hay 39 de 110 ocupados.
 //
 // PENDIENTE (ver el correo del 10 de agosto de 2026):
 //   - El hueco 62 se asignó a la vez a Larios Centro y a Syrluz. Se ha montado Larios
 //     Centro por ser el que llegó primero en el listado; Syrluz espera destino.
-//   - Cinco anunciantes tienen material pero no número: Citroën Sama, EMT, Tiendas Juan
-//     Lucas, Diputación de Málaga y Olin. Sus creatividades ya están en
-//     `src/assets/images/ads/2026/`, solo falta añadir aquí la línea con su hueco.
-//     Los tres primeros dependen de vídeos que el cliente aún no ha entregado.
+//   - Cuatro anunciantes tienen material pero no número: Citroën Sama, EMT, Diputación de
+//     Málaga y Olin. Sus creatividades ya están en `src/assets/images/ads/2026/`, solo
+//     falta añadir aquí la línea con su hueco. Los dos primeros dependen de vídeos que el
+//     cliente aún no ha entregado (los de Funes y Enrique Ortiz).
 //   - Ayto. Benalmádena, Ayto. Benahavís y Tejeros no han entregado material.
 //   - Cartojal no ocupa un hueco numerado: patrocina el fondo entero del Mapa Interactivo
 //     («MAPA FERIA» en el Excel). Está montado con el arte de 2025 hasta que entreguen el
@@ -59,6 +59,7 @@ import reactiva from '$assets/images/ads/2026/reactiva.jpg'
 import rinconDeLaVictoria from '$assets/images/ads/2026/rincon-de-la-victoria.png'
 import siciliaHermanos from '$assets/images/ads/2026/sicilia-hermanos.jpg'
 import tesesa from '$assets/images/ads/2026/tesesa.jpg'
+import tiendasJuanLucas from '$assets/images/ads/2026/tiendas-juan-lucas.jpg'
 import torremolinos from '$assets/images/ads/2026/torremolinos.jpg'
 import unicaja from '$assets/images/ads/2026/unicaja.jpg'
 import esteponaVideo from '$assets/videos/ads/2026/estepona.mp4'
@@ -111,6 +112,9 @@ const advertisers: Record<number, Advertiser> = {
 	86: { name: 'Reactiva', image: reactiva, url: 'https://reactiva.es' },
 	90: { name: 'Ayuntamiento de Alhaurín de la Torre', image: alhaurinDeLaTorre, url: 'https://www.alhaurindelatorre.es' },
 	91: { name: 'Ayuntamiento de Rincón de la Victoria', image: rinconDeLaVictoria, url: 'https://www.rincondelavictoria.es' },
+	// Tampoco traía número, sino la nota «VIDEO MONICA»: va pegado al reportaje de Mónica
+	// García, que se publicó el 10 de agosto y estrenó el hueco 94.
+	94: { name: 'Tiendas Juan Lucas', image: tiendasJuanLucas, url: 'https://juanlucas.com' },
 	// En el Excel no traía número, sino la nota «video maria barranco»: va pegado al saludo
 	// de la abanderada, que se publicó el 10 de agosto y estrenó el hueco 108.
 	108: { name: 'Muelle Uno', image: muelleUno, url: 'https://www.muelleuno.com' },
