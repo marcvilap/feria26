@@ -1,8 +1,7 @@
 ---
-import { Image, getImage } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
-import journals from '$utils/data-journals'
+import JournalGrid from '$components/JournalGrid.astro'
 import { ad, adsFor } from '$utils/data-ads'
 
 const title = 'Revistas anteriores'
@@ -18,20 +17,6 @@ const modalAd = ad(22)
 <Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile} {modalAd}>
 	<Split {variation} {ads}>
 		<h1 class="mb-12 text-2xl text-blue-600">{title}</h1>
-		<div class="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 xl:grid-cols-4 2xl:gap-12">
-			{
-				journals.map(async ({ image, name }) => (
-					<article class="max-2xl:text-sm">
-						<h3 class="text-neutral-500">{name}</h3>
-						<Image class="mb-3 mt-1 aspect-[2/3] w-full rounded object-cover" src={image} width="220" densities={[2]} alt="" />
-						<div class="flex justify-center gap-2 text-center text-blue-600">
-							<a class="open-in-modal underline hover:text-orange-600" target="_blank" href={(await getImage({ src: image, format: 'webp' })).src}>
-								Ver
-							</a>
-						</div>
-					</article>
-				))
-			}
-		</div>
+		<JournalGrid />
 	</Split>
 </Layout>

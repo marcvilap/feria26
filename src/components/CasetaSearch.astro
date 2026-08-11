@@ -2,9 +2,16 @@
 import Icon from '$components/Icon.astro'
 ---
 
+{
+	/* Va relleno de azul, no en contorno. El botón vive sobre el fucsia de Cartojal:
+	   con el fondo transparente que tenía antes, el fucsia se veía a través y el
+	   conjunto quedaba lavado — Mónica García lo describió como «blanco y
+	   semitransparente» (COPE, 11/08/2026). Relleno sólido + lupa blanca para que se
+	   lea que ahí se busca. */
+}
 <button
 	id="caseta-search-open"
-	class="inline-flex items-center gap-3 rounded-full border-2 border-blue-600 px-6 py-3 font-condensed text-lg font-bold uppercase text-blue-600 transition-colors hover:bg-blue-600 hover:text-white"
+	class="inline-flex items-center gap-3 rounded-full border-2 border-blue-600 bg-blue-600 px-6 py-3 font-condensed text-lg font-bold uppercase text-white shadow-lg transition-colors hover:border-blue-800 hover:bg-blue-800"
 >
 	<span class="size-5"><Icon name="search" /></span>
 	Buscar caseta

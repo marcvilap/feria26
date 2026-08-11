@@ -2,8 +2,7 @@
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
-import VideoGrid from '$components/VideoGrid.astro'
-import revista from '$utils/data-revista'
+import JournalGrid from '$components/JournalGrid.astro'
 import { ad, adsFor } from '$utils/data-ads'
 
 // Unifica las dos secciones de 2025: "Bienvenida" (texto de apertura y acceso a
@@ -16,7 +15,9 @@ const linkPrevMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria'
 const linkNextMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
 const ads = [ad(2)]
 const adsMobile = adsFor(3, 4)
-// Un hueco por testimonio de la parrilla, en el mismo orden.
+// Un hueco por portada de la galería, en el mismo orden. Antes eran los doce
+// testimonios en vídeo; al cambiar la parrilla por «Revistas anteriores»
+// (11/08/2026) los huecos se mantienen, ahora sobre las portadas.
 const modalSpots = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 const modalAds = adsFor(...modalSpots)
 ---
@@ -44,8 +45,15 @@ const modalAds = adsFor(...modalSpots)
 				</div>
 			</div>
 
+			{
+				/* Antes aquí iba la parrilla de testimonios en vídeo (`data-revista`). La clienta
+				   pidió el 11/08/2026 que al entrar en «Revista de Feria» aparezcan las
+				   «Revistas anteriores», no los vídeos del test del año pasado. Los vídeos
+				   siguen en `src/utils/data-revista.ts` por si se recolocan en otra sección. */
+			}
 			<div class="mt-16">
-				<VideoGrid adSpot={modalSpots} items={revista} />
+				<h2 class="mb-8 font-condensed text-3xl font-bold uppercase text-blue-600">Revistas anteriores</h2>
+				<JournalGrid />
 			</div>
 		</div>
 	</Split>

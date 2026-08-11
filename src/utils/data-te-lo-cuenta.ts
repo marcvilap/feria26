@@ -46,10 +46,11 @@ export default [
 	{ image: image01, video: video01, name: 'El flamenco y la Feria de Málaga' },
 	{ image: image02, video: video02, name: 'Los fuegos artificiales', description: 'EMILIO GUERRERO' },
 	{ image: image03, video: video03, name: 'El transporte público', description: 'JAVIER BAUTISTA' },
-	{ image: image04, video: video04, name: 'Los peinados de Feria' },
+	{ image: image04, video: video04, name: 'Los peinados de feria' },
 	{ image: image05, video: video05, name: 'Comercios históricos que viven la feria', description: 'ANDRÉS G. ATIENZA' },
-	// El título sale del nombre del fichero que subió al Drive el 10 de agosto de 2026.
-	{ image: imageMonica, video: videoMonica, name: 'La feria de Málaga es mucho más que fiesta', description: 'MÓNICA GARCÍA' },
+	// El título sale del nombre del fichero que subió al Drive el 10 de agosto de 2026,
+	// corregido a «Feria de Málaga» por el criterio de mayúsculas de la clienta (11/08/2026).
+	{ image: imageMonica, video: videoMonica, name: 'La Feria de Málaga es mucho más que fiesta', description: 'MÓNICA GARCÍA' },
 	{ name: 'Enrique Ortiz' },
 	{ name: 'Alejandro' },
 	{ image: image06, video: video06, name: 'Tendencias de la moda flamenca', description: 'CARMEN CERBÁN · FERIA DE MÁLAGA 2025' },
