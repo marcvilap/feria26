@@ -9,7 +9,7 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 58 de 93 ocupados: los 57 de esta tabla más el 70, que es Carteles de
+// todos. Hoy hay 59 de 93 ocupados: los 58 de esta tabla más el 70, que es Carteles de
 // Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes. Los
 // números llegan al 110, pero 17 ya no existen: los pop-ups de las dos secciones de
 // revistas (05-16 y 22) y los cuatro del 60 Aniversario (86-89), retirados porque en esas
@@ -30,11 +30,11 @@
 // PENDIENTE (ver el correo del 10 de agosto de 2026):
 //   - El hueco 62 se asignó a la vez a Larios Centro y a Syrluz. Se ha montado Larios
 //     Centro por ser el que llegó primero en el listado; Syrluz espera destino.
-//   - Olin tiene creatividad pero sigue sin hueco: en el Excel su casilla de número son
-//     interrogantes. EMT y Sabor a Málaga (la Diputación) estaban en este mismo caso y ya
-//     han entrado por Carteles de Feria, en los carteles de 2005 y 2002; Sabor a Málaga
-//     tiene además el hueco 29 desde el 13/08/2026. EMT sigue esperando el vídeo de
-//     Enrique Ortiz, pero eso solo afecta al otro hueco que le quede por asignar.
+//   - Ya no queda nadie con creatividad y sin hueco. Los tres que estaban así entraron el
+//     13/08/2026: Sabor a Málaga (la Diputación) en el 29, Olin en el 77, y EMT por
+//     Carteles de Feria, en el cartel de 2005. Sabor a Málaga está además en el cartel de
+//     2002. EMT sigue esperando el vídeo de Enrique Ortiz, pero eso solo afecta al otro
+//     hueco que le quede por asignar.
 //     OJO: el Excel situaba a la Diputación en «Plaza toros», que es el hueco 83 y sigue
 //     vacío. Marc dio el 29, así que el 83 queda pendiente de aclarar.
 //   - Ayto. Benalmádena y Tejeros no han entregado material. Ayto. Benahavís sí, el
@@ -78,6 +78,7 @@ import narbona from '$assets/images/ads/2026/narbona.jpg'
 import nissanSafa from '$assets/images/ads/2026/nissan-safa.jpeg'
 import nonnaPeppa from '$assets/images/ads/2026/nonna-peppa.jpg'
 import oamPlus from '$assets/images/ads/2026/oam-plus.png'
+import olin from '$assets/images/ads/2026/olin.png'
 import reactiva from '$assets/images/ads/2026/reactiva.jpg'
 import rinconDeLaVictoria from '$assets/images/ads/2026/rincon-de-la-victoria.png'
 import siciliaHermanos from '$assets/images/ads/2026/sicilia-hermanos.jpg'
@@ -139,6 +140,10 @@ const advertisers: Record<number, Advertiser> = {
 	71: { name: 'EADE', image: eade, url: 'https://eade.es' },
 	73: { name: 'Bodegas Carpe Diem', image: carpeDiem, url: 'https://www.bodegascarpediem.com' },
 	76: { name: 'Hipermueble', image: hipermueble, url: 'https://www.hiper-mueble.com', video: hipermuebleVideo },
+	// Último de los que tenían creatividad sin número: en el Excel su casílla eran
+	// interrogantes. Hueco dado por Marc el 13/08/2026. La creatividad viene a 481x481,
+	// muy por debajo del mínimo de 1152x1152, así que se verá blanda en alta densidad.
+	77: { name: 'Olin', image: olin, url: 'https://olin.es/es/fibra/?utm_source=cope&utm_medium=paid_referral&utm_campaign=veráno_2026&utm_content=banner' },
 	84: { name: 'Maex Cuevas Queipo', image: maex, url: 'https://maexdental.com/clinicas/malaga/maex-malaga/' },
 	85: { name: 'Ayuntamiento de Antequera', image: antequera, url: 'https://www.antequera.es' },
 	// El 86 (lateral del 60 Aniversario) se retira el 13/08/2026: esa sección se queda sin

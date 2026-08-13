@@ -1,7 +1,7 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**93 espacios** repartidos por la revista. **58 están vendidos y montados** y los otros
-35 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**93 espacios** repartidos por la revista. **59 están vendidos y montados** y los otros
+34 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
@@ -63,10 +63,9 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 
 - **El hueco 62 está asignado dos veces**, a Larios Centro y a Syrluz. Se ha montado
   Larios Centro y Syrluz espera destino.
-- **Solo Olin sigue con creatividad pero sin número.** En la columna «NUMERO MHOU» del
-  Excel su casilla son interrogantes, y tampoco tiene «NUEVO NUMERO». Su fichero ya está
-  en `src/assets/images/ads/2026/`: para montarlo solo hay que añadir la línea en
-  `data-ads.ts`.
+- **Ya no queda nadie con creatividad y sin hueco.** Los tres que estaban así entraron
+  el 13/08/2026: **Sabor a Málaga** (la Diputación) en el 29, **Olin** en el 77 y **EMT**
+  por Carteles de Feria, en el cartel de 2005.
 
   Los demás de ese grupo ya están colocados. **Muelle Uno** (108) y **Tiendas Juan
   Lucas** (94) entraron el 10 de agosto al llegar los vídeos a los que iban pegados —el
@@ -185,7 +184,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   74 | El vino y la Feria                     | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
 |   75 | El vino y la Feria                     | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   76 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Hipermueble ▶                                                                                                                                                                         |
-|   77 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
+|   77 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Olin                                                                                                                                                                                   |
 |   78 | Mapa Interactivo                       | Lateral                 | Solo imagen    | —                                                                                                                                                                                      |
 |   79 | Mapa Interactivo                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   80 | Mapa Interactivo                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
@@ -226,7 +225,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 93 huecos activos: 17 laterales, 26 en móvil y 50 dentro de pop-ups (+17 retirados).
 - 66 admiten vídeo en popup; 27 son solo imagen.
-- **58 vendidos** (11 de ellos con vídeo) y 35 libres. El 70 cuenta como uno, aunque
+- **59 vendidos** (11 de ellos con vídeo) y 34 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
