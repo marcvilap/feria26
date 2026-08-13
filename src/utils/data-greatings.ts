@@ -4,10 +4,8 @@
 // tres. Las altas van siempre al final.
 //
 // Los retratos de 2026 salen de un fotograma del propio vídeo, recortado a 600x600 como
-// los antiguos. El de Juanfran Funes sale de su pieza del Test, que sí está grabada.
-//
-// PENDIENTE: falta el vídeo del pregonero. Su ficha ya está publicada y se pinta como
-// «vídeo pendiente» para que el cliente vea el hueco al abrir la web (ver saludos.astro).
+// los antiguos. El de Juanfran Funes se recortó de su pieza del Test mientras no había
+// pregón; ya entregado el pregón se mantiene, que es el mismo rótulo y el mismo plano.
 import image01 from '$assets/images/greetings/greeting-01.webp'
 import image02 from '$assets/images/greetings/greeting-02.webp'
 import image03 from '$assets/images/greetings/greeting-03.webp'
@@ -17,6 +15,7 @@ import video01 from '$assets/videos/saludos/alcalde.mp4'
 import video02 from '$assets/videos/saludos/teresa.mp4'
 import video03 from '$assets/videos/saludos/justo.mp4'
 import videoBarranco from '$assets/videos/saludos/maria-barranco.mp4'
+import videoFunes from '$assets/videos/saludos/juanfran-funes.mp4'
 
 interface Greeting {
 	image: ImageMetadata
@@ -32,5 +31,5 @@ export default [
 	{ image: image02, video: video02, name: 'Teresa Porras', description: 'Concejala de Fiestas' },
 	// El cargo sale del rótulo de su vídeo, como en el resto del sitio.
 	{ image: imageBarranco, video: videoBarranco, name: 'María Barranco', description: 'Abanderada de la Feria 2026' },
-	{ image: imageFunes, name: 'Juanfran Funes', description: 'Pregonero de la Feria 2026' },
+	{ image: imageFunes, video: videoFunes, name: 'Juanfran Funes', description: 'Pregonero de la Feria 2026' },
 ] satisfies Greeting[]
