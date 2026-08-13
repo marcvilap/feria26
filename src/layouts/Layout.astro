@@ -34,7 +34,7 @@ const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, ad
 // `modalAd` es el genérico de la página y `modalAds` los de cada pop-up: se pintan las
 // dos cosas porque main.ts busca primero el hueco concreto y cae en el genérico si no
 // lo encuentra (por ejemplo en los pop-ups que no salen de una parrilla de vídeos).
-const modalTemplates = [...(modalAds ?? []).map(ad => ({ id: `modal-ad-${ad.spot}`, ad })), ...(modalAd ? [{ id: 'modal-ad', ad: modalAd }] : [])]
+const modalTemplates = [...(modalAds ?? []).map(ad => ({ id: `modal-ad-${ad.key ?? ad.spot}`, ad })), ...(modalAd ? [{ id: 'modal-ad', ad: modalAd }] : [])]
 ---
 
 <!doctype html>
