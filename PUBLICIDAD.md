@@ -1,7 +1,7 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**97 espacios** repartidos por la revista. **57 están vendidos y montados** y los otros
-40 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**97 espacios** repartidos por la revista. **58 están vendidos y montados** y los otros
+39 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
@@ -64,10 +64,14 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 
   Los demás de ese grupo ya están colocados. **Muelle Uno** (108) y **Tiendas Juan
   Lucas** (94) entraron el 10 de agosto al llegar los vídeos a los que iban pegados —el
-  saludo de María Barranco y el reportaje de Mónica García—. **EMT** y **Diputación de
-  Málaga** entraron el 13/08 por Carteles de Feria, en el hueco 70: les tocan los
-  carteles de 2005 y 2002. EMT, además, sigue esperando el vídeo de Enrique Ortiz, pero
-  eso solo afecta al hueco que le quede por asignar, no a este.
+  saludo de María Barranco y el reportaje de Mónica García—. **EMT** y **Sabor a Málaga**
+  —la marca de producto de la Diputación, que es lo que rotula su creatividad— entraron
+  el 13/08 por Carteles de Feria, en el hueco 70: les tocan los carteles de 2005 y 2002.
+  Sabor a Málaga tiene además el hueco **29** desde ese mismo día. EMT sigue esperando el
+  vídeo de Enrique Ortiz, pero eso solo afecta al hueco que le quede por asignar.
+
+  Ojo con el 83: el Excel situaba a la Diputación en «Plaza toros», que es ese hueco, y
+  sigue vacío. Marc dio el 29, así que el 83 queda pendiente de aclarar.
 
   **Citroën Sama** ya está resuelto: su nota «video funes» no era un "sin número", era la
   posición que ya tenía —el pop-up del saludo del pregonero, o sea el **109**—, igual que
@@ -125,7 +129,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   26 | Saludos                                | Pop-up (uno por vídeo)  | Solo imagen    | Tesesa                                                                                                                                                                                 |
 |   27 | Saludos                                | Pop-up (uno por vídeo)  | Solo imagen    | Automóviles Rueda                                                                                                                                                                      |
 |   28 | Saludos                                | Pop-up (uno por vídeo)  | Solo imagen    | Er Pichi de Cai                                                                                                                                                                        |
-|   29 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
+|   29 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Sabor a Málaga (Diputación)                                                                                                                                                            |
 |   30 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Detecpro                                                                                                                                                                               |
 |   31 | Curiosidades                           | Lateral                 | Solo imagen    | CC Rincón de la Victoria · **conflicto**: el Excel de Justo pedía Ayto. Antequera aquí (85→31), pero Rincón de la Victoria se queda (se duplica a 93) — sin aplicar, pendiente de Marc |
 |   32 | Curiosidades                           | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
@@ -214,7 +218,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 97 huecos activos: 18 laterales, 28 en móvil y 51 dentro de pop-ups (+13 retirados).
 - 68 admiten vídeo en popup; 29 son solo imagen.
-- **57 vendidos** (11 de ellos con vídeo) y 40 libres. El 70 cuenta como uno, aunque
+- **58 vendidos** (11 de ellos con vídeo) y 39 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
