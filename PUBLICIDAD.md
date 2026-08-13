@@ -1,7 +1,7 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**93 espacios** repartidos por la revista. **59 están vendidos y montados** y los otros
-34 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**93 espacios** repartidos por la revista. **60 están vendidos y montados** y los otros
+33 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
@@ -61,10 +61,12 @@ del Excel `RELACION URL REVISTA DE FERIA 26.xlsx` de la entrega del 10 de agosto
 
 Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 
-- **El hueco 62 está asignado dos veces**, a Larios Centro y a Syrluz. Se ha montado
-  Larios Centro y Syrluz espera destino.
+- ~~El hueco 62 está asignado dos veces~~ **Resuelto el 13/08/2026**: el 62 es de
+  **Syrluz**. Larios Centro no se queda fuera, porque ya está en Carteles de Feria, en el
+  cartel de 2010. Ojo: la utm del enlace de Syrluz dice «especial-feria-huelva», que es
+  lo que entregó el cliente.
 - **Ya no queda nadie con creatividad y sin hueco.** Los tres que estaban así entraron
-  el 13/08/2026: **Sabor a Málaga** (la Diputación) en el 29, **Olin** en el 77 y **EMT**
+  el 13/08/2026: **Sabor a Málaga** (la Diputación) en el 29, **Olin** en el 78 y **EMT**
   por Carteles de Feria, en el cartel de 2005.
 
   Los demás de ese grupo ya están colocados. **Muelle Uno** (108) y **Tiendas Juan
@@ -83,10 +85,14 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
   Muelle Uno traía «video maria barranco» y acabó en el 108. Se monta en los dos huecos,
   109 y **92**, como duplicación normal. Marc lo confirmó el 13/08/2026.
 
-- **Dos anunciantes no han entregado nada**: Ayto. de Benalmádena y Tejeros. El **Ayto.
-  de Benahavís** sí entregó el 13/08/2026 y va en el hueco **41**; su creatividad viene a
-  600×600, por debajo del mínimo de 1152×1152, así que se verá algo blanda en pantallas
-  de alta densidad.
+- **Solo Tejeros sigue sin entregar nada.** Los ayuntamientos de **Benahavís** (hueco
+  **41**) y **Benalmádena** (hueco **77**) entregaron el 13/08/2026. La de Benahavís
+  viene a 600×600, por debajo del mínimo de 1152×1152, así que se verá algo blanda en
+  pantallas de alta densidad; la de Benalmádena llegó en PDF y se rasterizó a 1600×1600.
+
+  **El enlace de Benalmádena está puesto a ojo**: ni el correo ni el Excel traían URL, así
+  que apunta a la web municipal (`benalmadena.es`). Conviene confirmarlo.
+
 - **Cartojal no ocupa un hueco numerado.** Lo que el Excel llamaba «MAPA FERIA» es el
   patrocinio del **fondo entero del Mapa Interactivo**: su fucsia `#E71F77`, su cenefa y
   su logotipo, como en 2025. Ya está montado, pero con el arte del año pasado —
@@ -169,7 +175,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   59 | Biznaga de Plata                       | Lateral                 | Solo imagen    | Famadesa ▶                                                                                                                                                                            |
 |   60 | Biznaga de Plata                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   61 | Biznaga de Plata                       | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
-|   62 | Biznaga de Plata › Votaciones          | Lateral                 | Imagen + vídeo | Larios Centro                                                                                                                                                                          |
+|   62 | Biznaga de Plata › Votaciones          | Lateral                 | Imagen + vídeo | Syrluz                                                                                                                                                                                 |
 |   63 | Biznaga de Plata › Votaciones          | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   64 | Biznaga de Plata › Votaciones          | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   65 | Carteles de Feria                      | Lateral                 | Imagen + vídeo | Sicilia Hermanos                                                                                                                                                                       |
@@ -184,8 +190,8 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   74 | El vino y la Feria                     | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
 |   75 | El vino y la Feria                     | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   76 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Hipermueble ▶                                                                                                                                                                         |
-|   77 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Olin                                                                                                                                                                                   |
-|   78 | Mapa Interactivo                       | Lateral                 | Solo imagen    | —                                                                                                                                                                                      |
+|   77 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Benalmádena                                                                                                                                                                   |
+|   78 | Mapa Interactivo                       | Lateral                 | Solo imagen    | Olin                                                                                                                                                                                   |
 |   79 | Mapa Interactivo                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   80 | Mapa Interactivo                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   81 | Plaza de Toros                         | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
@@ -225,7 +231,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 93 huecos activos: 17 laterales, 26 en móvil y 50 dentro de pop-ups (+17 retirados).
 - 66 admiten vídeo en popup; 27 son solo imagen.
-- **59 vendidos** (11 de ellos con vídeo) y 34 libres. El 70 cuenta como uno, aunque
+- **60 vendidos** (11 de ellos con vídeo) y 33 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
