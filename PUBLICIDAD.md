@@ -1,17 +1,23 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**97 espacios** repartidos por la revista. **58 están vendidos y montados** y los otros
-39 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**93 espacios** repartidos por la revista. **59 están vendidos y montados** y los otros
+34 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
 
-> **13/08/2026 — la numeración llega hasta 110, pero 13 huecos ya no existen.** Mónica
-> avisó de que **en las revistas no hay anuncios**, así que se retiran los pop-ups de
-> Revista de Feria (05-16) y de Revistas anteriores (22). Ninguno estaba vendido, y los
-> doce de la galería no llegaron a pintarse nunca. Los laterales y los de móvil de esas
-> dos secciones (02-04 y 17-21) **sí siguen**. Se marcan abajo en vez de borrarlos,
-> porque los números están congelados.
+> **13/08/2026 — la numeración llega hasta 110, pero 17 huecos ya no existen.** Se
+> retiran por decisión del cliente y se marcan abajo en vez de borrarlos, porque los
+> números están congelados.
+>
+> - **En las revistas no hay anuncios** (Mónica): fuera los pop-ups de Revista de Feria
+>   (05-16) y de Revistas anteriores (22). Ninguno estaba vendido, y los doce de la
+>   galería no llegaron a pintarse nunca. Los laterales y los de móvil de esas dos
+>   secciones (02-04 y 17-21) **sí siguen**.
+> - **El 60 Aniversario no lleva publicidad**: fuera los cuatro huecos de la sección
+>   (86-89), esta vez incluidos el lateral y los de móvil. **El 86 estaba vendido a
+>   Reactiva**, que era el único ocupado de los cuatro; Reactiva sigue en la web por
+>   Carteles de Feria, en el cartel de 2022.
 
 > **13/08/2026 (SOL-20260813-01):** Justo Fuentes pidió reposicionar 17 anunciantes.
 > Por corrección de Marc, son duplicaciones, no traslados: cada uno se queda en su
@@ -57,10 +63,9 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 
 - **El hueco 62 está asignado dos veces**, a Larios Centro y a Syrluz. Se ha montado
   Larios Centro y Syrluz espera destino.
-- **Solo Olin sigue con creatividad pero sin número.** En la columna «NUMERO MHOU» del
-  Excel su casilla son interrogantes, y tampoco tiene «NUEVO NUMERO». Su fichero ya está
-  en `src/assets/images/ads/2026/`: para montarlo solo hay que añadir la línea en
-  `data-ads.ts`.
+- **Ya no queda nadie con creatividad y sin hueco.** Los tres que estaban así entraron
+  el 13/08/2026: **Sabor a Málaga** (la Diputación) en el 29, **Olin** en el 77 y **EMT**
+  por Carteles de Feria, en el cartel de 2005.
 
   Los demás de ese grupo ya están colocados. **Muelle Uno** (108) y **Tiendas Juan
   Lucas** (94) entraron el 10 de agosto al llegar los vídeos a los que iban pegados —el
@@ -78,8 +83,10 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
   Muelle Uno traía «video maria barranco» y acabó en el 108. Se monta en los dos huecos,
   109 y **92**, como duplicación normal. Marc lo confirmó el 13/08/2026.
 
-- **Tres anunciantes no han entregado nada**: Ayto. de Benalmádena, Ayto. de Benahavís y
-  Tejeros.
+- **Dos anunciantes no han entregado nada**: Ayto. de Benalmádena y Tejeros. El **Ayto.
+  de Benahavís** sí entregó el 13/08/2026 y va en el hueco **41**; su creatividad viene a
+  600×600, por debajo del mínimo de 1152×1152, así que se verá algo blanda en pantallas
+  de alta densidad.
 - **Cartojal no ocupa un hueco numerado.** Lo que el Excel llamaba «MAPA FERIA» es el
   patrocinio del **fondo entero del Mapa Interactivo**: su fucsia `#E71F77`, su cenefa y
   su logotipo, como en 2025. Ya está montado, pero con el arte del año pasado —
@@ -141,7 +148,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   38 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Molina Caballero                                                                                                                                                                       |
 |   39 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Da Nonna Peppa                                                                                                                                                                         |
 |   40 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Maskom ▶                                                                                                                                                                              |
-|   41 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
+|   41 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Benahavís                                                                                                                                                                     |
 |   42 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. Rincón de la Victoria · dup. de 91                                                                                                                                               |
 |   43 | Te lo cuenta COPE Málaga               | Lateral                 | Solo imagen    | Abasthosur                                                                                                                                                                             |
 |   44 | Te lo cuenta COPE Málaga               | Lateral                 | Imagen + vídeo | Acosol                                                                                                                                                                                 |
@@ -177,7 +184,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   74 | El vino y la Feria                     | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
 |   75 | El vino y la Feria                     | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   76 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Hipermueble ▶                                                                                                                                                                         |
-|   77 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
+|   77 | El vino y la Feria                     | Pop-up (uno por vídeo)  | Imagen + vídeo | Olin                                                                                                                                                                                   |
 |   78 | Mapa Interactivo                       | Lateral                 | Solo imagen    | —                                                                                                                                                                                      |
 |   79 | Mapa Interactivo                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
 |   80 | Mapa Interactivo                       | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
@@ -186,10 +193,10 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   83 | Plaza de Toros                         | Pop-up                  | Solo imagen    | —                                                                                                                                                                                      |
 |   84 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Maex Cuevas Queipo                                                                                                                                                                     |
 |   85 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Antequera                                                                                                                                                                     |
-|   86 | 60 Aniversario                         | Lateral                 | Imagen + vídeo | Reactiva                                                                                                                                                                               |
-|   87 | 60 Aniversario                         | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
-|   88 | 60 Aniversario                         | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
-|   89 | 60 Aniversario                         | Pop-up                  | Solo imagen    | —                                                                                                                                                                                      |
+|   86 | 60 Aniversario                         | Lateral                 | Imagen + vídeo | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
+|   87 | 60 Aniversario                         | Móvil                   | Imagen + vídeo | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
+|   88 | 60 Aniversario                         | Móvil                   | Solo imagen    | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
+|   89 | 60 Aniversario                         | Pop-up                  | Solo imagen    | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
 |   90 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Alhaurín de la Torre                                                                                                                                                          |
 |   91 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Rincón de la Victoria                                                                                                                                                         |
 |   92 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Citroën Sama · alta 13/08                                                                                                                                                              |
@@ -216,9 +223,9 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 ## Resumen
 
-- 97 huecos activos: 18 laterales, 28 en móvil y 51 dentro de pop-ups (+13 retirados).
-- 68 admiten vídeo en popup; 29 son solo imagen.
-- **58 vendidos** (11 de ellos con vídeo) y 39 libres. El 70 cuenta como uno, aunque
+- 93 huecos activos: 17 laterales, 26 en móvil y 50 dentro de pop-ups (+17 retirados).
+- 66 admiten vídeo en popup; 27 son solo imagen.
+- **59 vendidos** (11 de ellos con vídeo) y 34 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
