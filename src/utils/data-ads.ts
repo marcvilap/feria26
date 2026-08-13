@@ -9,10 +9,11 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 57 de 97 ocupados: los 56 de esta tabla más el 70, que es Carteles de
+// todos. Hoy hay 58 de 93 ocupados: los 57 de esta tabla más el 70, que es Carteles de
 // Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes. Los
-// números llegan al 110, pero 13 ya no existen: los pop-ups de las dos secciones de
-// revistas (05-16 y 22), retirados porque ahí no hay publicidad (ver PUBLICIDAD.md).
+// números llegan al 110, pero 17 ya no existen: los pop-ups de las dos secciones de
+// revistas (05-16 y 22) y los cuatro del 60 Aniversario (86-89), retirados porque en esas
+// secciones no hay publicidad (ver PUBLICIDAD.md).
 //
 // SOL-20260813-01 (13/08/2026): Justo Fuentes pidió reposicionar 17 anunciantes según
 // `POSICIONAMIENTO A MAYORES CLIENTES REV. DIG FERIA MALAGA 26.xlsx`. Marc corrigió que
@@ -36,7 +37,8 @@
 //     Enrique Ortiz, pero eso solo afecta al otro hueco que le quede por asignar.
 //     OJO: el Excel situaba a la Diputación en «Plaza toros», que es el hueco 83 y sigue
 //     vacío. Marc dio el 29, así que el 83 queda pendiente de aclarar.
-//   - Ayto. Benalmádena, Ayto. Benahavís y Tejeros no han entregado material.
+//   - Ayto. Benalmádena y Tejeros no han entregado material. Ayto. Benahavís sí, el
+//     13/08/2026: va en el 41.
 //   - Cartojal no ocupa un hueco numerado: patrocina el fondo entero del Mapa Interactivo
 //     («MAPA FERIA» en el Excel). Está montado con el arte de 2025 hasta que entreguen el
 //     de este año (ver mapa-interactivo.astro).
@@ -50,6 +52,7 @@ import aquavelis from '$assets/images/ads/2026/aquavelis.jpeg'
 import araboka from '$assets/images/ads/2026/araboka.jpg'
 import automovilesRueda from '$assets/images/ads/2026/automoviles-rueda.jpg'
 import ayuntamientoMalaga from '$assets/images/ads/2026/ayuntamiento-malaga.jpeg'
+import benahavis from '$assets/images/ads/2026/benahavis.jpg'
 import carpeDiem from '$assets/images/ads/2026/carpe-diem.jpg'
 import cashSierraNevada from '$assets/images/ads/2026/cash-sierra-nevada.png'
 import ccRinconDeLaVictoria from '$assets/images/ads/2026/cc-rincon-de-la-victoria.png'
@@ -112,6 +115,10 @@ const advertisers: Record<number, Advertiser> = {
 	38: { name: 'Molina Caballero', image: molinaCaballero, url: 'https://molinacaballero.com/tendencias-reformas-2026-ds1/?utm_source=cope&utm_medium=cope&utm_campaign=cope-fer-26&utm_id=COPEFERIA' },
 	39: { name: 'Da Nonna Peppa', image: nonnaPeppa, url: 'https://danonnapepparistorante.com' },
 	40: { name: 'Maskom', image: maskom, url: 'https://www.maskom.es/folleto/', video: maskomVideo },
+	// Entregado el 13/08/2026, hueco dado por Marc. La creatividad viene a 600x600, por
+	// debajo del mínimo de 1152x1152 que pide el sitio para el 2x, así que se verá algo
+	// blanda en pantallas de alta densidad. Si el ayuntamiento manda una mayor, se cambia.
+	41: { name: 'Ayuntamiento de Benahavís', image: benahavis, url: 'https://www.benahavis.es' },
 	43: { name: 'Abasthosur', image: abasthosur, url: 'https://abasthosur.es' },
 	44: { name: 'Acosol', image: acosol, url: 'https://www.acosol.es' },
 	47: { name: 'Aluminios Mata', image: aluminiosMata, url: 'https://www.aluminiosmata.com' },
@@ -134,7 +141,9 @@ const advertisers: Record<number, Advertiser> = {
 	76: { name: 'Hipermueble', image: hipermueble, url: 'https://www.hiper-mueble.com', video: hipermuebleVideo },
 	84: { name: 'Maex Cuevas Queipo', image: maex, url: 'https://maexdental.com/clinicas/malaga/maex-malaga/' },
 	85: { name: 'Ayuntamiento de Antequera', image: antequera, url: 'https://www.antequera.es' },
-	86: { name: 'Reactiva', image: reactiva, url: 'https://reactiva.es' },
+	// El 86 (lateral del 60 Aniversario) se retira el 13/08/2026: esa sección se queda sin
+	// publicidad por decision del cliente. Era el único hueco vendido de los cuatro que
+	// tenía. Reactiva sigue en la web por Carteles de Feria, en el cartel de 2022.
 	90: { name: 'Ayuntamiento de Alhaurín de la Torre', image: alhaurinDeLaTorre, url: 'https://www.alhaurindelatorre.es' },
 	91: { name: 'Ayuntamiento de Rincón de la Victoria', image: rinconDeLaVictoria, url: 'https://www.rincondelavictoria.es' },
 	// Tampoco traía número, sino la nota «VIDEO MONICA»: va pegado al reportaje de Mónica
