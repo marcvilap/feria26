@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
+import { ad, adsFor } from '$utils/data-ads'
 import aniversario from '$utils/data-aniversario'
 
 const title = '60 Aniversario COPE Málaga'
@@ -11,14 +12,15 @@ const linkPrev = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNext = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 const linkPrevMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNextMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
-// Sección sin publicidad por decisión del cliente (13/08/2026): se retiran los cuatro
-// huecos que tenía, el lateral 86 (que estaba vendido a Reactiva), los de móvil 87 y 88,
-// y el pop-up 89. `Split` exige la lista, así que va vacía y la columna lateral no pinta
-// nada. Ver PUBLICIDAD.md.
+const ads = [ad(86)]
+const adsMobile = adsFor(87, 88)
+// Sin publicidad en los pop-ups (13/08/2026), como en las dos secciones de revistas:
+// aquí estaba el hueco 89 y se retira. El lateral y los de móvil se quedan, que esos son
+// de la página. Ver PUBLICIDAD.md.
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile}>
-	<Split {variation} ads={[]}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>
+	<Split {variation} {ads}>
 		<Title class="text-blue-600">60 años de radio, un aniversario para recordar</Title>
 		<div class="prose my-12 max-w-2xl">
 			<p>
