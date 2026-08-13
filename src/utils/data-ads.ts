@@ -30,9 +30,12 @@
 //   - El hueco 62 se asignó a la vez a Larios Centro y a Syrluz. Se ha montado Larios
 //     Centro por ser el que llegó primero en el listado; Syrluz espera destino.
 //   - Olin tiene creatividad pero sigue sin hueco: en el Excel su casilla de número son
-//     interrogantes. EMT y Diputación de Málaga estaban en este mismo caso y ya han
-//     entrado por Carteles de Feria (2005 y 2002). EMT sigue esperando el vídeo de
+//     interrogantes. EMT y Sabor a Málaga (la Diputación) estaban en este mismo caso y ya
+//     han entrado por Carteles de Feria, en los carteles de 2005 y 2002; Sabor a Málaga
+//     tiene además el hueco 29 desde el 13/08/2026. EMT sigue esperando el vídeo de
 //     Enrique Ortiz, pero eso solo afecta al otro hueco que le quede por asignar.
+//     OJO: el Excel situaba a la Diputación en «Plaza toros», que es el hueco 83 y sigue
+//     vacío. Marc dio el 29, así que el 83 queda pendiente de aclarar.
 //   - Ayto. Benalmádena, Ayto. Benahavís y Tejeros no han entregado material.
 //   - Cartojal no ocupa un hueco numerado: patrocina el fondo entero del Mapa Interactivo
 //     («MAPA FERIA» en el Excel). Está montado con el arte de 2025 hasta que entreguen el
@@ -98,6 +101,10 @@ const advertisers: Record<number, Advertiser> = {
 	26: { name: 'Tesesa', image: tesesa, url: 'https://www.tesesa.com' },
 	27: { name: 'Automóviles Rueda', image: automovilesRueda, url: 'https://www.concesionarios.seat/home/overview-dw.dealer.automoviles-rueda.html' },
 	28: { name: 'Er Pichi de Cai', image: erPichiDeCai, url: 'https://erpichidecai.com' },
+	// Sabor a Málaga es la marca de producto de la Diputación: es lo que dice la
+	// creatividad, y por eso se rotula así y no «Diputación de Málaga». Hueco dado por
+	// Marc el 13/08/2026. Sigue además en Carteles de Feria, en el cartel de 2002.
+	29: { name: 'Sabor a Málaga', image: diputacionMalaga, url: 'https://saboramalaga.es' },
 	30: { name: 'Detecpro', image: detecpro, url: 'https://www.detectpro.es/' },
 	31: { name: 'CC Rincón de la Victoria', image: ccRinconDeLaVictoria, url: 'https://www.ccrincondelavictoria.com/en-verano-abrimos-todos-los-dias/' },
 	34: { name: 'Cash Sierra Nevada', image: cashSierraNevada, url: 'https://cashsierranevada.es' },
@@ -199,7 +206,7 @@ const carteles: Record<string, Omit<Ad, 'spot' | 'key'>> = {
 	'2001': { name: 'Detecpro', image: detecpro, url: 'https://www.detectpro.es/' },
 	// El Excel da el enlace sin protocolo («saboramalaga.es»), que es la marca de
 	// producto de la Diputación; se monta como https igual que el resto.
-	'2002': { name: 'Diputación de Málaga', image: diputacionMalaga, url: 'https://saboramalaga.es' },
+	'2002': { name: 'Sabor a Málaga', image: diputacionMalaga, url: 'https://saboramalaga.es' },
 	'2003': { name: 'EADE', image: eade, url: 'https://eade.es' },
 	'2004': {
 		name: 'EIG',
