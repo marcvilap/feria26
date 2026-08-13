@@ -23,9 +23,14 @@ const allScripts = () => {
 		// Cada pop-up es un hueco distinto y puede llevar un anunciante distinto: el
 		// número lo trae el elemento pulsado y con él se busca su <template> (ver
 		// Layout.astro). Las secciones con un solo pop-up declaran el genérico.
+		//
+		// `data-ad-key` solo hace falta donde varios pop-ups comparten número: en
+		// Carteles de Feria los 25 son el hueco 70 y se distinguen por el año. Sin
+		// ella la clave es el propio número, que es el caso de todo lo demás.
 		const spot = elem.dataset.adSpot
+		const key = elem.dataset.adKey ?? spot
 		const adTemplate = withAd
-			? (document.querySelector<HTMLTemplateElement>(`template#modal-ad-${spot}`) ?? document.querySelector<HTMLTemplateElement>('template#modal-ad'))
+			? (document.querySelector<HTMLTemplateElement>(`template#modal-ad-${key}`) ?? document.querySelector<HTMLTemplateElement>('template#modal-ad'))
 			: null
 		if (adTemplate) {
 			const ad = adTemplate.content.cloneNode(true) as DocumentFragment
@@ -47,20 +52,29 @@ const allScripts = () => {
 
 		if (elem instanceof HTMLAnchorElement) {
 			const { href } = elem
-			// El tipo se decide por la extensión, pero sin la query: en `astro dev`
-			// Vite le cuelga un `?t=…` a los ficheros que ve modificados y entonces
-			// la URL ya no termina en `.mp4`, así que el modal se abría vacío.
-			const path = href.split(/[?#]/)[0]
-			if (/\.(mp4|webm|mov)$/i.test(path)) {
+			// De qué tipo es la pieza. No vale mirar la URL entera: en `astro dev` Vite le
+			// cuelga un `?t=…` a los ficheros que ve modificados, y las imágenes que pasan
+			// por `getImage()` se sirven ahí como `/_image?href=…&f=webp`, sin extensión
+			// ninguna en la ruta. Ese segundo caso dejaba el pop-up VACÍO en local (en el
+			// build no, porque ahí ya son `/_astro/algo.webp`), así que el formato se toma
+			// del parámetro `f` si viene y, si no, de la extensión de la ruta.
+			const url = new URL(href, location.href)
+			const kind = url.searchParams.get('f') ?? url.pathname.split('.').pop() ?? ''
+			if (/^(mp4|webm|mov)$/i.test(kind)) {
 				const video = document.createElement('video')
 				video.src = href
 				video.controls = true
 				video.autoplay = true
 				media.append(video)
 			}
-			if (/\.(jpe?g|png|webp|avif|gif)$/i.test(path)) {
+			if (/^(jpe?g|png|webp|avif|gif)$/i.test(kind)) {
 				const image = document.createElement('img')
 				image.src = href
+				// A tamaño natural se veían pequeñas: las revistas antiguas están escaneadas
+				// a 460-600 px de ancho y el `max-height` de `main.css` no amplía, solo
+				// reduce. Desde `lg` se les da todo el alto disponible. Por debajo se deja el
+				// comportamiento de antes, que ahí el ancho es lo que manda.
+				image.className = 'lg:h-[calc(100vh-6rem)] lg:w-auto lg:max-w-none'
 				media.append(image)
 			}
 		}
