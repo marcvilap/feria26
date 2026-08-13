@@ -9,13 +9,17 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 56 de 110 ocupados: los 55 de esta tabla más el 70, que es Carteles de
-// Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes.
+// todos. Hoy hay 57 de 97 ocupados: los 56 de esta tabla más el 70, que es Carteles de
+// Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes. Los
+// números llegan al 110, pero 13 ya no existen: los pop-ups de las dos secciones de
+// revistas (05-16 y 22), retirados porque ahí no hay publicidad (ver PUBLICIDAD.md).
 //
 // SOL-20260813-01 (13/08/2026): Justo Fuentes pidió reposicionar 17 anunciantes según
 // `POSICIONAMIENTO A MAYORES CLIENTES REV. DIG FERIA MALAGA 26.xlsx`. Marc corrigió que
 // no son traslados, sino duplicaciones: cada uno se queda en su hueco de siempre y
-// ADEMÁS entra en el nuevo. 15 duplicados + 1 alta nueva (Citroën Sama, en el 92).
+// ADEMÁS entra en el nuevo. Son 16 duplicaciones: Citroën Sama parecía un alta porque
+// su posición actual venía como nota («video funes») en vez de número, pero ese hueco
+// existe —es el 109— y también se duplica (confirmado por Marc el 13/08/2026).
 // AYTO ANTEQUERA (85→31) se ha dejado sin aplicar: 31 lo sigue ocupando CC Rincón de la
 // Victoria (que también se duplica, a 93), así que no había hueco libre para Antequera.
 // Pendiente de que Marc diga qué hueco le da. El bloque «70/año AAAA» del mismo Excel
@@ -160,11 +164,13 @@ const advertisers: Record<number, Advertiser> = {
 	97: { name: 'Bodegas Carpe Diem', image: carpeDiem, url: 'https://www.bodegascarpediem.com' },
 	96: { name: 'Cash Sierra Nevada', image: cashSierraNevada, url: 'https://cashsierranevada.es' },
 	93: { name: 'CC Rincón de la Victoria', image: ccRinconDeLaVictoria, url: 'https://www.ccrincondelavictoria.com/en-verano-abrimos-todos-los-dias/' },
-	// Citroën Sama no tenía hueco asignado todavía (alta nueva, no duplicación):
-	// el Excel apuntaba su posición actual con la nota "video funes" en vez de un
-	// número. Va en el 92, ya activo y sin vender (pop-up de "Sergio 'The
-	// Shooter'" en Test de la Feria) — no depende del vídeo de Funes.
+	// Citroën Sama sí es una duplicación como el resto, aunque al principio se montara
+	// como alta: en el Excel su posición actual no era un número sino la nota "video
+	// funes", igual que Muelle Uno traía "video maria barranco" y acabó en el 108. Su
+	// hueco de siempre es el pop-up del saludo del pregonero, que es el 109; el 92 es
+	// el nuevo. Confirmado por Marc el 13/08/2026, ya con el vídeo de Funes entregado.
 	92: { name: 'Citroën Sama', image: citroenSama, url: 'https://www.samagoaz.com' },
+	109: { name: 'Citroën Sama', image: citroenSama, url: 'https://www.samagoaz.com' },
 }
 
 /** El hueco `spot` con su anunciante, o vacío si todavía no se ha vendido. */

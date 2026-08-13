@@ -1,7 +1,7 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**97 espacios** repartidos por la revista. **56 están vendidos y montados** y los otros
-41 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**97 espacios** repartidos por la revista. **57 están vendidos y montados** y los otros
+40 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
@@ -47,9 +47,9 @@ del Excel `RELACION URL REVISTA DE FERIA 26.xlsx` de la entrega del 10 de agosto
 > Se pueden vender desde ya: el anunciante entra en cuanto llegue la pieza, como pasó el
 > 10 de agosto con Muelle Uno.
 >
-> **El 109 ya no espera vídeo, espera anunciante.** El saludo del pregonero Juanfran Funes
-> llegó el 13/08/2026 y su pop-up ya abre, pero el hueco sigue sin vender y se pinta como
-> espacio disponible.
+> **El 109 ya está cerrado.** El saludo del pregonero Juanfran Funes llegó el 13/08/2026 y,
+> con el vídeo entregado, el hueco pasa a Citroën Sama, que es donde el Excel lo situaba
+> desde el principio (ver más abajo).
 
 ## Pendiente de la entrega del 10 de agosto de 2026
 
@@ -69,11 +69,10 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
   carteles de 2005 y 2002. EMT, además, sigue esperando el vídeo de Enrique Ortiz, pero
   eso solo afecta al hueco que le quede por asignar, no a este.
 
-  **Citroën Sama** también venía sin número: su nota «video funes» era la posición que ya
-  tenía, o sea el pop-up del saludo del pregonero. Como ese vídeo no existía todavía, el
-  13/08 se montó solo en su número nuevo, el **92**. Ahora que el vídeo está entregado, su
-  posición de siempre es el hueco **109**, que sigue vacío. Pendiente de que Marc confirme
-  si se duplica ahí, como el resto.
+  **Citroën Sama** ya está resuelto: su nota «video funes» no era un "sin número", era la
+  posición que ya tenía —el pop-up del saludo del pregonero, o sea el **109**—, igual que
+  Muelle Uno traía «video maria barranco» y acabó en el 108. Se monta en los dos huecos,
+  109 y **92**, como duplicación normal. Marc lo confirmó el 13/08/2026.
 
 - **Tres anunciantes no han entregado nada**: Ayto. de Benalmádena, Ayto. de Benahavís y
   Tejeros.
@@ -206,7 +205,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |  106 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Acosol · dup. de 44                                                                                                                                                                    |
 |  107 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Abasthosur · dup. de 43                                                                                                                                                                |
 |  108 | Saludos                                | Pop-up (uno por vídeo)  | Imagen + vídeo | Muelle Uno                                                                                                                                                                             |
-|  109 | Saludos                                | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
+|  109 | Saludos                                | Pop-up (uno por vídeo)  | Imagen + vídeo | Citroën Sama · dup. de 92                                                                                                                                                              |
 |  110 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
 
 La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un pop-up.
@@ -215,7 +214,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 97 huecos activos: 18 laterales, 28 en móvil y 51 dentro de pop-ups (+13 retirados).
 - 68 admiten vídeo en popup; 29 son solo imagen.
-- **56 vendidos** (11 de ellos con vídeo) y 41 libres. El 70 cuenta como uno, aunque
+- **57 vendidos** (11 de ellos con vídeo) y 40 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
