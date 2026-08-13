@@ -4,7 +4,7 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import posters from '$utils/data-posters'
-import { ad, adsFor } from '$utils/data-ads'
+import { adsFor, adsCarteles } from '$utils/data-ads'
 
 const title = 'Carteles de Feria'
 const variation = 2
@@ -15,17 +15,26 @@ const linkNextMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
 
 const ads = adsFor(65, 66, 67)
 const adsMobile = adsFor(68, 69)
-const modalAd = ad(70)
+// Los 25 pop-ups son el hueco 70, uno por cartel: el anunciante lo decide el año
+// (ver el bloque de Carteles en data-ads.ts). Antes esta página colgaba el mismo
+// anuncio genérico de los 25.
+const modalAds = adsCarteles()
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAds}>
 	<div class="h-24"></div>
 	<Split {variation} {ads}>
 		<Title class="-translate-y-24 text-white">{title}</Title>
 		<div class="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 xl:grid-cols-4 2xl:gap-12">
 			{
 				posters.map(async ({ image, name }) => (
-					<a class="open-in-modal group" target="_blank" href={(await getImage({ src: image, format: 'webp' })).src}>
+					<a
+						class="open-in-modal group"
+						target="_blank"
+						href={(await getImage({ src: image, format: 'webp' })).src}
+						data-ad-spot="70"
+						data-ad-key={`70-${name}`}
+					>
 						<div class="overflow-clip rounded bg-black">
 							<Image
 								class="aspect-[2/3] w-full object-cover transition group-hover:scale-110 group-hover:opacity-50"

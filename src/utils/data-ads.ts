@@ -9,7 +9,8 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 55 de 110 ocupados.
+// todos. Hoy hay 56 de 110 ocupados: los 55 de esta tabla más el 70, que es Carteles de
+// Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes.
 //
 // SOL-20260813-01 (13/08/2026): Justo Fuentes pidió reposicionar 17 anunciantes según
 // `POSICIONAMIENTO A MAYORES CLIENTES REV. DIG FERIA MALAGA 26.xlsx`. Marc corrigió que
@@ -17,17 +18,17 @@
 // ADEMÁS entra en el nuevo. 15 duplicados + 1 alta nueva (Citroën Sama, en el 92).
 // AYTO ANTEQUERA (85→31) se ha dejado sin aplicar: 31 lo sigue ocupando CC Rincón de la
 // Victoria (que también se duplica, a 93), así que no había hueco libre para Antequera.
-// Pendiente de que Marc diga qué hueco le da. El bloque de duplicaciones «70/año AAAA»
-// del mismo Excel tampoco se ha aplicado: el código no tiene una zona de huecos por año
-// que encaje con esa lectura (ver CAMBIOS.md del proyecto).
+// Pendiente de que Marc diga qué hueco le da. El bloque «70/año AAAA» del mismo Excel
+// SÍ está aplicado: son los 25 pop-ups de Carteles de Feria, todos el hueco 70, uno por
+// año de cartel (Marc lo aclaró el 13/08/2026). Está al final del fichero.
 //
 // PENDIENTE (ver el correo del 10 de agosto de 2026):
 //   - El hueco 62 se asignó a la vez a Larios Centro y a Syrluz. Se ha montado Larios
 //     Centro por ser el que llegó primero en el listado; Syrluz espera destino.
-//   - Tres anunciantes tienen material pero no número: EMT, Diputación de Málaga y Olin.
-//     Sus creatividades ya están en `src/assets/images/ads/2026/`, solo falta añadir aquí
-//     la línea con su hueco. EMT depende de un vídeo que el cliente aún no ha entregado
-//     (el de Enrique Ortiz).
+//   - Olin tiene creatividad pero sigue sin hueco: en el Excel su casilla de número son
+//     interrogantes. EMT y Diputación de Málaga estaban en este mismo caso y ya han
+//     entrado por Carteles de Feria (2005 y 2002). EMT sigue esperando el vídeo de
+//     Enrique Ortiz, pero eso solo afecta al otro hueco que le quede por asignar.
 //   - Ayto. Benalmádena, Ayto. Benahavís y Tejeros no han entregado material.
 //   - Cartojal no ocupa un hueco numerado: patrocina el fondo entero del Mapa Interactivo
 //     («MAPA FERIA» en el Excel). Está montado con el arte de 2025 hasta que entreguen el
@@ -47,7 +48,9 @@ import cashSierraNevada from '$assets/images/ads/2026/cash-sierra-nevada.png'
 import ccRinconDeLaVictoria from '$assets/images/ads/2026/cc-rincon-de-la-victoria.png'
 import cormosa from '$assets/images/ads/2026/cormosa.png'
 import detecpro from '$assets/images/ads/2026/detecpro.jpeg'
+import diputacionMalaga from '$assets/images/ads/2026/diputacion-malaga.gif'
 import eade from '$assets/images/ads/2026/eade.jpg'
+import emt from '$assets/images/ads/2026/emt.png'
 import eig from '$assets/images/ads/2026/eig.jpg'
 import erPichiDeCai from '$assets/images/ads/2026/er-pichi-de-cai.png'
 import estepona from '$assets/images/ads/2026/estepona.jpg'
@@ -169,3 +172,69 @@ export const ad = (spot: number): Ad => ({ spot, ...advertisers[spot] })
 
 /** Varios huecos de una vez, en el orden en que se pasan. */
 export const adsFor = (...spots: number[]): Ad[] => spots.map(ad)
+
+// CARTELES DE FERIA — el bloque «70/año AAAA» del Excel de SOL-20260813-01.
+//
+// La sección entera se vende como el hueco 70: los 25 pop-ups llevan ese número y
+// lo que cambia es el anunciante. Por eso en el Excel la columna NUEVO NUMERO pone
+// «70/año 2000», «70/año 2001»…: el año no es otro hueco, es cuál de los 25.
+//
+// Son 25 carteles y 25 anunciantes, uno por año, y encajan sin sobras: 2000-2019 y
+// 2022-2026, que son los años que hay en `data-posters` (2020 y 2021 no tienen
+// cartel porque no hubo feria). Si se toca esa lista, hay que tocar esta.
+//
+// Todos menos dos conservan además su hueco de siempre, por la regla de "solo
+// duplicar": misma creatividad, mismo enlace, mismo vídeo cuando lo llevan.
+// Diputación de Málaga y EMT son la excepción porque no tenían ningún hueco —
+// estaban en la lista de "material sin número" de la cabecera y este es el primero
+// que se les da. Olin sigue sin destino: en el Excel su casilla es «????????».
+const carteles: Record<string, Omit<Ad, 'spot' | 'key'>> = {
+	'2000': { name: 'Cormosa', image: cormosa, url: 'https://www.redcupra.es/cormosa/L1-cupra-terramar-hibrido-s?origin=o' },
+	'2001': { name: 'Detecpro', image: detecpro, url: 'https://www.detectpro.es/' },
+	// El Excel da el enlace sin protocolo («saboramalaga.es»), que es la marca de
+	// producto de la Diputación; se monta como https igual que el resto.
+	'2002': { name: 'Diputación de Málaga', image: diputacionMalaga, url: 'https://saboramalaga.es' },
+	'2003': { name: 'EADE', image: eade, url: 'https://eade.es' },
+	'2004': {
+		name: 'EIG',
+		image: eig,
+		url: 'https://esgerencia.com/ciclos-potenciados-ia/?utm_source=cope&utm_medium=display&utm_campaign=ciclos_andalucia_Julio2026&utm_content=banner_digital',
+	},
+	// Aquí EMT va solo con su imagen. El vídeo de Enrique Ortiz que tiene pendiente
+	// es para su otro hueco, el que sigue sin número; este no lo espera.
+	'2005': { name: 'EMT', image: emt, url: 'https://www.emtmalaga.es' },
+	'2006': { name: 'Famadesa', image: famadesa, url: 'https://famadesa.es', video: famadesaVideo },
+	'2007': { name: 'Hipermueble', image: hipermueble, url: 'https://www.hiper-mueble.com', video: hipermuebleVideo },
+	'2008': { name: 'HLA Hospital El Ángel', image: hlaElAngel, url: 'https://www.grupohla.com/hlahospitalelangel' },
+	'2009': { name: 'Da Nonna Peppa', image: nonnaPeppa, url: 'https://danonnapepparistorante.com' },
+	'2010': { name: 'Larios Centro', image: lariosCentro, url: 'https://larioscentro.com' },
+	'2011': { name: 'Maex Cuevas Queipo', image: maex, url: 'https://maexdental.com/clinicas/malaga/maex-malaga/' },
+	'2012': { name: 'Maskom', image: maskom, url: 'https://www.maskom.es/folleto/', video: maskomVideo },
+	'2013': { name: 'Metro de Málaga', image: metroMalaga, url: 'https://metromalaga.es', video: metroMalagaVideo },
+	'2014': {
+		name: 'Molina Caballero',
+		image: molinaCaballero,
+		url: 'https://molinacaballero.com/tendencias-reformas-2026-ds1/?utm_source=cope&utm_medium=cope&utm_campaign=cope-fer-26&utm_id=COPEFERIA',
+	},
+	'2015': { name: 'Muebles La Fábrica', image: mueblesLaFabrica, url: 'https://www.muebleslafabrica.com/tienda-muebles-malaga', video: mueblesLaFabricaVideo },
+	'2016': { name: 'Muelle Uno', image: muelleUno, url: 'https://www.muelleuno.com' },
+	'2017': { name: 'Narbona Solís', image: narbona, url: 'https://narbonasolis.es' },
+	'2018': { name: 'Nissan Safamotor', image: nissanSafa, url: 'https://nissan.safamotor.com' },
+	'2019': { name: 'OAM Plus', image: oamPlus, url: 'https://grupooamplus.com' },
+	'2022': { name: 'Reactiva', image: reactiva, url: 'https://reactiva.es' },
+	'2023': { name: 'Sicilia Hermanos', image: siciliaHermanos, url: 'http://www.siciliahermanos.es' },
+	'2024': { name: 'Tesesa', image: tesesa, url: 'https://www.tesesa.com' },
+	'2025': { name: 'Tiendas Juan Lucas', image: tiendasJuanLucas, url: 'https://juanlucas.com' },
+	'2026': {
+		name: 'Unicaja Banco',
+		image: unicaja,
+		url: 'https://www.unicajabanco.es/es/particulares?utm_source=banner&utm_medium=prensa&utm_campaign=marca_gen%C3%A9rica_ago-26',
+		video: unicajaVideo,
+	},
+}
+
+/** El anunciante del pop-up de un cartel. Todos son el hueco 70; los separa el año. */
+export const adForCartel = (year: string): Ad => ({ spot: 70, key: `70-${year}`, ...carteles[year] })
+
+/** Los 25 pop-ups de Carteles de Feria. El orden es el de `data-posters`. */
+export const adsCarteles = (): Ad[] => Object.keys(carteles).map(adForCartel)

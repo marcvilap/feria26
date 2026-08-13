@@ -19,6 +19,13 @@
  */
 export interface Ad {
 	spot: number
+	/**
+	 * Identifica el `<template>` del pop-up cuando varios comparten número de hueco.
+	 * Por defecto basta con `spot`, pero Carteles de Feria vende los 25 pop-ups como
+	 * un único hueco 70 y los distingue por el año del cartel (`70-2000`, `70-2001`…),
+	 * así que ahí hace falta una clave aparte. El número que se pinta sigue siendo `spot`.
+	 */
+	key?: string
 	/** Nombre del anunciante. Solo informativo, para localizarlo en el código. */
 	name?: string
 	image?: ImageMetadata
