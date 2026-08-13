@@ -9,11 +9,11 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 60 de 93 ocupados: los 59 de esta tabla más el 70, que es Carteles de
+// todos. Hoy hay 61 de 96 ocupados: los 60 de esta tabla más el 70, que es Carteles de
 // Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes. Los
-// números llegan al 110, pero 17 ya no existen: los pop-ups de las dos secciones de
-// revistas (05-16 y 22) y los cuatro del 60 Aniversario (86-89), retirados porque en esas
-// secciones no hay publicidad (ver PUBLICIDAD.md).
+// números llegan al 110, pero 14 ya no existen: los pop-ups de las dos secciones de
+// revistas (05-16 y 22) y el del 60 Aniversario (89). En esas tres secciones no hay
+// publicidad EN LOS POP-UPS; los laterales y los de móvil siguen (ver PUBLICIDAD.md).
 //
 // SOL-20260813-01 (13/08/2026): Justo Fuentes pidió reposicionar 17 anunciantes según
 // `POSICIONAMIENTO A MAYORES CLIENTES REV. DIG FERIA MALAGA 26.xlsx`. Marc corrigió que
@@ -159,9 +159,7 @@ const advertisers: Record<number, Advertiser> = {
 	78: { name: 'Olin', image: olin, url: 'https://olin.es/es/fibra/?utm_source=cope&utm_medium=paid_referral&utm_campaign=verano_2026&utm_content=banner' },
 	84: { name: 'Maex Cuevas Queipo', image: maex, url: 'https://maexdental.com/clinicas/malaga/maex-malaga/' },
 	85: { name: 'Ayuntamiento de Antequera', image: antequera, url: 'https://www.antequera.es' },
-	// El 86 (lateral del 60 Aniversario) se retira el 13/08/2026: esa sección se queda sin
-	// publicidad por decision del cliente. Era el único hueco vendido de los cuatro que
-	// tenía. Reactiva sigue en la web por Carteles de Feria, en el cartel de 2022.
+	86: { name: 'Reactiva', image: reactiva, url: 'https://reactiva.es' },
 	90: { name: 'Ayuntamiento de Alhaurín de la Torre', image: alhaurinDeLaTorre, url: 'https://www.alhaurindelatorre.es' },
 	91: { name: 'Ayuntamiento de Rincón de la Victoria', image: rinconDeLaVictoria, url: 'https://www.rincondelavictoria.es' },
 	// Tampoco traía número, sino la nota «VIDEO MONICA»: va pegado al reportaje de Mónica

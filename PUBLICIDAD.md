@@ -1,12 +1,12 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**93 espacios** repartidos por la revista. **60 están vendidos y montados** y los otros
-33 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**96 espacios** repartidos por la revista. **61 están vendidos y montados** y los otros
+35 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
 
-> **13/08/2026 — la numeración llega hasta 110, pero 17 huecos ya no existen.** Se
+> **13/08/2026 — la numeración llega hasta 110, pero 14 huecos ya no existen.** Se
 > retiran por decisión del cliente y se marcan abajo en vez de borrarlos, porque los
 > números están congelados.
 >
@@ -14,10 +14,8 @@ como se le enseña la maqueta al comercial.
 >   (05-16) y de Revistas anteriores (22). Ninguno estaba vendido, y los doce de la
 >   galería no llegaron a pintarse nunca. Los laterales y los de móvil de esas dos
 >   secciones (02-04 y 17-21) **sí siguen**.
-> - **El 60 Aniversario no lleva publicidad**: fuera los cuatro huecos de la sección
->   (86-89), esta vez incluidos el lateral y los de móvil. **El 86 estaba vendido a
->   Reactiva**, que era el único ocupado de los cuatro; Reactiva sigue en la web por
->   Carteles de Feria, en el cartel de 2022.
+> - **En el 60 Aniversario tampoco hay anuncios en los pop-ups**: fuera el 89. El
+>   lateral 86 (Reactiva) y los de móvil 87 y 88 **siguen**, igual que en las revistas.
 
 > **13/08/2026 (SOL-20260813-01):** Justo Fuentes pidió reposicionar 17 anunciantes.
 > Por corrección de Marc, son duplicaciones, no traslados: cada uno se queda en su
@@ -199,10 +197,10 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   83 | Plaza de Toros                         | Pop-up                  | Solo imagen    | —                                                                                                                                                                                      |
 |   84 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Maex Cuevas Queipo                                                                                                                                                                     |
 |   85 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Antequera                                                                                                                                                                     |
-|   86 | 60 Aniversario                         | Lateral                 | Imagen + vídeo | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
-|   87 | 60 Aniversario                         | Móvil                   | Imagen + vídeo | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
-|   88 | 60 Aniversario                         | Móvil                   | Solo imagen    | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
-|   89 | 60 Aniversario                         | Pop-up                  | Solo imagen    | **retirado 13/08** — el 60 Aniversario no lleva publicidad                                                                                                                             |
+|   86 | 60 Aniversario                         | Lateral                 | Imagen + vídeo | Reactiva                                                                                                                                                                               |
+|   87 | 60 Aniversario                         | Móvil                   | Imagen + vídeo | —                                                                                                                                                                                      |
+|   88 | 60 Aniversario                         | Móvil                   | Solo imagen    | —                                                                                                                                                                                      |
+|   89 | 60 Aniversario                         | Pop-up                  | Solo imagen    | **retirado 13/08** — en el 60 Aniversario no hay anuncios en los pop-ups                                                                                                               |
 |   90 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Alhaurín de la Torre                                                                                                                                                          |
 |   91 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Rincón de la Victoria                                                                                                                                                         |
 |   92 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Citroën Sama · alta 13/08                                                                                                                                                              |
@@ -229,9 +227,9 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 ## Resumen
 
-- 93 huecos activos: 17 laterales, 26 en móvil y 50 dentro de pop-ups (+17 retirados).
-- 66 admiten vídeo en popup; 27 son solo imagen.
-- **60 vendidos** (11 de ellos con vídeo) y 33 libres. El 70 cuenta como uno, aunque
+- 96 huecos activos: 18 laterales, 28 en móvil y 50 dentro de pop-ups (+14 retirados).
+- 68 admiten vídeo en popup; 28 son solo imagen.
+- **61 vendidos** (11 de ellos con vídeo) y 35 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
