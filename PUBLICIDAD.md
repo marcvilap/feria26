@@ -1,10 +1,19 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-110 espacios repartidos por la revista. **39 están vendidos y montados**; los otros
-71 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+110 espacios repartidos por la revista. **55 están vendidos y montados**; los otros
+55 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así los 110 de golpe, que es
 como se le enseña la maqueta al comercial.
+>
+> **13/08/2026 (SOL-20260813-01):** Justo Fuentes pidió reposicionar 17 anunciantes.
+> Por corrección de Marc, son duplicaciones, no traslados: cada uno se queda en su
+> hueco de siempre y además entra en el nuevo (marcado abajo con «· dup.»). 15
+> duplicados + Citroën Sama de alta en el 92. Ayto. Antequera (85→31) se ha dejado sin
+> aplicar por conflicto con CC Rincón de la Victoria (ver nota en el listado, hueco
+> 31). El bloque de duplicaciones «70/año AAAA» del mismo Excel no se ha aplicado: no
+> hay una zona de huecos por año en el código. Detalle en
+> `proyectos\cope-malaga-web\desarrollo\CAMBIOS.md` (equipo de Marc).
 
 El reparto de anunciantes vive en `src/utils/data-ads.ts` (una línea por hueco) y sale
 del Excel `RELACION URL REVISTA DE FERIA 26.xlsx` de la entrega del 10 de agosto de 2026. Las creatividades las prepara `scripts/publicidad-2026.py`.
@@ -36,18 +45,20 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 
 - **El hueco 62 está asignado dos veces**, a Larios Centro y a Syrluz. Se ha montado
   Larios Centro y Syrluz espera destino.
-- **Cuatro anunciantes tienen creatividad pero no número.** En la columna «NUMERO MHOU»
-  del Excel llevan una nota en vez de una cifra: Citroën Sama («video funes»), EMT
-  («VIDEO ENRIQUE»), Diputación de Málaga («Plaza toros») y Olin (interrogantes). Sus
-  ficheros ya están en `src/assets/images/ads/2026/`: para montarlos solo hay que añadir
-  la línea en `data-ads.ts`.
+- **Tres anunciantes tienen creatividad pero no número.** En la columna «NUMERO MHOU»
+  del Excel llevan una nota en vez de una cifra: EMT («VIDEO ENRIQUE»), Diputación de
+  Málaga («Plaza toros») y Olin (interrogantes). Sus ficheros ya están en
+  `src/assets/images/ads/2026/`: para montarlos solo hay que añadir la línea en
+  `data-ads.ts`.
 
-  Los otros dos de ese grupo ya están colocados, porque llegó el vídeo al que iban
-  pegados: **Muelle Uno** en el 108, con el saludo de María Barranco, y **Tiendas Juan
-  Lucas** en el 94, con el reportaje de Mónica García. Citroën Sama y EMT entrarán igual
-  en cuanto lleguen los vídeos de Funes y de Enrique Ortiz. Ojo con el de Funes: hoy ya
-  existe una pieza suya, la del Test, pero ese hueco es el **58** y está vendido a
-  Narbona Solís, así que se refieren a un vídeo nuevo.
+  Otros dos de ese grupo ya están colocados, porque llegó el vídeo al que iban pegados:
+  **Muelle Uno** en el 108, con el saludo de María Barranco, y **Tiendas Juan Lucas** en
+  el 94, con el reportaje de Mónica García. EMT entrará igual en cuanto llegue el vídeo
+  de Enrique Ortiz. **Citroën Sama** también estaba en este grupo (nota «video funes» en
+  el Excel) pero se ha montado el 13/08/2026 en el hueco **92**: ese hueco ya estaba
+  activo con el vídeo de Sergio "The Shooter" en Test de la Feria, así que no dependía
+  del vídeo de Funes — el hueco del Test con la pieza real de Funes es el **58**, vendido
+  a Narbona Solís.
 
 - **Tres anunciantes no han entregado nada**: Ayto. de Benalmádena, Ayto. de Benahavís y
   Tejeros.
@@ -102,7 +113,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   28 | Saludos                                | Pop-up (uno por vídeo) | Solo imagen    | Er Pichi de Cai                |
 |   29 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
 |   30 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | Detecpro                       |
-|   31 | Curiosidades                           | Lateral                | Solo imagen    | CC Rincón de la Victoria       |
+|   31 | Curiosidades                           | Lateral                | Solo imagen    | CC Rincón de la Victoria · **conflicto**: el Excel de Justo pedía Ayto. Antequera aquí (85→31), pero Rincón de la Victoria se queda (se duplica a 93) — sin aplicar, pendiente de Marc |
 |   32 | Curiosidades                           | Móvil                  | Imagen + vídeo | —                              |
 |   33 | Curiosidades                           | Móvil                  | Solo imagen    | —                              |
 |   34 | Curiosidades › Vídeos                  | Lateral                | Imagen + vídeo | Cash Sierra Nevada             |
@@ -113,7 +124,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   39 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | Da Nonna Peppa                 |
 |   40 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | Maskom ▶                      |
 |   41 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   42 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
+|   42 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. Rincón de la Victoria · dup. de 91 |
 |   43 | Te lo cuenta COPE Málaga               | Lateral                | Solo imagen    | Abasthosur                     |
 |   44 | Te lo cuenta COPE Málaga               | Lateral                | Imagen + vídeo | Acosol                         |
 |   45 | Te lo cuenta COPE Málaga               | Móvil                  | Solo imagen    | —                              |
@@ -143,7 +154,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   69 | Carteles de Feria                      | Móvil                  | Solo imagen    | —                              |
 |   70 | Carteles de Feria                      | Pop-up                 | Solo imagen    | —                              |
 |   71 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | EADE                           |
-|   72 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
+|   72 | Curiosidades › Vídeos                  | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. Alhaurín de la Torre · dup. de 90 |
 |   73 | El vino y la Feria                     | Lateral                | Solo imagen    | Bodegas Carpe Diem             |
 |   74 | El vino y la Feria                     | Móvil                  | Solo imagen    | —                              |
 |   75 | El vino y la Feria                     | Móvil                  | Imagen + vídeo | —                              |
@@ -163,22 +174,22 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   89 | 60 Aniversario                         | Pop-up                 | Solo imagen    | —                              |
 |   90 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. de Alhaurín de la Torre  |
 |   91 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. de Rincón de la Victoria |
-|   92 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   93 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
+|   92 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Citroën Sama · alta 13/08      |
+|   93 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | CC Rincón de la Victoria · dup. de 31 |
 |   94 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | Tiendas Juan Lucas             |
 |   95 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   96 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   97 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   98 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|   99 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  100 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  101 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  102 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  103 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  104 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  105 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  106 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
-|  107 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
+|   96 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Cash Sierra Nevada · dup. de 34 |
+|   97 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Bodegas Carpe Diem · dup. de 73 |
+|   98 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. de Torremolinos ▶ · dup. de 57 |
+|   99 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Er Pichi de Cai · dup. de 28   |
+|  100 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Ayuntamiento de Málaga · dup. de 2 |
+|  101 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Ayto. de Estepona ▶ · dup. de 56 |
+|  102 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Automóviles Rueda · dup. de 27 |
+|  103 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Araboka Restaurante · dup. de 55 |
+|  104 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Aquavelis · dup. de 52         |
+|  105 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Aluminios Mata · dup. de 47    |
+|  106 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Acosol · dup. de 44            |
+|  107 | Test de la Feria                       | Pop-up (uno por vídeo) | Imagen + vídeo | Abasthosur · dup. de 43        |
 |  108 | Saludos                                | Pop-up (uno por vídeo) | Imagen + vídeo | Muelle Uno                     |
 |  109 | Saludos                                | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
 |  110 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo) | Imagen + vídeo | —                              |
@@ -189,7 +200,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 110 huecos: 18 laterales, 28 en móvil y 64 dentro de pop-ups.
 - 80 admiten vídeo en popup; 30 son solo imagen.
-- **39 vendidos** (8 de ellos con vídeo) y 71 libres.
+- **55 vendidos** (10 de ellos con vídeo) y 55 libres.
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 
 ## Notas

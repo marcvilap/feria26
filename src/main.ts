@@ -83,7 +83,14 @@ const allScripts = () => {
 		document.body.appendChild(modal)
 		modal.showModal()
 		close.onclick = () => modal.close()
-		modal.onclick = ({ target }) => target === modal && modal.close()
+		// Cerrar al pinchar fuera (en un <dialog> el clic del backdrop llega con
+		// `target` = el propio diálogo). Ojo con la forma corta `target === modal &&
+		// modal.close()`: al pinchar DENTRO devuelve `false` y un `onclick` que
+		// devuelve `false` equivale a un preventDefault(), así que se cargaba el
+		// enlace del anunciante del pop-up. El `if` no devuelve nada y no cancela.
+		modal.onclick = ({ target }) => {
+			if (target === modal) modal.close()
+		}
 		modal.onclose = () => setTimeout(() => modal.remove(), 500)
 	}
 

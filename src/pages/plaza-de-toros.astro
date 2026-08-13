@@ -36,8 +36,15 @@ const modalAd = ad(83)
 						</p>
 					</div>
 				</div>
-				<div class="rounded bg-white/10 p-6 backdrop-blur reveal:translate-x-24 reveal:opacity-0 revealed:delay-[.6s]">
-					<video class="aspect-video w-full rounded object-cover" src={videoMalagueta} poster={posterMalagueta.src} controls playsinline></video>
+				<div class="relative rounded p-6 reveal:translate-x-24 reveal:opacity-0 revealed:delay-[.6s]">
+					{
+						/* El cristal esmerilado va en su propia capa, detrás del vídeo. Cuando el
+					`backdrop-blur` estaba en el mismo div que envuelve al <video>, Chrome se
+					dejaba el vídeo sin pintar al llegar aquí navegando (ViewTransitions) y solo
+					aparecía al recargar la página. */
+					}
+					<div class="absolute inset-0 rounded bg-white/10 backdrop-blur"></div>
+					<video class="relative aspect-video w-full rounded object-cover" src={videoMalagueta} poster={posterMalagueta.src} controls playsinline></video>
 				</div>
 			</div>
 		</div>

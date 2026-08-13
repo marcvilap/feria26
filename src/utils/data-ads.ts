@@ -9,15 +9,25 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 39 de 110 ocupados.
+// todos. Hoy hay 55 de 110 ocupados.
+//
+// SOL-20260813-01 (13/08/2026): Justo Fuentes pidió reposicionar 17 anunciantes según
+// `POSICIONAMIENTO A MAYORES CLIENTES REV. DIG FERIA MALAGA 26.xlsx`. Marc corrigió que
+// no son traslados, sino duplicaciones: cada uno se queda en su hueco de siempre y
+// ADEMÁS entra en el nuevo. 15 duplicados + 1 alta nueva (Citroën Sama, en el 92).
+// AYTO ANTEQUERA (85→31) se ha dejado sin aplicar: 31 lo sigue ocupando CC Rincón de la
+// Victoria (que también se duplica, a 93), así que no había hueco libre para Antequera.
+// Pendiente de que Marc diga qué hueco le da. El bloque de duplicaciones «70/año AAAA»
+// del mismo Excel tampoco se ha aplicado: el código no tiene una zona de huecos por año
+// que encaje con esa lectura (ver CAMBIOS.md del proyecto).
 //
 // PENDIENTE (ver el correo del 10 de agosto de 2026):
 //   - El hueco 62 se asignó a la vez a Larios Centro y a Syrluz. Se ha montado Larios
 //     Centro por ser el que llegó primero en el listado; Syrluz espera destino.
-//   - Cuatro anunciantes tienen material pero no número: Citroën Sama, EMT, Diputación de
-//     Málaga y Olin. Sus creatividades ya están en `src/assets/images/ads/2026/`, solo
-//     falta añadir aquí la línea con su hueco. Los dos primeros dependen de vídeos que el
-//     cliente aún no ha entregado (los de Funes y Enrique Ortiz).
+//   - Tres anunciantes tienen material pero no número: EMT, Diputación de Málaga y Olin.
+//     Sus creatividades ya están en `src/assets/images/ads/2026/`, solo falta añadir aquí
+//     la línea con su hueco. EMT depende de un vídeo que el cliente aún no ha entregado
+//     (el de Enrique Ortiz).
 //   - Ayto. Benalmádena, Ayto. Benahavís y Tejeros no han entregado material.
 //   - Cartojal no ocupa un hueco numerado: patrocina el fondo entero del Mapa Interactivo
 //     («MAPA FERIA» en el Excel). Está montado con el arte de 2025 hasta que entreguen el
@@ -62,6 +72,7 @@ import tesesa from '$assets/images/ads/2026/tesesa.jpg'
 import tiendasJuanLucas from '$assets/images/ads/2026/tiendas-juan-lucas.jpg'
 import torremolinos from '$assets/images/ads/2026/torremolinos.jpg'
 import unicaja from '$assets/images/ads/2026/unicaja.jpg'
+import citroenSama from '$assets/images/ads/2026/citroen-sama.png'
 import esteponaVideo from '$assets/videos/ads/2026/estepona.mp4'
 import famadesaVideo from '$assets/videos/ads/2026/famadesa.mp4'
 import hipermuebleVideo from '$assets/videos/ads/2026/hipermueble.mp4'
@@ -118,6 +129,39 @@ const advertisers: Record<number, Advertiser> = {
 	// En el Excel no traía número, sino la nota «video maria barranco»: va pegado al saludo
 	// de la abanderada, que se publicó el 10 de agosto y estrenó el hueco 108.
 	108: { name: 'Muelle Uno', image: muelleUno, url: 'https://www.muelleuno.com' },
+
+	// SOL-20260813-01 (13/08/2026): reposicionamiento pedido por Justo Fuentes en
+	// `POSICIONAMIENTO A MAYORES CLIENTES REV. DIG FERIA MALAGA 26.xlsx`. Por
+	// corrección expresa de Marc («los anuncios que están no se modifican, solo
+	// se duplican»), estos NO son traslados: cada anunciante sigue en su hueco de
+	// arriba (columna NUMERO MHOU) Y ADEMÁS se da de alta aquí, en su hueco nuevo
+	// (columna NUEVO NUMERO), con la misma creatividad.
+	107: { name: 'Abasthosur', image: abasthosur, url: 'https://abasthosur.es' },
+	106: { name: 'Acosol', image: acosol, url: 'https://www.acosol.es' },
+	105: { name: 'Aluminios Mata', image: aluminiosMata, url: 'https://www.aluminiosmata.com' },
+	104: { name: 'Aquavelis', image: aquavelis, url: 'https://www.aquavelis.es' },
+	103: { name: 'Araboka Restaurante', image: araboka, url: 'https://www.arabokarestaurante.com' },
+	102: { name: 'Automóviles Rueda', image: automovilesRueda, url: 'https://www.concesionarios.seat/home/overview-dw.dealer.automoviles-rueda.html' },
+	// AYTO ANTEQUERA (85→31) NO se ha aplicado: el hueco 31 sigue ocupado por CC
+	// Rincón de la Victoria (que se queda ahí, y además se duplica a 93 más abajo).
+	// El Excel de Justo daba 31 como hueco libre porque asumía que Rincón de la
+	// Victoria se MOVÍA a 93 y lo dejaba vacante; con la regla de "solo duplicar"
+	// eso ya no pasa, así que 31 sigue ocupado y no hay sitio para Antequera ahí.
+	// Ver CAMBIOS.md y aviso a Marc. Pendiente de instrucción.
+	42: { name: 'Ayuntamiento de Rincón de la Victoria', image: rinconDeLaVictoria, url: 'https://www.rincondelavictoria.es' },
+	72: { name: 'Ayuntamiento de Alhaurín de la Torre', image: alhaurinDeLaTorre, url: 'https://www.alhaurindelatorre.es' },
+	101: { name: 'Ayuntamiento de Estepona', image: estepona, url: 'https://ayuntamiento.estepona.es', video: esteponaVideo },
+	100: { name: 'Ayuntamiento de Málaga', image: ayuntamientoMalaga, url: 'https://www.malaga.eu' },
+	98: { name: 'Ayuntamiento de Torremolinos', image: torremolinos, url: 'https://torremolinos.es', video: torremolinosVideo },
+	99: { name: 'Er Pichi de Cai', image: erPichiDeCai, url: 'https://erpichidecai.com' },
+	97: { name: 'Bodegas Carpe Diem', image: carpeDiem, url: 'https://www.bodegascarpediem.com' },
+	96: { name: 'Cash Sierra Nevada', image: cashSierraNevada, url: 'https://cashsierranevada.es' },
+	93: { name: 'CC Rincón de la Victoria', image: ccRinconDeLaVictoria, url: 'https://www.ccrincondelavictoria.com/en-verano-abrimos-todos-los-dias/' },
+	// Citroën Sama no tenía hueco asignado todavía (alta nueva, no duplicación):
+	// el Excel apuntaba su posición actual con la nota "video funes" en vez de un
+	// número. Va en el 92, ya activo y sin vender (pop-up de "Sergio 'The
+	// Shooter'" en Test de la Feria) — no depende del vídeo de Funes.
+	92: { name: 'Citroën Sama', image: citroenSama, url: 'https://www.samagoaz.com' },
 }
 
 /** El hueco `spot` con su anunciante, o vacío si todavía no se ha vendido. */

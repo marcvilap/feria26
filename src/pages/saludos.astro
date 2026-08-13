@@ -16,10 +16,10 @@ const linkNextMobile = { name: 'Curiosidades', path: '/curiosidades' }
 
 const ads = [ad(23)]
 const adsMobile = adsFor(24, 25)
-// Un hueco por saludo, en el mismo orden que la lista.
 // Un hueco por saludo, en el mismo orden que la lista. El 108 es el primero de los
 // números nuevos: los 26-28 estaban vendidos antes de que llegara María Barranco y no
-// se mueven. El 109 queda reservado para cuando entregue su vídeo el pregonero.
+// se mueven. El 109 era el reservado al pregonero: su vídeo entró el 13/08/2026, así
+// que el pop-up ya abre, pero el hueco sigue sin anunciante y se pinta vacío.
 const modalSpots = [26, 27, 28, 108, 109]
 const modalAds = adsFor(...modalSpots)
 ---
