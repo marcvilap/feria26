@@ -9,7 +9,7 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 59 de 93 ocupados: los 58 de esta tabla más el 70, que es Carteles de
+// todos. Hoy hay 60 de 93 ocupados: los 59 de esta tabla más el 70, que es Carteles de
 // Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes. Los
 // números llegan al 110, pero 17 ya no existen: los pop-ups de las dos secciones de
 // revistas (05-16 y 22) y los cuatro del 60 Aniversario (86-89), retirados porque en esas
@@ -28,17 +28,17 @@
 // año de cartel (Marc lo aclaró el 13/08/2026). Está al final del fichero.
 //
 // PENDIENTE (ver el correo del 10 de agosto de 2026):
-//   - El hueco 62 se asignó a la vez a Larios Centro y a Syrluz. Se ha montado Larios
-//     Centro por ser el que llegó primero en el listado; Syrluz espera destino.
+//   - El 62 estaba asignado a la vez a Larios Centro y a Syrluz. Resuelto el 13/08/2026
+//     a favor de Syrluz: Larios Centro ya está en Carteles de Feria, cartel de 2010.
 //   - Ya no queda nadie con creatividad y sin hueco. Los tres que estaban así entraron el
-//     13/08/2026: Sabor a Málaga (la Diputación) en el 29, Olin en el 77, y EMT por
+//     13/08/2026: Sabor a Málaga (la Diputación) en el 29, Olin en el 78, y EMT por
 //     Carteles de Feria, en el cartel de 2005. Sabor a Málaga está además en el cartel de
 //     2002. EMT sigue esperando el vídeo de Enrique Ortiz, pero eso solo afecta al otro
 //     hueco que le quede por asignar.
 //     OJO: el Excel situaba a la Diputación en «Plaza toros», que es el hueco 83 y sigue
 //     vacío. Marc dio el 29, así que el 83 queda pendiente de aclarar.
-//   - Ayto. Benalmádena y Tejeros no han entregado material. Ayto. Benahavís sí, el
-//     13/08/2026: va en el 41.
+//   - Solo Tejeros sigue sin entregar material. Los ayuntamientos de Benahavís y
+//     Benalmádena entregaron el 13/08/2026: van en el 41 y el 77.
 //   - Cartojal no ocupa un hueco numerado: patrocina el fondo entero del Mapa Interactivo
 //     («MAPA FERIA» en el Excel). Está montado con el arte de 2025 hasta que entreguen el
 //     de este año (ver mapa-interactivo.astro).
@@ -53,6 +53,7 @@ import araboka from '$assets/images/ads/2026/araboka.jpg'
 import automovilesRueda from '$assets/images/ads/2026/automoviles-rueda.jpg'
 import ayuntamientoMalaga from '$assets/images/ads/2026/ayuntamiento-malaga.jpeg'
 import benahavis from '$assets/images/ads/2026/benahavis.jpg'
+import benalmadena from '$assets/images/ads/2026/benalmadena.png'
 import carpeDiem from '$assets/images/ads/2026/carpe-diem.jpg'
 import cashSierraNevada from '$assets/images/ads/2026/cash-sierra-nevada.png'
 import ccRinconDeLaVictoria from '$assets/images/ads/2026/cc-rincon-de-la-victoria.png'
@@ -82,6 +83,7 @@ import olin from '$assets/images/ads/2026/olin.png'
 import reactiva from '$assets/images/ads/2026/reactiva.jpg'
 import rinconDeLaVictoria from '$assets/images/ads/2026/rincon-de-la-victoria.png'
 import siciliaHermanos from '$assets/images/ads/2026/sicilia-hermanos.jpg'
+import syrluz from '$assets/images/ads/2026/syrluz.jpg'
 import tesesa from '$assets/images/ads/2026/tesesa.jpg'
 import tiendasJuanLucas from '$assets/images/ads/2026/tiendas-juan-lucas.jpg'
 import torremolinos from '$assets/images/ads/2026/torremolinos.jpg'
@@ -133,17 +135,28 @@ const advertisers: Record<number, Advertiser> = {
 	57: { name: 'Ayuntamiento de Torremolinos', image: torremolinos, url: 'https://torremolinos.es', video: torremolinosVideo },
 	58: { name: 'Narbona Solís', image: narbona, url: 'https://narbonasolis.es' },
 	59: { name: 'Famadesa', image: famadesa, url: 'https://famadesa.es', video: famadesaVideo },
-	62: { name: 'Larios Centro', image: lariosCentro, url: 'https://larioscentro.com' },
+	// El 62 venía asignado a la vez a Larios Centro y a Syrluz. Se resuelve a favor de
+	// Syrluz (Marc, 13/08/2026): Larios Centro no se queda sin sitio, porque ya está en
+	// Carteles de Feria, en el cartel de 2010.
+	// La utm del enlace dice «especial-feria-huelva», que es lo que entregó el cliente.
+	62: { name: 'Syrluz', image: syrluz, url: 'https://www.hyundai.es/concesionarios/syrluz-syrsa?utm_source=especial-feria-huelva&utm_medium=cope&utm_campaign=subete-tus-decisiones' },
 	65: { name: 'Sicilia Hermanos', image: siciliaHermanos, url: 'http://www.siciliahermanos.es' },
 	66: { name: 'Cormosa', image: cormosa, url: 'https://www.redcupra.es/cormosa/L1-cupra-terramar-hibrido-s?origin=o' },
 	67: { name: 'Metro de Málaga', image: metroMalaga, url: 'https://metromalaga.es', video: metroMalagaVideo },
 	71: { name: 'EADE', image: eade, url: 'https://eade.es' },
 	73: { name: 'Bodegas Carpe Diem', image: carpeDiem, url: 'https://www.bodegascarpediem.com' },
 	76: { name: 'Hipermueble', image: hipermueble, url: 'https://www.hiper-mueble.com', video: hipermuebleVideo },
-	// Último de los que tenían creatividad sin número: en el Excel su casílla eran
-	// interrogantes. Hueco dado por Marc el 13/08/2026. La creatividad viene a 481x481,
-	// muy por debajo del mínimo de 1152x1152, así que se verá blanda en alta densidad.
-	77: { name: 'Olin', image: olin, url: 'https://olin.es/es/fibra/?utm_source=cope&utm_medium=paid_referral&utm_campaign=veráno_2026&utm_content=banner' },
+	// Entregado el 13/08/2026, hueco dado por Marc. Llegó en PDF (una página, cuadrada) y
+	// se rasterizó a 1600x1600 con el mismo método que usa `scripts/publicidad-2026.py`.
+	// OJO CON EL ENLACE: ni el correo ni el Excel traían URL, así que se pone la web
+	// municipal. Si el ayuntamiento quiere la de Festejos, hay que cambiarla.
+	77: { name: 'Ayuntamiento de Benalmádena', image: benalmadena, url: 'https://www.benalmadena.es' },
+	// Último de los que tenían creatividad sin número: en el Excel su casilla eran
+	// interrogantes. Empezó en el 77 y Marc lo movió al 78 el 13/08/2026 — no es una
+	// duplicación, es un traslado. Aquí es lateral y solo imagen, que es lo que tiene.
+	// La creatividad viene a 481x481, muy por debajo del mínimo de 1152x1152, así que se
+	// verá blanda en alta densidad: es la más pequeña de todas las montadas.
+	78: { name: 'Olin', image: olin, url: 'https://olin.es/es/fibra/?utm_source=cope&utm_medium=paid_referral&utm_campaign=verano_2026&utm_content=banner' },
 	84: { name: 'Maex Cuevas Queipo', image: maex, url: 'https://maexdental.com/clinicas/malaga/maex-malaga/' },
 	85: { name: 'Ayuntamiento de Antequera', image: antequera, url: 'https://www.antequera.es' },
 	// El 86 (lateral del 60 Aniversario) se retira el 13/08/2026: esa sección se queda sin
