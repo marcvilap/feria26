@@ -2,7 +2,7 @@
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import JournalGrid from '$components/JournalGrid.astro'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsForMobile } from '$utils/data-ads'
 
 // Unifica las dos secciones de 2025: "Bienvenida" (texto de apertura y acceso a
 // las ediciones anteriores) y "Feria y sociedad" (los testimonios en vídeo).
@@ -13,7 +13,7 @@ const linkNext = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
 const linkPrevMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 const linkNextMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
 const ads = [ad(2)]
-const adsMobile = adsFor(3, 4)
+const adsMobile = adsForMobile(ads)
 // Sin publicidad en los pop-ups: «en las revistas no hay anuncios» (Mónica, 13/08/2026).
 // Aquí había doce huecos (5-16), heredados de cuando la parrilla eran los testimonios en
 // vídeo. Nunca llegaron a pintarse —`JournalGrid` no emitía `data-ad-spot`— y además no

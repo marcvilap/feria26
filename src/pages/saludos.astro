@@ -5,7 +5,7 @@ import Title from '$components/Title.astro'
 import Split from '$components/Split.astro'
 import Icon from '$components/Icon.astro'
 import greatings from '$utils/data-greatings'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsFor, adsForMobile } from '$utils/data-ads'
 
 const title = 'Saludos'
 const variation = 4
@@ -15,7 +15,7 @@ const linkPrevMobile = { name: 'Inicio', path: '/' }
 const linkNextMobile = { name: 'Curiosidades', path: '/curiosidades' }
 
 const ads = [ad(23)]
-const adsMobile = adsFor(24, 25)
+const adsMobile = adsForMobile(ads)
 // Un hueco por saludo, en el mismo orden que la lista. El 108 es el primero de los
 // números nuevos: los 26-28 estaban vendidos antes de que llegara María Barranco y no
 // se mueven. El 109 era el reservado al pregonero: su vídeo entró el 13/08/2026, así

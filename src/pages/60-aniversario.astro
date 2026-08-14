@@ -3,7 +3,7 @@ import { Image, getImage } from 'astro:assets'
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsForMobile } from '$utils/data-ads'
 import aniversario from '$utils/data-aniversario'
 
 const title = '60 Aniversario COPE Málaga'
@@ -13,7 +13,7 @@ const linkNext = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 const linkPrevMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkNextMobile = { name: 'El vino y la Feria', path: '/el-vino-y-la-feria' }
 const ads = [ad(86)]
-const adsMobile = adsFor(87, 88)
+const adsMobile = adsForMobile(ads)
 // Sin publicidad en los pop-ups (13/08/2026), como en las dos secciones de revistas:
 // aquí estaba el hueco 89 y se retira. El lateral y los de móvil se quedan, que esos son
 // de la página. Ver PUBLICIDAD.md.

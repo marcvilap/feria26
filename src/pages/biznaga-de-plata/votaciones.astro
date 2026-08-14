@@ -2,7 +2,7 @@
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsForMobile } from '$utils/data-ads'
 import { candidates, palmares } from '$utils/data-biznaga'
 
 const title = 'Votaciones'
@@ -12,7 +12,7 @@ const linkPrevMobile = { name: 'Volver', path: '/biznaga-de-plata' }
 // Ruta anidada, como en la edición 2025: /biznaga-de-plata/votaciones
 
 const ads = [ad(62)]
-const adsMobile = adsFor(63, 64)
+const adsMobile = adsForMobile(ads)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkPrevMobile} {adsMobile}>

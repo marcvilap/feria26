@@ -2,7 +2,7 @@
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import VideoGrid from '$components/VideoGrid.astro'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsFor, adsForMobile } from '$utils/data-ads'
 import curiosidades from '$utils/data-curiosidades'
 
 const title = 'Curiosidades de la Feria'
@@ -10,7 +10,7 @@ const variation = 4
 const linkPrev = { name: 'Volver', path: '/curiosidades' }
 const linkPrevMobile = { name: 'Volver', path: '/curiosidades' }
 const ads = [ad(34)]
-const adsMobile = adsFor(35, 36)
+const adsMobile = adsForMobile(ads)
 // Los diez vídeos necesitan diez pop-ups y la sección solo tenía reservados 37-42.
 // Con la numeración congelada, los seis vídeos que ya estaban conservan su hueco y los
 // cuatro que se añaden ocupan números que quedaron libres al eliminar las páginas

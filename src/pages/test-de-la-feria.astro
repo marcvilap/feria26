@@ -4,7 +4,7 @@ import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import VideoGrid from '$components/VideoGrid.astro'
 import test from '$utils/data-test'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsFor, adsForMobile } from '$utils/data-ads'
 
 const title = 'Test de la Feria'
 const variation = 4
@@ -13,7 +13,7 @@ const linkNext = { name: '60 Aniversario', path: '/60-aniversario' }
 const linkPrevMobile = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
 const linkNextMobile = { name: '60 Aniversario', path: '/60-aniversario' }
 const ads = [ad(52)]
-const adsMobile = adsFor(53, 54)
+const adsMobile = adsForMobile(ads)
 // La sección pasa de 4 a 19 vídeos y solo tenía reservados los pop-ups 55-58. Con la
 // numeración congelada, los cuatro que ya estaban conservan su hueco y los quince que
 // se añaden estrenan número: ya no quedaban libres de los intersticiales, así que van

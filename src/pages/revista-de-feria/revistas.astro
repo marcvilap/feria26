@@ -2,7 +2,7 @@
 import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import JournalGrid from '$components/JournalGrid.astro'
-import { adsFor } from '$utils/data-ads'
+import { adsFor, adsForMobile } from '$utils/data-ads'
 
 const title = 'Revistas anteriores'
 const variation = 4
@@ -10,7 +10,7 @@ const linkPrev = { name: 'Volver', path: '/revista-de-feria' }
 const linkPrevMobile = { name: 'Volver', path: '/revista-de-feria' }
 
 const ads = adsFor(17, 18, 19)
-const adsMobile = adsFor(20, 21)
+const adsMobile = adsForMobile(ads)
 // Sin publicidad en los pop-ups, igual que en /revista-de-feria: aquí estaba el hueco 22
 // y se retira (Mónica, 13/08/2026). Los laterales y los de móvil se quedan.
 ---

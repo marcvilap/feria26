@@ -4,7 +4,7 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import posters from '$utils/data-posters'
-import { adsFor, adsCarteles } from '$utils/data-ads'
+import { adsFor, adsForMobile, adsCarteles } from '$utils/data-ads'
 
 const title = 'Carteles de Feria'
 const variation = 2
@@ -14,7 +14,7 @@ const linkPrevMobile = { name: 'Biznaga de Plata', path: '/biznaga-de-plata' }
 const linkNextMobile = { name: 'Plaza de Toros', path: '/plaza-de-toros' }
 
 const ads = adsFor(65, 66, 67)
-const adsMobile = adsFor(68, 69)
+const adsMobile = adsForMobile(ads)
 // Los 25 pop-ups son el hueco 70, uno por cartel: el anunciante lo decide el año
 // (ver el bloque de Carteles en data-ads.ts). Antes esta página colgaba el mismo
 // anuncio genérico de los 25.
