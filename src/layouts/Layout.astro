@@ -8,7 +8,7 @@ import Navigation from '$components/Navigation.astro'
 import Menu from '$components/Menu.astro'
 import AdSlot from '$components/AdSlot.astro'
 import AdNumber from '$components/AdNumber.astro'
-import { showAds, showAdNumbers } from '$utils/config'
+import { showAds, showAdNumbers, showEmptyAds } from '$utils/config'
 import type { Ad } from '$utils/ads'
 
 interface Props {
@@ -31,10 +31,20 @@ interface Props {
 
 const { title, variation, linkPrev, linkNext, linkPrevMobile, linkNextMobile, adsMobile, modalAd, modalAds } = Astro.props
 
+// Con `showEmptyAds` apagado, un hueco sin vender no se pinta. En los pop-ups eso
+// significa no emitir su `<template>`: main.ts no lo encuentra y el pop-up se abre sin
+// columna de publicidad, en vez de con un recuadro de «espacio disponible».
+const visible = (ad: Ad) => showEmptyAds || !showAds || !!ad.image
+
 // `modalAd` es el genérico de la página y `modalAds` los de cada pop-up: se pintan las
 // dos cosas porque main.ts busca primero el hueco concreto y cae en el genérico si no
 // lo encuentra (por ejemplo en los pop-ups que no salen de una parrilla de vídeos).
-const modalTemplates = [...(modalAds ?? []).map(ad => ({ id: `modal-ad-${ad.key ?? ad.spot}`, ad })), ...(modalAd ? [{ id: 'modal-ad', ad: modalAd }] : [])]
+const modalTemplates = [
+	...(modalAds ?? []).filter(visible).map(ad => ({ id: `modal-ad-${ad.key ?? ad.spot}`, ad })),
+	...(modalAd && visible(modalAd) ? [{ id: 'modal-ad', ad: modalAd }] : []),
+]
+
+const barAds = (adsMobile ?? []).filter(visible)
 ---
 
 <!doctype html>
@@ -272,7 +282,7 @@ const modalTemplates = [...(modalAds ?? []).map(ad => ({ id: `modal-ad-${ad.key 
 		<Menu />
 
 		{
-			adsMobile?.length && (
+			barAds.length && (
 				<div
 					transition:name="ads"
 					transition:animate={slide({ duration: 1000 })}
@@ -280,9 +290,9 @@ const modalTemplates = [...(modalAds ?? []).map(ad => ({ id: `modal-ad-${ad.key 
 					class="fixed inset-x-0 bottom-0 z-10 bg-blue-600/80 py-6 text-white backdrop-blur lg:hidden"
 				>
 					<div class="container">
-						<p>{showAds && adsMobile.some(ad => ad.image) ? 'En colaboración con' : 'Publicidad'}</p>
+						<p>{showAds && barAds.some(ad => ad.image) ? 'En colaboración con' : 'Publicidad'}</p>
 						<div class="mt-3 grid grid-cols-2 gap-3">
-							{adsMobile.map(ad => (
+							{barAds.map(ad => (
 								<article class="relative">
 									{!showAds || !ad.image ? (
 										<AdSlot spot={ad.spot} video={!!ad.video} />
