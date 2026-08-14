@@ -3,7 +3,7 @@ import Layout from '$layouts/Layout.astro'
 import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import Link from '$components/Link.astro'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad, adsForMobile } from '$utils/data-ads'
 
 const title = 'Curiosidades'
 const variation = 3
@@ -12,7 +12,7 @@ const linkNext = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
 const linkPrevMobile = { name: 'Saludos', path: '/saludos' }
 const linkNextMobile = { name: 'Te lo cuenta COPE', path: '/te-lo-cuenta' }
 const ads = [ad(31)]
-const adsMobile = adsFor(32, 33)
+const adsMobile = adsForMobile(ads)
 ---
 
 <Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile}>

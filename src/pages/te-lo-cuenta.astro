@@ -4,7 +4,7 @@ import Split from '$components/Split.astro'
 import Title from '$components/Title.astro'
 import VideoGrid from '$components/VideoGrid.astro'
 import teLoCuenta from '$utils/data-te-lo-cuenta'
-import { adsFor } from '$utils/data-ads'
+import { adsFor, adsForMobile } from '$utils/data-ads'
 
 // Unifica el texto de apertura y la subpágina de vídeos en una sola sección.
 const title = 'Te lo cuenta COPE Málaga'
@@ -14,7 +14,7 @@ const linkNext = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const linkPrevMobile = { name: 'Curiosidades', path: '/curiosidades' }
 const linkNextMobile = { name: 'Test de la Feria', path: '/test-de-la-feria' }
 const ads = adsFor(43, 44)
-const adsMobile = adsFor(45, 46)
+const adsMobile = adsForMobile(ads)
 // Un hueco por pieza, en el mismo orden que la parrilla. La sección solo tenía
 // reservados los pop-ups 47-51 y ya va por once piezas, así que la numeración sale a
 // trompicones: las cinco de 2026 conservan su hueco; las tres nuevas de agosto estrenan

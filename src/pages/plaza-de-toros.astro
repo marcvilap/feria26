@@ -5,7 +5,7 @@ import Title from '$components/Title.astro'
 import imgBull from '$assets/images/bull.webp'
 import videoMalagueta from '$assets/videos/toros/la-malagueta.mp4'
 import posterMalagueta from '$assets/images/posters-video/toros/la-malagueta.webp'
-import { ad, adsFor } from '$utils/data-ads'
+import { ad } from '$utils/data-ads'
 
 const title = 'Plaza de Toros'
 const variation = 1
@@ -13,11 +13,13 @@ const linkPrev = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
 const linkNext = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
 const linkPrevMobile = { name: 'Carteles de Feria', path: '/carteles-de-feria' }
 const linkNextMobile = { name: 'Mapa Interactivo', path: '/mapa-interactivo' }
-const adsMobile = adsFor(81, 82)
+// Esta sección no tiene lateral de escritorio, así que tampoco lleva barra de móvil:
+// sus dos huecos de móvil (81 y 82) seguían sin vender y solo pintaban recuadros
+// vacíos. Si se le monta un lateral, se replica en móvil con `adsForMobile`.
 const modalAd = ad(83)
 ---
 
-<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {adsMobile} {modalAd}>
+<Layout {title} {variation} {linkPrev} {linkNext} {linkPrevMobile} {linkNextMobile} {modalAd}>
 	<section class="reveal relative -mt-20 bg-black text-white lg:-mt-24">
 		<Image class="absolute left-0 top-0 size-full object-cover opacity-25 max-lg:blur" src={imgBull} width={1920} densities={[2]} alt="" />
 		<div class="container relative flex min-h-svh flex-col justify-center gap-y-12 pb-12 pt-36 lg:pb-24 lg:pt-48">

@@ -216,6 +216,23 @@ export const ad = (spot: number): Ad => ({ spot, ...advertisers[spot] })
 /** Varios huecos de una vez, en el orden en que se pasan. */
 export const adsFor = (...spots: number[]): Ad[] => spots.map(ad)
 
+/**
+ * La barra de móvil de una página: los mismos anunciantes que en su lateral de
+ * escritorio, quitando los huecos que aún no se han vendido.
+ *
+ * Antes cada sección tenía dos huecos propios de móvil (los 03-04, 24-25, 79-80…),
+ * pero no se vendió ninguno de los 28, así que en móvil solo se veían recuadros de
+ * «espacio disponible» mientras el lateral de escritorio sí llevaba anunciante.
+ * Marc pidió el 14/08/2026 unificarlo: en móvil se ven los de escritorio y los
+ * huecos vacíos desaparecen.
+ *
+ * El filtro es por creatividad y no por una lista fija: en cuanto el comercial
+ * venda un lateral que hoy está libre, entra solo en la barra de móvil. Si la
+ * sección no tiene ningún lateral vendido, devuelve una lista vacía y el `Layout`
+ * no pinta la barra.
+ */
+export const adsForMobile = (ads: Ad[]): Ad[] => ads.filter(ad => ad.image)
+
 // CARTELES DE FERIA — el bloque «70/año AAAA» del Excel de SOL-20260813-01.
 //
 // La sección entera se vende como el hueco 70: los 25 pop-ups llevan ese número y
