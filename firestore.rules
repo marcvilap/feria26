@@ -1,0 +1,39 @@
+// Reglas de seguridad de Firestore del proyecto `votacion-cope`.
+//
+// Hasta el 14/08/2026 vivían solo en la consola de Firebase y no se habían tocado
+// desde el 08/08/2024: contemplaban únicamente `/votos`, la colección de ediciones
+// anteriores. Al estrenar `votos-2026` la votación empezó a fallar con «Missing or
+// insufficient permissions», porque Firestore deniega por defecto todo lo que no
+// tenga una regla. Se traen aquí para que viajen con el código y no se vuelvan a
+// quedar atrás cuando cambie la colección.
+//
+// Se publican con `npx firebase deploy --only firestore:rules`.
+
+rules_version = '2';
+
+service cloud.firestore {
+	match /databases/{database}/documents {
+		// Ediciones anteriores. La web ya no escribe ni lee aquí; los votos se consultan
+		// desde la consola, que va con permisos de administrador y no pasa por estas
+		// reglas. Estaba en `allow read, write: if true`, que dejaba a cualquiera
+		// descargarlos, sobrescribirlos o borrarlos.
+		match /votos/{document=**} {
+			allow read, write: if false;
+		}
+
+		// Feria 2026. La página solo da de alta votos (`addDoc` en votaciones.astro),
+		// así que no hace falta abrir nada más. Los campos se validan para que no se
+		// pueda colar otra cosa en la colección.
+		//
+		// OJO: `create` está abierto a cualquiera, y tiene que estarlo, porque se vota
+		// sin identificarse. El control de voto único es solo de `localStorage`, así
+		// que no impide votar dos veces desde otro navegador. Si algún día hace falta
+		// que sea de verdad, es App Check o autenticación anónima.
+		match /votos-2026/{voto} {
+			allow create: if request.resource.data.keys().hasOnly(['votacion', 'timestamp'])
+										&& request.resource.data.votacion is string
+										&& request.resource.data.timestamp is timestamp;
+			allow read, update, delete: if false;
+		}
+	}
+}

@@ -32,7 +32,9 @@ Every route is a standalone `.astro` page in `src/pages/` — there is no conten
 
 **Data (`src/utils/data-*.ts`).** Page content lists (feria participants, timeline, greetings, journals, posters, recommendations) are plain exported arrays of objects that `import` their images from `$assets/...`, so images are optimized by Astro's `<Image>` pipeline. Edit content here, not inline in pages.
 
-**Voting (`votaciones.astro` + `firebase.js`).** The `/votaciones` page writes to the `votos` Firestore collection. Note it does NOT import `firebase.js`; it inlines its own Firebase init inside a page `<script type="module">` (loaded from the gstatic CDN). `firebase.js` at the repo root is a parallel/unused copy of the same config. Duplicate-vote prevention is client-side only (`localStorage.hasVoted`). The Firebase config (API key included) is public client config, committed intentionally.
+**Voting (`votaciones.astro` + `firestore.rules`).** The `/votaciones` page writes to the `votos-2026` Firestore collection (project `votacion-cope`) — a collection per edition, so this year's votes don't mix with `votos`, which holds 2024's. Note it does NOT import `firebase.js`; it inlines its own Firebase init inside a page `<script type="module">` (loaded from the gstatic CDN). `firebase.js` at the repo root is a parallel/unused copy of the same config and still points at the old `votos`. Duplicate-vote prevention is client-side only (`localStorage.hasVoted2026`). The Firebase config (API key included) is public client config, committed intentionally.
+
+**If you rename that collection, change `firestore.rules` too.** Firestore denies anything without a matching rule, so a new collection name fails with "Missing or insufficient permissions" until the rules follow — which is exactly what broke the 2026 vote until 14/08. The rules used to live only in the Firebase console; they are now in the repo and ship with `npx --yes firebase-tools deploy --only firestore:rules` (needs `firebase login` once). Deploying is a separate step from the Vercel deploy: pushing to `main` does NOT publish rules.
 
 ## Conventions
 
