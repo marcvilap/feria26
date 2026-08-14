@@ -1,10 +1,17 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**68 espacios** repartidos por la revista. **62 están vendidos y montados** y los otros
-6 se siguen pintando en pantalla con su número, así que basta con abrir la web para
-localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
-`showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
-como se le enseña la maqueta al comercial.
+**68 espacios** repartidos por la revista, **62 vendidos y montados**.
+
+> **14/08/2026 — la venta se da por cerrada.** Marc avisó de que no se venderá más
+> publicidad en esta edición, así que los seis huecos que quedaban libres **ya no se
+> pintan**: antes dejaban un recuadro de «espacio disponible» con su número y ahora
+> desaparecen, rótulo «Publicidad» incluido. Son el 01 (pop-up de la Home), los tres
+> laterales de Revistas anteriores (17-19), el 83 (pop-up de Plaza de Toros) y el 110
+> (pop-up de Te lo cuenta). Lo apaga `showEmptyAds` en `src/utils/config.ts`.
+>
+> Para volver a enseñarle la maqueta al comercial no hace falta tocar eso: con
+> `showAds` a `false` se pintan como recuadro **todos** los huecos de golpe, vendidos
+> incluidos, que es como se revisaba el reparto.
 
 > **14/08/2026 — los 28 huecos propios de móvil desaparecen.** No se vendió ninguno,
 > así que en el móvil solo se veían recuadros de «espacio disponible» debajo de una

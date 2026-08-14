@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 import AdSlot from '$components/AdSlot.astro'
 import AdNumber from '$components/AdNumber.astro'
-import { showAds, showAdNumbers } from '$utils/config'
+import { showAds, showAdNumbers, showEmptyAds } from '$utils/config'
 import type { Ad } from '$utils/ads'
 
 interface Props {
@@ -12,6 +12,10 @@ interface Props {
 }
 
 const { ads, variation, reverse } = Astro.props
+
+// Con `showEmptyAds` apagado, un hueco sin vender no se pinta: se cae con su rótulo
+// «Publicidad» incluido, en vez de dejar el recuadro de «espacio disponible».
+const shown = showEmptyAds || !showAds ? ads : ads.filter(ad => ad.image)
 ---
 
 <div class="container py-12 lg:py-24">
@@ -28,7 +32,7 @@ const { ads, variation, reverse } = Astro.props
 			<div class="grid gap-12">
 				<slot name="aside" />
 				{
-					ads.map((ad, index) => (
+					shown.map((ad, index) => (
 						<article class:list={[!reverse && 'text-right']}>
 							<p class:list={[((variation === 2 && index === 0) || (variation === 3 && reverse) || (variation === 4 && !reverse)) && 'lg:text-white']}>
 								{showAds && ad.image ? 'En colaboración con' : 'Publicidad'}

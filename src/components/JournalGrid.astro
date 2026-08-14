@@ -10,14 +10,15 @@ import journals from '$utils/data-journals'
 // El 13/08/2026 Mónica pidió que la portada se pinche y se abra, como en Carteles de
 // Feria: por eso el marcado de la portada es el mismo que el de `carteles-de-feria.astro`.
 //
-// Debajo va el «Descargar» de la revista completa, pero solo hasta 2023: desde 2024 la
-// edición es digital y no hay PDF (ver `data-journals.ts`). Las descargas no pasan por
-// el pop-up, son un enlace normal al PDF.
+// Debajo iba un «Descargar revista» al PDF de cada año, que Marc pidió quitar el
+// 14/08/2026. Solo salía hasta 2023 —desde 2024 la edición es digital y no hay PDF—,
+// así que la galería quedaba con unas portadas con enlace y otras sin él. Las rutas
+// siguen en `data-journals.ts`, en el campo `pdf`, por si hubiera que recuperarlo.
 ---
 
 <div class="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 xl:grid-cols-4 2xl:gap-12">
 	{
-		journals.map(async ({ image, name, pdf }) => (
+		journals.map(async ({ image, name }) => (
 			<article>
 				<a class="open-in-modal group" target="_blank" href={(await getImage({ src: image, format: 'webp' })).src}>
 					<div class="overflow-clip rounded bg-black">
@@ -31,11 +32,6 @@ import journals from '$utils/data-journals'
 					</div>
 					<h3 class="mt-3 text-center">{name}</h3>
 				</a>
-				{pdf && (
-					<a class="mt-1 block text-center text-sm text-blue-600 underline hover:text-orange-600" href={pdf} target="_blank" rel="noopener noreferrer">
-						Descargar revista
-					</a>
-				)}
 			</article>
 		))
 	}
