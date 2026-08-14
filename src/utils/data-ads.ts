@@ -9,7 +9,7 @@
 //
 // Un hueco que no aparezca en esta tabla sigue existiendo y se pinta como «espacio
 // disponible» con su número, así que la web se puede publicar sin esperar a venderlos
-// todos. Hoy hay 61 de 96 ocupados: los 60 de esta tabla más el 70, que es Carteles de
+// todos. Hoy hay 62 de 96 ocupados: los 61 de esta tabla más el 70, que es Carteles de
 // Feria y se lleva aparte al final del fichero porque reparte 25 anunciantes. Los
 // números llegan al 110, pero 14 ya no existen: los pop-ups de las dos secciones de
 // revistas (05-16 y 22) y el del 60 Aniversario (89). En esas tres secciones no hay
@@ -165,6 +165,11 @@ const advertisers: Record<number, Advertiser> = {
 	// Tampoco traía número, sino la nota «VIDEO MONICA»: va pegado al reportaje de Mónica
 	// García, que se publicó el 10 de agosto y estrenó el hueco 94.
 	94: { name: 'Tiendas Juan Lucas', image: tiendasJuanLucas, url: 'https://juanlucas.com' },
+	// Mismo caso que Muelle Uno en el 108 y Citroën Sama en el 109: en el Excel su posición
+	// actual no era un número sino la nota «VIDEO ENRIQUE», o sea el pop-up del reportaje de
+	// Enrique Ortiz, que es el 95. El vídeo llegó el 14/08/2026 y con él se desbloquea el
+	// hueco. EMT se queda además en Carteles de Feria, en el cartel de 2005.
+	95: { name: 'EMT', image: emt, url: 'https://www.emtmalaga.es' },
 	// En el Excel no traía número, sino la nota «video maria barranco»: va pegado al saludo
 	// de la abanderada, que se publicó el 10 de agosto y estrenó el hueco 108.
 	108: { name: 'Muelle Uno', image: muelleUno, url: 'https://www.muelleuno.com' },
