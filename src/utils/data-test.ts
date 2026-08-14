@@ -58,6 +58,10 @@ export default [
 	{ image: image04, video: video04, name: 'Juanfran Funes', description: 'ENTRENADOR MÁLAGA C.F.' },
 	{ image: image05, video: video05, name: 'Estefanía Martínez', description: 'PEDRITA PARKER' },
 	{ image: image06, video: video06, name: "Sergio 'The Shooter'", description: 'YOUTUBER' },
+	// OJO: el remontaje del 14/08/2026 cambió el rótulo a «LAURA GARCÍA», que es un error
+	// del cliente —la fundadora de Malasmadres es Laura Baena, y así lo decía el rótulo de
+	// la versión anterior—. Aquí se mantiene el nombre correcto; el vídeo hay que pedir que
+	// lo reexporten. Es la única ficha de la sección donde el rótulo y el dato no coinciden.
 	{ image: image07, video: video07, name: 'Laura Baena', description: 'FUNDADORA DE MALASMADRES' },
 	// 2025
 	{ image: image08, video: video08, name: 'José Luis Puche', description: 'ARTISTA CONTEMPORÁNEO' },
