@@ -180,6 +180,9 @@ const barAds = (adsMobile ?? []).filter(visible)
 			gtag('config', 'G-2PMSTB7WJT')
 		</script>
 
+		<ViewTransitions />
+	</head>
+	<body>
 		<!-- Begin comScore Tag -->
 		<noscript>
 			<img
@@ -189,7 +192,7 @@ const barAds = (adsMobile ?? []).filter(visible)
 				class="cs_px"
 			/></noscript
 		>
-		<script type="text/javascript">
+		<script type="text/javascript" is:inline>
 			var _comscore = _comscore || []
 			var cs_ucfr = ''
 			var firstConsent = 1
@@ -209,11 +212,15 @@ const barAds = (adsMobile ?? []).filter(visible)
 
 		<!-- Google Tag Manager (noscript) -->
 		<noscript
-			><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDQJ86T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=G-2PMSTB7WJT"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe></noscript
 		>
 		<!-- End Google Tag Manager (noscript) -->
 
-		<script type="text/javascript">
+		<script type="text/javascript" is:inline>
 			window.didomiOnReady = window.didomiOnReady || []
 			window.didomiOnReady.push(function () {
 				if (Didomi.getUserStatusForVendor(77) != undefined) {
@@ -263,9 +270,7 @@ const barAds = (adsMobile ?? []).filter(visible)
 			}, 2000)
 		</script>
 		<!-- End comScore Tag -->
-		<ViewTransitions />
-	</head>
-	<body>
+
 		<Header {variation} />
 
 		<main class="overflow-clip pt-20 lg:pt-24" transition:name="main" transition:animate={slide({ duration: 1000 })}>
