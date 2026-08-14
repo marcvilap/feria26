@@ -1,7 +1,7 @@
 # Huecos publicitarios — Feria de Málaga 2026
 
-**96 espacios** repartidos por la revista. **61 están vendidos y montados** y los otros
-35 se siguen pintando en pantalla con su número, así que basta con abrir la web para
+**96 espacios** repartidos por la revista. **62 están vendidos y montados** y los otros
+34 se siguen pintando en pantalla con su número, así que basta con abrir la web para
 localizar cualquiera de ellos y la publicación no depende de venderlos todos. Con
 `showAds` a `false` en `src/utils/config.ts` se pintan así todos de golpe, que es
 como se le enseña la maqueta al comercial.
@@ -45,11 +45,10 @@ del Excel `RELACION URL REVISTA DE FERIA 26.xlsx` de la entrega del 10 de agosto
 > otros dos —**84 y 85**— como pop-ups de Te lo cuenta COPE Málaga, que pasó de 5 a 8.
 > Agotados los reciclados, los huecos nuevos siguen a partir del **90**.
 >
-> **95 y 110 esperan un vídeo que el cliente aún no ha entregado**: los reportajes de
-> Enrique Ortiz y Alejandro en Te lo cuenta COPE Málaga. Sus fichas ya están publicadas y
-> marcadas como pendientes en la propia web, así que el hueco se ve al abrir la sección.
-> Se pueden vender desde ya: el anunciante entra en cuanto llegue la pieza, como pasó el
-> 10 de agosto con Muelle Uno.
+> **Ya no queda ninguna ficha esperando vídeo.** Los dos que faltaban en Te lo cuenta COPE
+> Málaga —los reportajes de Enrique Ortiz y Alejandro— llegaron el 14/08/2026. Con el de
+> Enrique se desbloquea el hueco **95**, que el Excel reservaba a EMT con la nota «VIDEO
+> ENRIQUE». El **110**, el del reportaje de Alejandro, sigue libre y ya se puede vender.
 >
 > **El 109 ya está cerrado.** El saludo del pregonero Juanfran Funes llegó el 13/08/2026 y,
 > con el vídeo entregado, el hueco pasa a Citroën Sama, que es donde el Excel lo situaba
@@ -206,7 +205,7 @@ Lo que sigue sin poderse montar, a la espera de respuesta del comercial:
 |   92 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Citroën Sama · alta 13/08                                                                                                                                                              |
 |   93 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | CC Rincón de la Victoria · dup. de 31                                                                                                                                                  |
 |   94 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | Tiendas Juan Lucas                                                                                                                                                                     |
-|   95 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | —                                                                                                                                                                                      |
+|   95 | Te lo cuenta COPE Málaga               | Pop-up (uno por vídeo)  | Imagen + vídeo | EMT · dup. del cartel de 2005                                                                                                                                                          |
 |   96 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Cash Sierra Nevada · dup. de 34                                                                                                                                                        |
 |   97 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Bodegas Carpe Diem · dup. de 73                                                                                                                                                        |
 |   98 | Test de la Feria                       | Pop-up (uno por vídeo)  | Imagen + vídeo | Ayto. de Torremolinos ▶ · dup. de 57                                                                                                                                                  |
@@ -229,7 +228,7 @@ La marca ▶ indica que el anunciante entregó vídeo y su hueco lo abre en un p
 
 - 96 huecos activos: 18 laterales, 28 en móvil y 50 dentro de pop-ups (+14 retirados).
 - 68 admiten vídeo en popup; 28 son solo imagen.
-- **61 vendidos** (11 de ellos con vídeo) y 35 libres. El 70 cuenta como uno, aunque
+- **62 vendidos** (11 de ellos con vídeo) y 34 libres. El 70 cuenta como uno, aunque
   por dentro lleve 25 anunciantes (ver «El hueco 70»).
 - La home solo lleva el hueco de su pop-up de portada, y sigue libre.
 

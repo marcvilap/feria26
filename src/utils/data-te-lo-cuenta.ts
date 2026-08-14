@@ -18,11 +18,17 @@
 // tres de 2025 conservan sus huecos 84, 85 y 90, que es lo que importa porque ya están
 // vendidos (ver la lista `modalSpots` en te-lo-cuenta.astro).
 //
-// PENDIENTE: de esas tres solo ha llegado la de Mónica García. Las de Enrique Ortiz y
-// Alejandro se publican sin vídeo, marcadas en la propia parrilla como pendientes de
-// entrega, y llevan por título el nombre del reportero porque el cliente todavía no ha
-// dicho de qué van. El hueco 95 no se podrá vender a EMT hasta que llegue el de Enrique:
-// su creatividad está esperando justo a esa pieza.
+// Las tres ya han llegado: la de Mónica García el 10 de agosto de 2026 y las de Enrique
+// Ortiz y Alejandro el 14. Ya no queda ninguna ficha sin vídeo en esta sección.
+//
+// Ojo con los títulos de esas dos últimas, que el cliente no ha llegado a fijar:
+//   - El de Alejandro sale del nombre del fichero del Drive, igual que se hizo con el de
+//     Mónica García. Su vídeo no lleva rótulo con el nombre del reportero, así que la
+//     ficha va sin él; «Alejandro» es como lo llamaba el cliente.
+//   - El de Enrique Ortiz se queda con su nombre, porque el fichero llegó como
+//     «ENRIQUE Web V3» y no da título. Su rótulo en pantalla dice ENRIQUE ORTIZ / COPE
+//     MÁLAGA. La pieza va sobre esta misma revista digital: se ve la home de 2026 y la
+//     parrilla del Test.
 import image01 from '$assets/images/posters-video/te-lo-cuenta/flamenco.webp'
 import image02 from '$assets/images/posters-video/te-lo-cuenta/emilio-fuegos.webp'
 import image03 from '$assets/images/posters-video/te-lo-cuenta/javier-bautista.webp'
@@ -32,6 +38,8 @@ import image06 from '$assets/images/posters-video/te-lo-cuenta/carmen-cerban.web
 import image07 from '$assets/images/posters-video/te-lo-cuenta/javier-bautista-2025.webp'
 import image08 from '$assets/images/posters-video/te-lo-cuenta/pedro-gonzalez.webp'
 import imageMonica from '$assets/images/posters-video/te-lo-cuenta/monica-garcia.webp'
+import imageEnrique from '$assets/images/posters-video/te-lo-cuenta/enrique-ortiz.webp'
+import imageAlejandro from '$assets/images/posters-video/te-lo-cuenta/alejandro-torta.webp'
 import video01 from '$assets/videos/te-lo-cuenta/flamenco.mp4'
 import video02 from '$assets/videos/te-lo-cuenta/emilio-fuegos.mp4'
 import video03 from '$assets/videos/te-lo-cuenta/javier-bautista.mp4'
@@ -41,6 +49,8 @@ import video06 from '$assets/videos/te-lo-cuenta/carmen-cerban.mp4'
 import video07 from '$assets/videos/te-lo-cuenta/javier-bautista-2025.mp4'
 import video08 from '$assets/videos/te-lo-cuenta/pedro-gonzalez.mp4'
 import videoMonica from '$assets/videos/te-lo-cuenta/monica-garcia.mp4'
+import videoEnrique from '$assets/videos/te-lo-cuenta/enrique-ortiz.mp4'
+import videoAlejandro from '$assets/videos/te-lo-cuenta/alejandro-torta.mp4'
 
 export default [
 	{ image: image01, video: video01, name: 'El flamenco y la Feria de Málaga' },
@@ -51,8 +61,8 @@ export default [
 	// El título sale del nombre del fichero que subió al Drive el 10 de agosto de 2026,
 	// corregido a «Feria de Málaga» por el criterio de mayúsculas de la clienta (11/08/2026).
 	{ image: imageMonica, video: videoMonica, name: 'La Feria de Málaga es mucho más que fiesta', description: 'MÓNICA GARCÍA' },
-	{ name: 'Enrique Ortiz' },
-	{ name: 'Alejandro' },
+	{ image: imageEnrique, video: videoEnrique, name: 'Enrique Ortiz', description: 'COPE MÁLAGA' },
+	{ image: imageAlejandro, video: videoAlejandro, name: 'La torta más local del mundo también en Feria' },
 	{ image: image06, video: video06, name: 'Tendencias de la moda flamenca', description: 'CARMEN CERBÁN · FERIA DE MÁLAGA 2025' },
 	{ image: image07, video: video07, name: 'Conoce el recinto ferial: Real de Cortijo de Torres', description: 'JAVIER BAUTISTA · FERIA DE MÁLAGA 2025' },
 	{ image: image08, video: video08, name: 'Romería al Santuario de la Victoria', description: 'PEDRO GONZÁLEZ · FERIA DE MÁLAGA 2025' },
